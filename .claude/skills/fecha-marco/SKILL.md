@@ -1,0 +1,99 @@
+---
+name: fecha-marco
+description: Fecha um marco de aprendizado de forma sistematica: verifica done, aplica curadoria, cria git tag, atualiza PROGRESSO.md e recalibra marcos restantes. Use quando o aluno diz "terminei" ou o codigo funciona.
+---
+
+# Fechamento de Marco
+
+Fecha um marco de aprendizado de forma sistematica e prepara o terreno para o proximo.
+Use quando o aluno diz "terminei", "funcionou" ou quando voce avalia que o criterio de
+"done" foi atingido.
+
+## Pre-requisitos
+
+- O codigo do marco atual funciona (make it work).
+- O aluno entende o que construiu (consegue explicar).
+
+## Passo 1 — Verificacao do "done"
+
+Confirme com o aluno (ou verifique voce mesmo) cada criterio de "done" do marco atual:
+
+- [ ] O codigo executa/renderiza sem erros?
+- [ ] O aluno consegue explicar o que cada parte faz?
+- [ ] A User Story do marco esta satisfeita?
+
+Se algum criterio falhar, o marco NAO esta fechado. Volte ao ciclo de ensino.
+
+## Passo 2 — Curadoria (make it right)
+
+Agora que funciona, ofereca **1 a 3 melhorias** ordenadas por impacto:
+
+1. **Legibilidade** — nomes, organizacao, comentarios utilitarios.
+2. **Idiomatico** — padroes da linguagem/framework que o aluno ainda nao conhece.
+3. **Robustez** — tratamento de erro, edge cases, validacoes.
+
+Para cada melhoria:
+- Explique **por que** melhora (o principio por tras).
+- Mostre **como** fica (exemplo de codigo).
+- Deixe o aluno **decidir** se aplica agora ou registra como divida.
+
+Se o aluno optar por nao refatorar agora, registre no `PROGRESSO.md` como divida de
+aprendizado.
+
+## Passo 3 — Git tag
+
+Crie uma tag para marcar o ponto de chegada:
+
+```text
+git add .
+git commit -m "marco-NN-<slug>: <resumo do que foi entregue>"
+git tag marco-NN-<slug>
+```
+
+Explique ao aluno: "Essa tag e um checkpoint. Voce pode voltar aqui se precisar."
+
+## Passo 4 — Atualizar PROGRESSO.md
+
+Atualize o arquivo com:
+
+1. Marque o marco atual como fechado (`- [x]`).
+2. Atualize o marco atual para o proximo (`<- ATUAL`).
+3. Adicione ao **Log**: data, marco fechado, o que ficou pronto.
+4. Transfira **dividas de aprendizado** da curadoria (se houver).
+
+## Passo 5 — Recalibrar marcos restantes
+
+Releia os marcos que ainda faltam e ajuste conforme necessario:
+
+- **Divida** um marco que agora parece grande demais (use `/spidr-split`).
+- **Funda** marcos muito pequenos que podem ser combinados.
+- **Ajuste a ordem** se o aprendizado do marco atual revelou dependencias novas.
+- **Atualize User Stories** se o entendimento do projeto evoluiu.
+
+Pergunte ao aluno: "Agora que voce viu isso funcionando, os proximos marcos ainda fazem
+sentido na ordem atual?"
+
+## Passo 6 — Scaffold do proximo marco
+
+Gere o scaffold do proximo marco em `projeto/`:
+
+- Arquivos com `TODO(human)` + pergunta-guia.
+- Se a regra de drill disparar, gere drill em `exercicios/`.
+- Lembre o aluno de que o proximo marco comeca agora.
+
+## Checkpoint final
+
+Antes de entregar o scaffold, confirme:
+
+- [ ] PROGRESSO.md atualizado.
+- [ ] Git tag criada.
+- [ ] Proximo marco tem User Story clara.
+- [ ] Scaffold gerado com TODO(human) + pergunta-guia.
+- [ ] Aluno sabe qual e o proximo passo.
+
+## Anti-padroes
+
+- NAO pule a curadoria (e onde o aluno aprende a "fazer direito").
+- NAO esqueca de criar a git tag (e o historico de progresso).
+- NAO avance para o proximo marco sem atualizar o PROGRESSO.md.
+- NAO recalibre sozinho — envolva o aluno na decisao de ajustar o roadmap.
