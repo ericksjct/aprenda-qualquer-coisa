@@ -1,5 +1,36 @@
 # Referencia — Mentor de Projeto
 
+## Sondagem de substrato
+
+Autoavaliacao engana: "sei um pouco de JS" pode ser qualquer coisa entre zero-absoluto
+e intermediario. Sonde na pratica, com 2-3 sondas rapidas por assunto duvidoso:
+
+- **Reconhecimento**: mostre um snippet de 3-5 linhas do assunto e pergunte
+  "o que esse trecho faz?". Quem nao reconhece a sintaxe e zero-absoluto.
+- **Producao descrita**: "como voce faria X?" — descricao em palavras basta;
+  nao exija codigo perfeito no chat.
+- **Vocabulario**: "o que significa [termo central do assunto]?" — vocabulario
+  avancado sinaliza profundidade desejada, nao maestria; confirme com as outras sondas.
+
+Classificacao por assunto:
+
+- **zero-absoluto** — nao reconhece a sintaxe; nao tem materia-prima pra deduzir.
+  Andaime: "eu faco -> voce faz" obrigatorio na entrada do assunto.
+- **iniciante** — reconhece e le, mas nao produz sem apoio. Andaime: pergunta-guia
+  + scaffold detalhado.
+- **intermediario** — produz com hesitacao. Andaime: pergunta-guia + scaffold padrao.
+- **avancado** — produz e explica trade-offs. Andaime: mais buraco, menos pista.
+
+Regras:
+
+- Agrupe TODAS as sondas numa unica mensagem (nao vire interrogatorio).
+- Registre nivel + evidencia na tabela do `PROGRESSO.md`. Evidencia importa: e o que
+  permite recalibrar depois sem re-sondar do zero.
+- O substrato e **por assunto, nao por aluno**: um aluno forte em logica/dados pode
+  ser zero-absoluto em sintaxe de frontend. Calibre pelo substrato DO ASSUNTO em jogo.
+- Re-sonde de leve quando o vocabulario do aluno mudar ou um marco fechar com folga
+  ou com muito sofrimento.
+
 ## Regra de granularidade
 
 - Unidade = **1 capacidade coesa**, nao 1 atomo de conceito. Teste: ao fechar a unidade,
@@ -7,15 +38,74 @@
 - **Criterio de fechamento verificavel**: cada unidade tem um "done" objetivo (algo roda,
   renderiza, passa num check visual). Check verde so vale se houve sintese.
 - **Tamanho**: completavel numa sessao focada (~30-90 min). Maior -> quebre; menor -> funda.
-- **Salto suave**: cada unidade introduz no maximo 1 conceito dominante novo e reusa os
+- **Salto suave**: cada passo introduz no maximo 1 conceito dominante novo e reusa os
   anteriores. Sem degraus.
 - **Granularidade ~ 1/nivel**: iniciante -> unidades menores + mais andaime; avancado ->
   unidades maiores + mais buraco a preencher.
-- **Substrato por assunto, nao por aluno**: o nivel GLOBAL engana. Um aluno pode ser
-  avancado em logica/dados e ZERO-ABSOLUTO na sintaxe de um assunto novo (ex: HTML/JS de
-  frontend). Calibre pelo substrato DO ASSUNTO em jogo, nao por uma media do aluno.
-  Zero-absoluto != iniciante: zero nao tem materia-prima pra deduzir uma sintaxe que
-  nunca viu, entao "descobrir sozinho" vira abismo, nao desafio (ver formato do scaffold).
+
+## Template — CAMINHO.md
+
+O `CAMINHO.md` e a expansao completa do caminho de aprendizado, gerada ANTES da
+montagem dos marcos. E o documento de design; o `PROGRESSO.md` e o de acompanhamento.
+
+```markdown
+# CAMINHO — <nome do projeto>
+
+> Regra de ouro: o passo N so pode pressupor conceitos introduzidos em P01..P(N-1)
+> ou cobertos pelo substrato do aluno (tabela no PROGRESSO.md).
+
+## Conceitos (indice)
+
+- c01-<slug> — <definicao de 1 linha> (introduzido em P01)
+- c02-<slug> — <definicao de 1 linha> (introduzido em P02)
+
+## Passos
+
+### P01 — <titulo curto>
+
+- Conceito dominante (novo): c01-<slug>
+- Pressupoe: (nenhum — entrada coberta pelo substrato)
+- Substrato exigido: <assunto>: zero-absoluto ok ("eu faco -> voce faz")
+- Entregavel: <o que o aluno ESCREVE> + <o que ele VE funcionando ao terminar>
+- Arquivos: <paths em projeto/>
+
+### P02 — <titulo curto>
+
+- Conceito dominante (novo): c02-<slug>
+- Pressupoe: c01-<slug>
+- Substrato exigido: <assunto>: >= iniciante
+- Entregavel: ...
+- Arquivos: ...
+
+## Mapa passos -> marcos
+
+- Marco 00 (Walking Skeleton): P01-P02 — coeso porque <1 linha>
+- Marco 01: P03-P05 — coeso porque <1 linha>
+```
+
+Regras do caminho:
+
+- IDs de conceito sao estaveis (`c01-tags-html`); marcos e scaffolds referenciam por ID.
+- "Entregavel" e sempre concreto e observavel: o que o aluno digita e o que aparece
+  na tela/terminal quando da certo. "Aprender flexbox" NAO e entregavel;
+  "os 3 cards ficam lado a lado e centralizados" e.
+- Se um passo precisaria de 2 conceitos dominantes novos, sao 2 passos.
+- Se a referencia do roadmap.sh (em `referencias/`) introduz um conceito antes do seu
+  caminho, cheque se ha buraco de dependencia.
+
+## Verificacao de coesao (rodar no Passe 2 e em toda recalibragem)
+
+Checklist mecanico — falhou, conserta o caminho antes de qualquer scaffold:
+
+- [ ] Todo conceito em "Pressupoe" de P(N) e dominante de algum P(<N), OU esta coberto
+      pelo substrato em nivel >= iniciante.
+- [ ] Cada passo introduz no maximo 1 conceito dominante novo.
+- [ ] Todo passo cujo assunto esta zero-absoluto na tabela esta marcado
+      "eu faco -> voce faz".
+- [ ] Cada marco agrupa passos CONSECUTIVOS do caminho (sem buracos nem saltos).
+- [ ] Cada marco termina em algo que roda/renderiza (fatia vertical, nao tema).
+- [ ] O primeiro marco e um Walking Skeleton.
+- [ ] Todo entregavel e observavel (descreve o que o aluno VE, nao so o que "aprende").
 
 ## Marcos verticais, nunca temas
 
@@ -58,9 +148,10 @@ Aplique 1 ou mais eixos ate que cada fatia caiba numa sessao (~30-90 min).
 
 ## Roadmap vivo
 
-A cada marco fechado, releia `PROGRESSO.md` e **recalibre os marcos restantes** (divida,
-funda, ajuste granularidade) com base em como o aluno performou. O roadmap e uma espinha
-estavel, mas as folhas adaptam.
+A cada marco fechado, releia `CAMINHO.md` e `PROGRESSO.md` e **recalibre** (divida,
+funda, ajuste granularidade, atualize a tabela de substrato) com base em como o aluno
+performou. Re-rode a verificacao de coesao apos qualquer mudanca. A espinha e estavel;
+as folhas adaptam.
 
 ## Marcos = git, nao pastas (para artefato unico)
 
@@ -72,8 +163,10 @@ evolui marco a marco. Pastas-por-conceito existem apenas em `exercicios/` (drill
 
 ```text
 <projeto>/
-├── PROGRESSO.md          # fonte da verdade: perfil, DoD, marcos, dividas, log
+├── CAMINHO.md            # design: passos detalhados + mapa passos -> marcos
+├── PROGRESSO.md          # acompanhamento: substrato, DoD, marcos, dividas, log
 ├── APRENDIZADO.md        # diario de bordo: licoes, padroes de erro, decisoes
+├── referencias/          # roadmaps de referencia (scripts/roadmap_fetch.py)
 ├── exercicios/           # drills ISOLADOS, gerados just-in-time
 │   └── NN-<conceito>/     #   pasta-por-conceito so aqui
 └── projeto/              # o ARTEFATO UNICO; cresce marco a marco (marcos = git tags)
@@ -84,37 +177,50 @@ evolui marco a marco. Pastas-por-conceito existem apenas em `exercicios/` (drill
 ```markdown
 # PROGRESSO — <nome do projeto>
 
-## Perfil do aluno
-- Ja sabe: ...
-- Objetivo: ...
-- Nivel atual: ...
+## Substrato por assunto
+
+| Assunto | Nivel | Evidencia da sondagem |
+|---|---|---|
+| <assunto> | zero-absoluto / iniciante / intermediario / avancado | <o que a sonda mostrou> |
+
+## Objetivo
+
+- Objetivo de aprendizado: ...
 - Restricoes (stack/tempo/ferramentas): ...
 
 ## Output final
+
 <descricao do que sera construido>
 
 ## Definition of Done
+
 - [ ] <criterio objetivo 1>
 - [ ] <criterio objetivo 2>
 
 ## Marcos
 
-### 00 — <slug> (Walking Skeleton)
+### 00 — <slug> (Walking Skeleton)  <- ATUAL
+
 **User Story:** Como [usuario], eu quero [capacidade basica], para que [valor minimo].
+**Passos do caminho:** P01-P02 (ver CAMINHO.md)
+**Entregavel:** <o que o aluno VE funcionando ao fechar o marco>
+
 - [ ] <criterio de done>
 
 ### 01 — <slug>
-**User Story:** Como [usuario], eu quero [capacidade], para que [valor].
-- [ ] <criterio de done>
 
-### 02 — <slug>
 **User Story:** Como [usuario], eu quero [capacidade], para que [valor].
+**Passos do caminho:** P03-P05
+**Entregavel:** <concreto e observavel>
+
 - [ ] <criterio de done>
 
 ## Dividas de aprendizado
+
 - (registradas na curadoria; revisitar quando fizer sentido)
 
 ## Log
+
 - AAAA-MM-DD — marco-00 fechado: <o que ficou pronto>
 ```
 
@@ -124,15 +230,19 @@ evolui marco a marco. Pastas-por-conceito existem apenas em `exercicios/` (drill
 # Diario de Aprendizado — <nome do projeto>
 
 ## Licoes
+
 - AAAA-MM-DD — <conceito aprendido> (contexto: <em que marco/situacao>)
 
 ## Padroes de erro
+
 - AAAA-MM-DD — <erro recorrente> → <causa raiz> → <como evitar da proxima vez>
 
 ## Decisoes arquiteturais
+
 - AAAA-MM-DD — <decisao tomada> (contexto: <por que escolhemos isso>)
 
 ## Dividas de aprendizado (da curadoria)
+
 - <divida> — registrada em <data> — revisitar no marco <NN>
 ```
 
@@ -143,17 +253,33 @@ Cada arquivo entregue ao aluno em `projeto/` recebe, no topo, um comentario assi
 
 ```text
 /*
-  MARCO NN — <nome>
+  MARCO NN — <nome>  (passos P0x-P0y do CAMINHO.md)
   META: <o que vai ficar pronto>
   PORQUE: <que capacidade isso destrava no projeto>
+  PRESSUPOE: <conceitos ja introduzidos, por ID (ex: c01-tags-html). Se algum for
+    novidade pra voce, AVISE antes de comecar — o caminho e que ajusta, nao voce.>
+  ARQUIVOS: <quais arquivos o aluno cria/edita neste marco>
+  EXEMPLO-DE-RESULTADO: <o que o aluno VE quando der certo, concreto: "ao abrir
+    index.html aparece uma lista com 3 itens; clicar num item risca o texto">
   DONE: <como o aluno sabe que terminou>
   PERGUNTA-GUIA: <pergunta socratica que o aluno responde ANTES de codar>
 */
-// TODO(human): <o que o aluno deve implementar aqui>
+// TODO(human): <o que digitar, descrito como COMPORTAMENTO: "escreva a funcao que
+//   recebe X e retorna Y", nunca "implemente a logica">
 // PISTA (revele so se ele travar): <pista gradual, comentada>
 ```
 
 NUNCA preencha o `TODO(human)`. O scaffold e o esqueleto; a carne e do aluno.
+
+Validacao obrigatoria antes de entregar qualquer scaffold:
+
+- Todo item de `PRESSUPOE` e conceito ja introduzido (passo anterior do CAMINHO.md
+  fechado) OU coberto pelo substrato em nivel >= iniciante. Se nao for, o scaffold
+  esta errado: conserte o caminho (insira passo / mude para "eu faco -> voce faz").
+- `EXEMPLO-DE-RESULTADO` descreve algo observavel (tela, terminal, comportamento),
+  nunca um conceito abstrato.
+- O `TODO(human)` descreve comportamento (entrada -> saida / o que aparece), nunca
+  "implemente X" seco.
 
 ### Como o aluno le o scaffold (explique na 1a entrega)
 
@@ -163,6 +289,8 @@ campo executar:
 
 - META -> onde voce quer chegar (o destino)
 - PORQUE -> por que isso importa (motivacao, pra nao ser tarefa cega)
+- PRESSUPOE -> auto-checagem: se algo aqui e novidade, avise antes de comecar
+- EXEMPLO-DE-RESULTADO -> visualize o resultado antes de pensar no codigo
 - PERGUNTA-GUIA -> PENSE antes de digitar (constroi o entendimento)
 - TODO(human) -> o que voce DIGITA (a unica acao a executar)
 - DONE -> como saber que acertou (o teste final)

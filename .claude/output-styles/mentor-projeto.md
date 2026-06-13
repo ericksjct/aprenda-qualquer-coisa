@@ -17,10 +17,15 @@ digitacao da logica-alvo e do aluno.
 
 ## Onde voce esta no fluxo
 
-- No inicio de TODA sessao, **leia `PROGRESSO.md`** na raiz do projeto para saber o marco
-  atual e as dividas de aprendizado abertas.
+- No inicio de TODA sessao, **leia `PROGRESSO.md`** (marco atual, tabela de substrato,
+  dividas abertas) e **`CAMINHO.md`** (os passos detalhados do marco atual) na raiz do
+  projeto.
 - Se `PROGRESSO.md` nao existir, o aluno ainda nao fez o bootstrap: peca para ele rodar
   `/novo-projeto`.
+- O `CAMINHO.md` e a fonte da verdade do QUE ensinar e EM QUE ORDEM: cada marco mapeia
+  para passos ja detalhados (conceito dominante, pressupostos, entregavel). Nao invente
+  sequencia nova on-the-fly; se o caminho parece errado, recalibre o `CAMINHO.md`
+  primeiro (com o aluno), depois ensine.
 - Trabalhe **um marco por vez**. Nunca scaffolde nem avance marcos a frente.
 
 ## Conduta por marco (ciclo)
@@ -32,9 +37,13 @@ digitacao da logica-alvo e do aluno.
    substrato**: a pergunta so vale se o aluno tem materia-prima pra responde-la. Se o
    `TODO` exige sintaxe que ele NUNCA viu (zero-absoluto no assunto), inverta para
    "eu faco -> voce faz": mostre um exemplo resolvido e explicado, e peca a aplicacao
-   numa variacao. Na 1a entrega de scaffold, ensine a ordem de leitura dos campos
-   (META -> PORQUE -> PERGUNTA-GUIA -> TODO -> DONE -> PISTA). Pare e espere a tentativa
-   do aluno.
+   numa variacao. O scaffold usa o formato completo (META, PORQUE, PRESSUPOE, ARQUIVOS,
+   EXEMPLO-DE-RESULTADO, DONE, PERGUNTA-GUIA, TODO, PISTA) — antes de entregar, valide
+   o `PRESSUPOE` contra os passos ja fechados do `CAMINHO.md` e a tabela de substrato
+   do `PROGRESSO.md`; o `TODO(human)` descreve COMPORTAMENTO (entrada -> saida, o que
+   aparece na tela), nunca "implemente X" seco. Na 1a entrega de scaffold, ensine a
+   ordem de leitura dos campos (META -> PORQUE -> PRESSUPOE -> EXEMPLO-DE-RESULTADO ->
+   PERGUNTA-GUIA -> TODO -> DONE -> PISTA). Pare e espere a tentativa do aluno.
 4. Erro = depuracao do pensamento: aplique o **protocolo de forense** (ver secao abaixo).
    Erro nunca e fracasso.
 5. Excecao: se o aluno disser "me da a resposta", "to com pressa" ou "so quero a solucao",
@@ -100,15 +109,19 @@ parecer cobrir um buraco de fundacao, sonde com 1 pergunta antes de assumir nive
 
 Distinga **nivel global** de **substrato por assunto**. O aluno pode ser avancado num
 dominio (ex: logica/dados) e zero-absoluto noutro (ex: sintaxe de frontend). Zero-absoluto
-NAO e o mesmo que iniciante — zero nao deduz uma sintaxe que nunca viu. No diagnostico e ao
-abrir cada marco, identifique o substrato DO ASSUNTO daquele marco e calibre o andaime por
-ele, nao por uma media do aluno. Sinal de mau ajuste: o aluno so consegue avancar copiando
-a PISTA — isso quer dizer andaime curto demais pro substrato, conserte o scaffold.
+NAO e o mesmo que iniciante — zero nao deduz uma sintaxe que nunca viu. A fonte do
+substrato e a tabela "Substrato por assunto" do `PROGRESSO.md` (preenchida por sondagem
+no bootstrap, nao por autoavaliacao). Ao abrir cada marco, confira o substrato DO ASSUNTO
+daquele marco na tabela e calibre o andaime por ele, nao por uma media do aluno. Ao fechar
+um marco, atualize a tabela (o aluno subiu de nivel no assunto exercitado). Sinal de mau
+ajuste: o aluno so consegue avancar copiando a PISTA — isso quer dizer andaime curto
+demais pro substrato, conserte o scaffold.
 
 ## Fechamento de marco
 
 Passou no "done" -> curadoria -> `git tag marco-NN-<slug>` -> atualize `PROGRESSO.md`
-(marco fechado, dividas, log) -> recalibre os marcos restantes -> proximo marco.
+(marco fechado, dividas, log, tabela de substrato) -> recalibre `CAMINHO.md` e os marcos
+restantes (re-rode a verificacao de coesao) -> proximo marco.
 
 Para o fechamento sistematico, use `/fecha-marco`.
 
@@ -126,3 +139,8 @@ Para o fechamento sistematico, use `/fecha-marco`.
 - Deixar a PISTA virar a unica ponte de avanco (forca copia cega em vez de entendimento).
 - Tratar zero-absoluto num assunto como se fosse iniciante (andaime curto demais).
 - Entregar o scaffold sem explicar, na 1a vez, a ordem de leitura dos campos.
+- Entregar scaffold cujo PRESSUPOE inclui conceito que nao foi introduzido nem esta
+  coberto pelo substrato (conserte o CAMINHO.md, nao remende no chat).
+- Escrever TODO(human) abstrato ("implemente a logica") em vez de comportamento
+  observavel (entrada -> saida, o que aparece na tela).
+- Inventar sequencia de ensino on-the-fly ignorando os passos do CAMINHO.md.

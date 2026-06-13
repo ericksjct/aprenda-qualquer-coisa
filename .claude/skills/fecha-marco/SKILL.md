@@ -60,24 +60,36 @@ Atualize o arquivo com:
 2. Atualize o marco atual para o proximo (`<- ATUAL`).
 3. Adicione ao **Log**: data, marco fechado, o que ficou pronto.
 4. Transfira **dividas de aprendizado** da curadoria (se houver).
+5. Atualize a **tabela de substrato**: o aluno exercitou assuntos neste marco —
+   se a performance mostrou subida (ou descida) de nivel, registre com a evidencia.
 
-## Passo 5 — Recalibrar marcos restantes
+## Passo 5 — Recalibrar CAMINHO.md e marcos restantes
 
-Releia os marcos que ainda faltam e ajuste conforme necessario:
+Releia o `CAMINHO.md` (passos restantes + mapa passos -> marcos) e o `PROGRESSO.md`,
+e ajuste conforme necessario:
 
 - **Divida** um marco que agora parece grande demais (use `/spidr-split`).
 - **Funda** marcos muito pequenos que podem ser combinados.
-- **Ajuste a ordem** se o aprendizado do marco atual revelou dependencias novas.
+- **Ajuste a ordem** se o aprendizado do marco atual revelou dependencias novas —
+  isso inclui **inserir passos** no `CAMINHO.md` quando um buraco de conceito apareceu.
 - **Atualize User Stories** se o entendimento do projeto evoluiu.
+- Re-rode a **verificacao de coesao** (checklist em `novo-projeto/reference.md`):
+  nenhum passo restante pode pressupor conceito nao introduzido nem coberto pelo
+  substrato atualizado.
 
 Pergunte ao aluno: "Agora que voce viu isso funcionando, os proximos marcos ainda fazem
 sentido na ordem atual?"
 
 ## Passo 6 — Scaffold do proximo marco
 
-Gere o scaffold do proximo marco em `projeto/`:
+Gere o scaffold do proximo marco em `projeto/`, seguindo os passos correspondentes
+do `CAMINHO.md` e o formato completo de `novo-projeto/reference.md`:
 
-- Arquivos com `TODO(human)` + pergunta-guia.
+- Arquivos com cabecalho completo (META, PORQUE, PRESSUPOE, ARQUIVOS,
+  EXEMPLO-DE-RESULTADO, DONE, PERGUNTA-GUIA) + `TODO(human)` descrevendo
+  comportamento observavel + PISTA comentada.
+- Valide o `PRESSUPOE` contra os passos ja fechados do `CAMINHO.md` e a tabela de
+  substrato atualizada. Assunto zero-absoluto -> "eu faco -> voce faz".
 - Se a regra de drill disparar, gere drill em `exercicios/`.
 - Lembre o aluno de que o proximo marco comeca agora.
 
@@ -85,10 +97,11 @@ Gere o scaffold do proximo marco em `projeto/`:
 
 Antes de entregar o scaffold, confirme:
 
-- [ ] PROGRESSO.md atualizado.
+- [ ] PROGRESSO.md atualizado (incluindo tabela de substrato).
+- [ ] CAMINHO.md recalibrado e coeso (verificacao de coesao passou).
 - [ ] Git tag criada.
-- [ ] Proximo marco tem User Story clara.
-- [ ] Scaffold gerado com TODO(human) + pergunta-guia.
+- [ ] Proximo marco tem User Story clara e entregavel observavel.
+- [ ] Scaffold gerado no formato completo, com PRESSUPOE validado.
 - [ ] Aluno sabe qual e o proximo passo.
 
 ## Anti-padroes

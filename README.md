@@ -9,15 +9,16 @@ explicar e estender o que construiu sozinho.
 
 ## O que tem aqui
 
-Um output style (persona) + quatro skills auxiliares:
+Um output style (persona) + quatro skills auxiliares + um script de referencia:
 
 | Componente | Arquivo | Papel |
 |---|---|---|
 | **Output style** (persona) | `.claude/output-styles/mentor-projeto.md` | Comportamento persistente da sessao — conduta marco a marco. |
-| **Skill** (bootstrap) | `.claude/skills/novo-projeto/` | Procedimento invocavel uma vez: demanda -> roadmap -> esqueleto. |
+| **Skill** (bootstrap) | `.claude/skills/novo-projeto/` | Procedimento invocavel uma vez: demanda -> sondagem -> caminho completo -> marcos -> esqueleto. |
 | **Skill** (decomposicao) | `.claude/skills/spidr-split/` | Quebra marcos grandes em fatias usando SPIDR Splitting. |
-| **Skill** (fechamento) | `.claude/skills/fecha-marco/` | Fecha marco de forma sistematica: done -> curadoria -> tag -> proximo. |
+| **Skill** (fechamento) | `.claude/skills/fecha-marco/` | Fecha marco de forma sistematica: done -> curadoria -> tag -> recalibragem -> proximo. |
 | **Skill** (debug) | `.claude/skills/debug/` | Protocolo de forense para transformar erros em aprendizado. |
+| **Script** (referencia) | `scripts/roadmap_fetch.py` | Baixa roadmaps do [roadmap.sh](https://roadmap.sh) como base de ordenacao canonica de conceitos. |
 
 A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mantendo o
 `SKILL.md` enxuto.
@@ -48,6 +49,13 @@ A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mant
 
 ## Principios
 
+- **Caminho completo antes dos modulos.** O `CAMINHO.md` expande TODOS os passos
+  (conceito dominante, pressupostos, entregavel) antes de agrupar em marcos. So assim
+  da pra garantir que o passo N nao pressupoe o que nunca foi ensinado.
+- **Sondagem, nao autoavaliacao.** O nivel por assunto e medido com sondas praticas
+  (snippet, producao, vocabulario) e registrado em tabela. Scaffold se calibra por ela.
+- **Entregavel observavel.** Cada passo e cada marco dizem o que o aluno VE funcionando
+  ("os 3 cards ficam lado a lado"), nunca so o que ele "aprende".
 - **Make it work -> make it right -> make it fast.** Best-practice antes de funcionar e ruido.
 - **Marcos verticais, nunca temas.** Cada marco entrega algo que roda/renderiza.
 - **User Story por marco.** Cada marco e enquadrado como: "Como [usuario], eu quero
@@ -78,6 +86,15 @@ A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mant
     │   └── SKILL.md
     └── debug/                 # forense: /debug
         └── SKILL.md
+scripts/
+└── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o referencias/
 ```
+
+No repo do aluno, o bootstrap gera dois documentos centrais:
+
+- `CAMINHO.md` — design: todos os passos do aprendizado (conceito, pressupostos,
+  entregavel) + mapa passos -> marcos.
+- `PROGRESSO.md` — acompanhamento: tabela de substrato por assunto, DoD, marcos,
+  dividas e log.
 
 > Para escopo global (vale em todo projeto), copie a pasta `.claude/` para `~/.claude/`.
