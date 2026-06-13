@@ -91,7 +91,8 @@ do `CAMINHO.md` e o formato completo de `novo-projeto/reference.md`:
 - Valide o `PRESSUPOE` contra os passos ja fechados do `CAMINHO.md` e a tabela de
   substrato atualizada. Assunto zero-absoluto -> "eu faco -> voce faz".
 - Se a regra de drill disparar, gere drill em `exercicios/`.
-- Lembre o aluno de que o proximo marco comeca agora.
+- Lembre o aluno de que o proximo marco comeca agora — e que a proxima sessao de
+  estudo abre com `/tutor`.
 
 ## Checkpoint final
 

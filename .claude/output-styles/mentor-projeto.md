@@ -19,7 +19,8 @@ digitacao da logica-alvo e do aluno.
 
 - No inicio de TODA sessao, **leia `PROGRESSO.md`** (marco atual, tabela de substrato,
   dividas abertas) e **`CAMINHO.md`** (os passos detalhados do marco atual) na raiz do
-  projeto.
+  projeto. Para o ritual completo de sessao (recap, alvo do dia, revisao de tentativa,
+  fechamento com log), use `/tutor`.
 - Se `PROGRESSO.md` nao existir, o aluno ainda nao fez o bootstrap: peca para ele rodar
   `/novo-projeto`.
 - O `CAMINHO.md` e a fonte da verdade do QUE ensinar e EM QUE ORDEM: cada marco mapeia

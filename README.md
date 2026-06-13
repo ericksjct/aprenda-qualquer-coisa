@@ -15,6 +15,7 @@ Um output style (persona) + quatro skills auxiliares + um script de referencia:
 |---|---|---|
 | **Output style** (persona) | `.claude/output-styles/mentor-projeto.md` | Comportamento persistente da sessao — conduta marco a marco. |
 | **Skill** (bootstrap) | `.claude/skills/novo-projeto/` | Procedimento invocavel uma vez: demanda -> sondagem -> caminho completo -> marcos -> esqueleto. |
+| **Skill** (tutoria) | `.claude/skills/tutor/` | Copiloto de sessao: restaura contexto, conduz o passo atual, revisa tentativas, fecha a sessao com log. |
 | **Skill** (decomposicao) | `.claude/skills/spidr-split/` | Quebra marcos grandes em fatias usando SPIDR Splitting. |
 | **Skill** (fechamento) | `.claude/skills/fecha-marco/` | Fecha marco de forma sistematica: done -> curadoria -> tag -> recalibragem -> proximo. |
 | **Skill** (debug) | `.claude/skills/debug/` | Protocolo de forense para transformar erros em aprendizado. |
@@ -39,7 +40,14 @@ A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mant
    /novo-projeto
    ```
 
-4. Durante o projeto, use as skills auxiliares conforme necessario:
+4. Depois do bootstrap, **toda sessao de estudo comeca com o tutor copiloto**:
+
+   ```text
+   /tutor                # restaura onde voce parou, conduz o passo atual e revisa
+   ```
+
+5. Durante o projeto, use as skills auxiliares conforme necessario (o `/tutor`
+   roteia para elas automaticamente):
 
    ```text
    /spidr-split          # quando um marco parece grande demais
@@ -80,6 +88,8 @@ A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mant
     ├── novo-projeto/          # bootstrap: /novo-projeto
     │   ├── SKILL.md
     │   └── reference.md
+    ├── tutor/                 # tutoria copiloto: /tutor
+    │   └── SKILL.md
     ├── spidr-split/           # decomposicao: /spidr-split
     │   └── SKILL.md
     ├── fecha-marco/           # fechamento: /fecha-marco

@@ -121,3 +121,7 @@ obrigatoriamente `PRESSUPOE`, `ARQUIVOS` e `EXEMPLO-DE-RESULTADO`:
 - **Pare e espere a tentativa do aluno.** Os scaffolds dos marcos seguintes sao
   gerados a cada fechamento (`/fecha-marco`), sempre seguindo os passos ja
   detalhados no `CAMINHO.md`.
+
+A partir daqui o bootstrap terminou: o dia a dia do aluno e conduzido pelo tutor
+copiloto — toda sessao de estudo comeca com `/tutor` (restaura contexto, conduz o
+passo atual, revisa tentativas e roteia para debug/fechamento).
