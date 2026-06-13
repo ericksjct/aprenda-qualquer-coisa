@@ -37,7 +37,8 @@ aprendizado.
 
 ## Passo 3 — Git tag
 
-Crie uma tag para marcar o ponto de chegada:
+Crie uma tag para marcar o ponto de chegada. Rode dentro do repo do projeto
+(`.projetos/<slug>/`, que tem seu proprio `git init` — ver `mentor/reference.md`):
 
 ```text
 git add .

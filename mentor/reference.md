@@ -159,10 +159,17 @@ Para um artefato unico que cresce (um app, um site), os marcos sao **estagios** 
 com `git tag marco-NN-<slug>`, NAO pastas. `projeto/` tem UM conjunto de arquivos que
 evolui marco a marco. Pastas-por-conceito existem apenas em `exercicios/` (drills isolados).
 
+As tags vivem no repo git do PROPRIO projeto (cada `.projetos/<slug>/` tem o seu, criado
+com `git init` no bootstrap) — independente do repo do toolkit, que ignora `.projetos/`.
+
 ## Layout do repo do aluno
 
+Todo projeto mora em `.projetos/<slug>/` (a raiz do projeto). A pasta `.projetos/` esta
+no `.gitignore` do toolkit: projetos sao pessoais (cada usuario tem os seus) e NAO sobem
+pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootstrap).
+
 ```text
-<projeto>/
+.projetos/<slug>/
 ├── CAMINHO.md            # design: passos detalhados + mapa passos -> marcos
 ├── PROGRESSO.md          # acompanhamento: substrato, DoD, marcos, dividas, log
 ├── APRENDIZADO.md        # diario de bordo: licoes, padroes de erro, decisoes

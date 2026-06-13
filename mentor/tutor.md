@@ -11,7 +11,15 @@ persona `mentor-projeto`, ativada via `/config` -> Output style).
 
 ## Passo 0 — Restaurar contexto (sempre, antes de falar de conteudo)
 
-Leia, nesta ordem:
+Primeiro, **resolva o projeto ativo** em `.projetos/` (layout em `mentor/reference.md`):
+
+- Exatamente uma subpasta em `.projetos/` -> e o projeto ativo.
+- Varias -> pergunte ao aluno em qual quer trabalhar hoje.
+- Nenhuma (ou `.projetos/` nao existe) -> o curso nao foi estruturado: encaminhe
+  para `/novo-projeto` e pare.
+
+Todos os caminhos abaixo (`PROGRESSO.md`, `CAMINHO.md`, `projeto/`...) sao relativos a
+`.projetos/<slug>/` do projeto ativo. Leia, nesta ordem:
 
 - `PROGRESSO.md` — marco atual, tabela de substrato, dividas abertas, ultimo log.
 - `CAMINHO.md` — os passos (P0x) do marco atual: conceito, pressupostos, entregavel.

@@ -171,10 +171,13 @@ mentor/                        # METODO — fonte unica, markdown neutro
     ├── fecha-marco/SKILL.md   # /fecha-marco
     └── debug/SKILL.md         # /debug
 scripts/
-└── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o referencias/
+└── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/
+.projetos/                     # casa dos projetos (no .gitignore: pessoais, NAO sobem
+└── <slug>/                    #   pro github do toolkit). Cada projeto e seu proprio
+                               #   repo git: CAMINHO, PROGRESSO, projeto/, exercicios/...
 ```
 
-No repo do aluno, o bootstrap gera **tres** documentos centrais:
+Dentro de `.projetos/<slug>/`, o bootstrap gera **tres** documentos centrais:
 
 - `CAMINHO.md` — design: todos os passos do aprendizado (conceito, pressupostos,
   entregavel) + mapa passos -> marcos.
@@ -183,6 +186,6 @@ No repo do aluno, o bootstrap gera **tres** documentos centrais:
 - `APRENDIZADO.md` — diario do aluno: licoes, padroes de erro, decisoes.
 
 > Os adaptadores apontam para `mentor/` por caminho relativo a raiz do repo — por isso
-> o escopo e local: use o toolkit abrindo a ferramenta dentro deste repositorio (o
-> projeto do aluno vive aqui dentro). Para usar noutro repo, copie `mentor/`, `AGENTS.md`,
-> `scripts/` e (para Claude Code) `.claude/` juntos.
+> o escopo e local: use o toolkit abrindo a ferramenta dentro deste repositorio (os
+> projetos do aluno vivem em `.projetos/<slug>/`). Para usar noutro repo, copie `mentor/`,
+> `AGENTS.md`, `scripts/` e (para Claude Code) `.claude/` juntos.

@@ -36,11 +36,11 @@ numero 1 de scaffold descalibrado. Sonde na pratica:
 Se a stack corresponde a um roadmap do roadmap.sh (frontend, backend, python, react...):
 
 ```text
-python scripts/roadmap_fetch.py <slug> -o <pasta-do-projeto>/referencias/
+python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/
 ```
 
 Rode da raiz deste repositorio; a saida deve ficar DENTRO da pasta do projeto do
-aluno (e o `referencias/` que o Passo 7 lista no esqueleto).
+aluno (`.projetos/<slug>/referencias/`, que o Passo 7 lista no esqueleto).
 
 - O markdown gerado da a **ordenacao canonica de conceitos** do assunto. Use-o como
   verificador de ordem no Passo 4: se o seu caminho usa um conceito antes do ponto em
@@ -89,7 +89,9 @@ So agora agrupe os passos em marcos:
 
 ## Passo 7 — Esqueleto (so apos aprovacao)
 
-Crie na pasta do projeto:
+Todo projeto mora em `.projetos/<slug>/` (a "raiz do projeto"; ver o layout em
+`mentor/reference.md`). Escolha um `<slug>` curto em kebab-case e crie DENTRO de
+`.projetos/<slug>/`:
 
 - `CAMINHO.md` (o artefato do Passo 4 + mapa do Passo 5).
 - `PROGRESSO.md` (template em `mentor/reference.md`): substrato, objetivo, DoD, arvore de
@@ -97,7 +99,11 @@ Crie na pasta do projeto:
 - `APRENDIZADO.md` (vazio, pronto para o aluno preencher).
 - `exercicios/` (vazia por enquanto) e `projeto/` (vazia ou com arquivos-raiz minimos).
 - `referencias/` (se o Passo 3 gerou roadmap de referencia).
-- `git init` se ainda nao houver repo.
+
+A pasta `.projetos/` esta no `.gitignore` do toolkit (projetos sao pessoais, nao sobem
+pro github do toolkit). Cada projeto e seu PROPRIO repo git: rode `git init` dentro de
+`.projetos/<slug>/`. Os marcos viram tags `marco-NN-<slug>` nesse repo; o aluno pusha
+pra um github proprio se quiser.
 
 ## Passo 8 — Walking Skeleton (Marco 00)
 

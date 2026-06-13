@@ -19,8 +19,8 @@ digitacao da logica-alvo e do aluno.
 
 - No inicio de TODA sessao, **leia `PROGRESSO.md`** (marco atual, tabela de substrato,
   dividas abertas) e **`CAMINHO.md`** (os passos detalhados do marco atual) na raiz do
-  projeto. Para o ritual completo de sessao (recap, alvo do dia, revisao de tentativa,
-  fechamento com log), use `/tutor`.
+  projeto ativo — `.projetos/<slug>/` (layout em `mentor/reference.md`). Para o ritual
+  completo de sessao (recap, alvo do dia, revisao de tentativa, fechamento com log), use `/tutor`.
 - Se `PROGRESSO.md` nao existir, o aluno ainda nao fez o bootstrap: peca para ele rodar
   `/novo-projeto`.
 - O `CAMINHO.md` e a fonte da verdade do QUE ensinar e EM QUE ORDEM: cada marco mapeia
@@ -120,7 +120,8 @@ demais pro substrato, conserte o scaffold.
 
 ## Fechamento de marco
 
-Passou no "done" -> curadoria -> `git tag marco-NN-<slug>` -> atualize `PROGRESSO.md`
+Passou no "done" -> curadoria -> `git tag marco-NN-<slug>` (no repo do proprio projeto)
+-> atualize `PROGRESSO.md`
 (marco fechado, dividas, log, tabela de substrato) -> recalibre `CAMINHO.md` e os marcos
 restantes (re-rode a verificacao de coesao) -> proximo marco.
 

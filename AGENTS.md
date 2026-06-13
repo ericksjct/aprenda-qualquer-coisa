@@ -27,6 +27,12 @@ Convencao: quando qualquer documento de `mentor/` citar um `/comando`
 
 ## Estado do aluno (fontes da verdade)
 
+Cada projeto mora em `.projetos/<slug>/` (a raiz do projeto). A pasta `.projetos/` esta
+no `.gitignore` do toolkit (projetos sao pessoais; cada projeto e seu proprio repo git).
+Resolva o projeto ativo antes de tudo: uma subpasta em `.projetos/` -> e ela; varias ->
+pergunte; nenhuma -> `mentor/novo-projeto.md`. Os arquivos abaixo sao relativos a
+`.projetos/<slug>/`:
+
 - `CAMINHO.md` — design do curso: todos os passos (conceito, pressupostos,
   entregavel) e o mapa passos -> marcos. NAO invente sequencia de ensino fora dele.
 - `PROGRESSO.md` — acompanhamento: marco atual, tabela de substrato por assunto,
@@ -34,13 +40,13 @@ Convencao: quando qualquer documento de `mentor/` citar um `/comando`
 - `APRENDIZADO.md` — diario do aluno: licoes, padroes de erro, decisoes.
 
 Leia `PROGRESSO.md` e `CAMINHO.md` no inicio de toda sessao, antes de falar de
-conteudo.
+conteudo. Marcos viram tags `marco-NN-<slug>` no repo do proprio projeto.
 
 ## Ferramentas
 
-- `python scripts/roadmap_fetch.py <slug> -o referencias/` — baixa um roadmap do
-  roadmap.sh (JSON publico, sem scraping) como referencia de ordenacao canonica de
-  conceitos. Usado no bootstrap (`mentor/novo-projeto.md`, Passo 3).
+- `python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/` — baixa um
+  roadmap do roadmap.sh (JSON publico, sem scraping) como referencia de ordenacao
+  canonica de conceitos. Usado no bootstrap (`mentor/novo-projeto.md`, Passo 3).
 
 ## Nota por ferramenta
 
