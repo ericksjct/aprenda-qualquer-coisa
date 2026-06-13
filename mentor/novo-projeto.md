@@ -36,8 +36,11 @@ numero 1 de scaffold descalibrado. Sonde na pratica:
 Se a stack corresponde a um roadmap do roadmap.sh (frontend, backend, python, react...):
 
 ```text
-python scripts/roadmap_fetch.py <slug> -o referencias/
+python scripts/roadmap_fetch.py <slug> -o <pasta-do-projeto>/referencias/
 ```
+
+Rode da raiz deste repositorio; a saida deve ficar DENTRO da pasta do projeto do
+aluno (e o `referencias/` que o Passo 7 lista no esqueleto).
 
 - O markdown gerado da a **ordenacao canonica de conceitos** do assunto. Use-o como
   verificador de ordem no Passo 4: se o seu caminho usa um conceito antes do ponto em
