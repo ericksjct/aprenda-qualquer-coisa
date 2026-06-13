@@ -1,6 +1,8 @@
 # Aprenda Qualquer Coisa
 
-> Toolkit de **mentoria de aprendizado por projeto** para o [Claude Code](https://code.claude.com).
+> Toolkit **agnostico de LLM** de mentoria de aprendizado por projeto. Funciona com
+> [Claude Code](https://code.claude.com), Codex CLI, Kimi CLI, Cursor e qualquer
+> agente que leia `AGENTS.md`.
 
 Em vez de o agente escrever o codigo por voce, ele **conduz voce a escreve-lo**: desenha a
 estrutura, deixa marcadores `TODO(human)`, faz perguntas socraticas e so sugere melhorias
@@ -9,22 +11,32 @@ explicar e estender o que construiu sozinho.
 
 ## O que tem aqui
 
-Um output style (persona) + quatro skills auxiliares + um script de referencia:
+O toolkit e **agnostico de LLM**: o metodo vive em markdown neutro (`mentor/`) e
+cada ferramenta tem so um adaptador fino apontando pra ele.
 
 | Componente | Arquivo | Papel |
 |---|---|---|
-| **Output style** (persona) | `.claude/output-styles/mentor-projeto.md` | Comportamento persistente da sessao — conduta marco a marco. |
-| **Skill** (bootstrap) | `.claude/skills/novo-projeto/` | Procedimento invocavel uma vez: demanda -> sondagem -> caminho completo -> marcos -> esqueleto. |
-| **Skill** (tutoria) | `.claude/skills/tutor/` | Copiloto de sessao: restaura contexto, conduz o passo atual, revisa tentativas, fecha a sessao com log. |
-| **Skill** (decomposicao) | `.claude/skills/spidr-split/` | Quebra marcos grandes em fatias usando SPIDR Splitting. |
-| **Skill** (fechamento) | `.claude/skills/fecha-marco/` | Fecha marco de forma sistematica: done -> curadoria -> tag -> recalibragem -> proximo. |
-| **Skill** (debug) | `.claude/skills/debug/` | Protocolo de forense para transformar erros em aprendizado. |
-| **Script** (referencia) | `scripts/roadmap_fetch.py` | Baixa roadmaps do [roadmap.sh](https://roadmap.sh) como base de ordenacao canonica de conceitos. |
+| **Metodo** (fonte unica) | `mentor/` | Persona (`metodo.md`) + procedimentos (`novo-projeto`, `tutor`, `fecha-marco`, `debug`, `spidr-split`) + templates (`reference.md`). |
+| **Entrada universal** | `AGENTS.md` | Lido automaticamente por Codex CLI, Kimi CLI, Cursor e outros: define o papel e roteia cada situacao para o arquivo de `mentor/`. |
+| **Adaptadores Claude Code** | `.claude/` | Output style + skills finas (`/novo-projeto`, `/tutor`, `/fecha-marco`, `/debug`, `/spidr-split`) que apontam para `mentor/`. |
+| **Script** (referencia) | `scripts/roadmap_fetch.py` | Baixa roadmaps do [roadmap.sh](https://roadmap.sh) como base de ordenacao canonica de conceitos. So precisa de Python 3 (stdlib). |
+
+Os procedimentos do metodo:
+
+| Procedimento | Quando |
+|---|---|
+| `mentor/novo-projeto.md` | Bootstrap: demanda -> sondagem de substrato -> caminho completo (`CAMINHO.md`) -> marcos -> esqueleto. |
+| `mentor/tutor.md` | Copiloto de sessao: restaura contexto, conduz o passo atual, revisa tentativas, fecha a sessao com log. |
+| `mentor/fecha-marco.md` | Fechamento: done -> curadoria -> tag -> recalibragem -> proximo. |
+| `mentor/debug.md` | Protocolo de forense para transformar erros em aprendizado. |
+| `mentor/spidr-split.md` | Quebra marcos grandes em fatias usando SPIDR Splitting. |
 
 A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mantendo o
 `SKILL.md` enxuto.
 
 ## Como usar
+
+### Com Claude Code
 
 1. Abra o Claude Code **dentro deste repositorio** (os arquivos tem escopo local em `.claude/`).
 2. Ative a persona:
@@ -55,6 +67,24 @@ A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mant
    /debug                # quando esta travado num erro
    ```
 
+### Com Codex CLI, Kimi CLI, Cursor e outros
+
+1. Abra a ferramenta **dentro deste repositorio**. Ferramentas que leem `AGENTS.md`
+   (Codex CLI, Kimi CLI, Cursor, entre outras) ja assumem o papel de mentor
+   automaticamente.
+2. Nao ha slash commands: fale naturalmente. O `AGENTS.md` roteia cada situacao
+   para o procedimento certo de `mentor/`:
+
+   ```text
+   "quero aprender a construir X"   -> bootstrap (mentor/novo-projeto.md)
+   "vamos continuar" / "fiz, olha"  -> sessao de tutoria (mentor/tutor.md)
+   "terminei o marco"               -> fechamento (mentor/fecha-marco.md)
+   "ta dando erro e nao sei por que" -> forense (mentor/debug.md)
+   ```
+
+3. Se a ferramenta usa outro arquivo de contexto (ex: `GEMINI.md`), crie esse
+   arquivo com uma linha: "Leia e siga `AGENTS.md`".
+
 ## Principios
 
 - **Caminho completo antes dos modulos.** O `CAMINHO.md` expande TODOS os passos
@@ -81,21 +111,24 @@ A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mant
 ## Layout
 
 ```text
-.claude/
+AGENTS.md                      # entrada universal (Codex, Kimi, Cursor, ...)
+mentor/                        # METODO — fonte unica, markdown neutro
+├── metodo.md                  # persona/conduta permanente
+├── novo-projeto.md            # bootstrap (2 passes: caminho -> marcos)
+├── tutor.md                   # copiloto de sessao
+├── fecha-marco.md             # fechamento de marco
+├── debug.md                   # protocolo de forense
+├── spidr-split.md             # decomposicao de marcos
+└── reference.md               # templates (CAMINHO, PROGRESSO, scaffold) e regras
+.claude/                       # adaptadores Claude Code (apontam para mentor/)
 ├── output-styles/
 │   └── mentor-projeto.md      # persona: /output-style mentor-projeto
 └── skills/
-    ├── novo-projeto/          # bootstrap: /novo-projeto
-    │   ├── SKILL.md
-    │   └── reference.md
-    ├── tutor/                 # tutoria copiloto: /tutor
-    │   └── SKILL.md
-    ├── spidr-split/           # decomposicao: /spidr-split
-    │   └── SKILL.md
-    ├── fecha-marco/           # fechamento: /fecha-marco
-    │   └── SKILL.md
-    └── debug/                 # forense: /debug
-        └── SKILL.md
+    ├── novo-projeto/SKILL.md  # /novo-projeto
+    ├── tutor/SKILL.md         # /tutor
+    ├── spidr-split/SKILL.md   # /spidr-split
+    ├── fecha-marco/SKILL.md   # /fecha-marco
+    └── debug/SKILL.md         # /debug
 scripts/
 └── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o referencias/
 ```
@@ -107,4 +140,7 @@ No repo do aluno, o bootstrap gera dois documentos centrais:
 - `PROGRESSO.md` — acompanhamento: tabela de substrato por assunto, DoD, marcos,
   dividas e log.
 
-> Para escopo global (vale em todo projeto), copie a pasta `.claude/` para `~/.claude/`.
+> Os adaptadores apontam para `mentor/` por caminho relativo a raiz do repo — por isso
+> o escopo e local: use o toolkit abrindo a ferramenta dentro deste repositorio (o
+> projeto do aluno vive aqui dentro). Para usar noutro repo, copie `mentor/`, `AGENTS.md`,
+> `scripts/` e (para Claude Code) `.claude/` juntos.
