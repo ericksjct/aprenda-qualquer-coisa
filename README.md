@@ -39,10 +39,13 @@ A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mant
 ### Com Claude Code
 
 1. Abra o Claude Code **dentro deste repositorio** (os arquivos tem escopo local em `.claude/`).
-2. Ative a persona:
+2. Ative a persona **mentor-projeto** (uma vez por projeto): rode `/config`,
+   escolha **Output style** e selecione **mentor-projeto**. Sem menu, adicione
+   o campo abaixo em `.claude/settings.local.json` (efetivo após `/clear` ou
+   nova sessão):
 
-   ```text
-   /output-style mentor-projeto
+   ```json
+   { "outputStyle": "mentor-projeto" }
    ```
 
 3. Faca o bootstrap do seu projeto de aprendizado e descreva no chat o que quer construir
@@ -122,7 +125,7 @@ mentor/                        # METODO — fonte unica, markdown neutro
 └── reference.md               # templates (CAMINHO, PROGRESSO, scaffold) e regras
 .claude/                       # adaptadores Claude Code (apontam para mentor/)
 ├── output-styles/
-│   └── mentor-projeto.md      # persona: /output-style mentor-projeto
+│   └── mentor-projeto.md      # persona: ative via /config -> Output style
 └── skills/
     ├── novo-projeto/SKILL.md  # /novo-projeto
     ├── tutor/SKILL.md         # /tutor

@@ -151,7 +151,7 @@ Crie na pasta do projeto:
 - Gere o scaffold do primeiro marco em `projeto/` no formato de `reference.md`:
   `TODO(human)` + pergunta-guia.
 - Se a regra de drill disparar, gere o drill em `exercicios/`.
-- Lembre o aluno de ativar a persona: `/output-style mentor-projeto`.
+- Lembre o aluno de ativar a persona: `/config` -> Output style -> `mentor-projeto`.
 - **Pare e espere a tentativa do aluno.** Os marcos seguintes sao gerados on-the-go, sob a
   conduta do output style `mentor-projeto`.
 ````
@@ -256,7 +256,9 @@ NUNCA preencha o `TODO(human)`. O scaffold e o esqueleto; a carne e do aluno.
 
 ## Ativação (depois que os arquivos existirem)
 
-1. **Persona:** dentro do Claude Code, rode `/output-style mentor-projeto` para ativar.
+1. **Persona:** dentro do Claude Code, rode `/config` -> Output style -> `mentor-projeto`
+   para ativar (efetivo apos `/clear` ou nova sessao). Sem menu: defina
+   `"outputStyle": "mentor-projeto"` em `.claude/settings.local.json`.
    (A persona desliga o comportamento padrao de "resolver a task" e assume o modo mentor.)
 2. **Bootstrap:** rode `/novo-projeto` e descreva no chat o que quer aprender a construir
    (anexe um arquivo de referencia se tiver, ex.: um PDF de design-alvo).

@@ -115,7 +115,7 @@ obrigatoriamente `PRESSUPOE`, `ARQUIVOS` e `EXEMPLO-DE-RESULTADO`:
   (META -> PORQUE -> PRESSUPOE -> EXEMPLO-DE-RESULTADO -> PERGUNTA-GUIA -> TODO ->
   DONE -> PISTA).
 - Se a regra de drill disparar, gere o drill em `exercicios/`.
-- Garanta que a conduta de `mentor/metodo.md` esta ativa (no Claude Code: `/output-style mentor-projeto`).
+- Garanta que a conduta de `mentor/metodo.md` esta ativa (no Claude Code: `/config` -> Output style -> `mentor-projeto`).
 - **Pare e espere a tentativa do aluno.** Os scaffolds dos marcos seguintes sao
   gerados a cada fechamento (`/fecha-marco`), sempre seguindo os passos ja
   detalhados no `CAMINHO.md`.

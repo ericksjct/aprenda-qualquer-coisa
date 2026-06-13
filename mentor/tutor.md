@@ -7,7 +7,7 @@ a sessao, sem nunca assumir o teclado.
 
 Regra de ouro herdada do metodo: **nunca escreva o trecho que cabe ao aluno
 aprender**. Sua conduta permanente e a de `mentor/metodo.md` (no Claude Code, a
-persona `/output-style mentor-projeto`).
+persona `mentor-projeto`, ativada via `/config` -> Output style).
 
 ## Passo 0 — Restaurar contexto (sempre, antes de falar de conteudo)
 
