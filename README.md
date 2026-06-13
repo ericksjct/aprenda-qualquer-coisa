@@ -1,15 +1,107 @@
 # Aprenda Qualquer Coisa
 
-> Toolkit **agnostico de LLM** de mentoria de aprendizado por projeto. Funciona com
-> [Claude Code](https://code.claude.com), Codex CLI, Kimi CLI, Cursor e qualquer
-> agente que leia `AGENTS.md`.
+**Um mentor de IA que te ensina a programar fazendo voce construir um projeto de
+verdade** — em vez de escrever o codigo no seu lugar.
 
-Em vez de o agente escrever o codigo por voce, ele **conduz voce a escreve-lo**: desenha a
-estrutura, deixa marcadores `TODO(human)`, faz perguntas socraticas e so sugere melhorias
-**depois que o codigo funciona**. O projeto e o laboratorio; o objetivo e voce conseguir
-explicar e estender o que construiu sozinho.
+A ideia e simples: voce diz o que quer construir (um site, um joguinho, uma
+planilha automatizada...) e o mentor monta o caminho de aprendizado, prepara o
+esqueleto do codigo com lacunas marcadas `TODO(human)` e te conduz a preencher
+cada uma — com perguntas, pistas graduais e revisao **so depois que funciona**.
+No fim, voce consegue explicar e mexer no que construiu sozinho.
 
-## O que tem aqui
+> **Nunca programou? Sem problema.** O metodo foi feito pra comecar do zero: ele
+> mede o que voce ja sabe antes de cada passo, entao nunca pressupoe o que voce
+> ainda nao viu.
+
+## Antes de comecar (pre-requisitos)
+
+Voce precisa de **um agente de IA que rode no seu computador** e leia os arquivos
+desta pasta. O recomendado e o **[Claude Code](https://code.claude.com)** (da
+Anthropic) — instale-o seguindo o site oficial.
+
+> Tambem funciona com Codex CLI, Kimi CLI, Cursor e qualquer agente que leia o
+> arquivo `AGENTS.md`. Se voce usa um desses, pule pra secao
+> "[Com outras ferramentas](#com-outras-ferramentas-codex-cli-kimi-cli-cursor)".
+
+> _(Opcional: o mentor usa um pequeno script em Python 3 pra baixar mapas de
+> conteudo da internet. Se voce tiver Python instalado, ele aproveita; se nao,
+> segue funcionando sem.)_
+
+## Comece aqui (Claude Code)
+
+1. **Baixe esta pasta** pro seu computador e **abra-a no Claude Code** (abra o
+   Claude Code de dentro desta pasta — e aqui que o projeto que voce vai aprender
+   a construir vai morar).
+2. **Ligue o modo mentor.** Digite `/config`, escolha **Output style** e
+   selecione **mentor-projeto**. Isso troca o comportamento padrao ("a IA resolve
+   pra voce") pelo modo mentor ("a IA te ensina a resolver"). Vale a partir da
+   proxima sessao (ou depois de um `/clear`).
+3. **Diga o que quer aprender a construir.** Digite `/novo-projeto` e descreva no
+   chat. Se tiver uma referencia (ex: um print ou PDF do design que voce quer
+   imitar), anexe. O mentor vai medir o que voce ja sabe, montar o caminho e
+   preparar o primeiro pedaco.
+4. **Pronto.** A partir daqui, **toda sessao de estudo comeca digitando
+   `/tutor`** — ele lembra onde voce parou, conduz o passo do dia e revisa o que
+   voce fez.
+
+E so isso pra usar no dia a dia. As secoes seguintes ajudam, mas nao sao
+obrigatorias.
+
+## O dia a dia
+
+Quase sempre voce so precisa do `/tutor` — ele chama as outras ferramentas
+sozinho quando faz sentido. Mas, se quiser, da pra invocar na mao:
+
+| Digite | Quando usar |
+|---|---|
+| `/tutor` | Sempre que voltar a estudar ("vamos continuar", "fiz, olha") |
+| `/debug` | Quando algo nao funciona e voce nao sabe por que |
+| `/fecha-marco` | Quando voce termina um marco (uma fatia do projeto) |
+| `/spidr-split` | Quando um marco parece grande ou confuso demais |
+
+O mentor cria **tres arquivos** no seu projeto pra se organizar. Voce nao precisa
+edita-los, mas eles sao seus:
+
+- **`CAMINHO.md`** — o plano do curso: todos os passos, na ordem certa.
+- **`PROGRESSO.md`** — onde voce esta: o que ja sabe, o marco atual, o que falta.
+- **`APRENDIZADO.md`** — seu diario: licoes, erros que voce ja resolveu, decisoes.
+
+## Com outras ferramentas (Codex CLI, Kimi CLI, Cursor...)
+
+1. Abra a ferramenta **de dentro desta pasta**. Quem le `AGENTS.md` (Codex, Kimi,
+   Cursor e outros) ja assume o papel de mentor sozinho.
+2. **Nao tem comandos com barra.** Fale natural — o `AGENTS.md` entende a
+   situacao:
+
+   ```text
+   "quero aprender a construir X"      -> comeca um projeto novo
+   "vamos continuar" / "fiz, olha"     -> sessao de tutoria
+   "terminei o marco"                  -> fechamento do marco
+   "ta dando erro e nao sei por que"   -> investigacao do erro
+   ```
+
+3. Se a sua ferramenta usa outro arquivo de contexto (ex: `GEMINI.md`), crie esse
+   arquivo com uma linha: "Leia e siga `AGENTS.md`".
+
+## Palavrinhas que aparecem aqui
+
+- **Marco** — uma fatia do projeto que, quando pronta, ja faz algo visivel
+  funcionar (ex: "os 3 cards aparecem lado a lado"). O projeto avanca marco a
+  marco, e nunca um marco e so "teoria".
+- **Scaffold** — o esqueleto de codigo que o mentor monta pra voce, com lacunas
+  marcadas pra voce preencher.
+- **`TODO(human)`** — o marcador que aponta exatamente o trecho que e VOCE quem
+  escreve. O mentor nunca preenche esses por voce.
+- **Substrato** — o que voce ja domina de cada assunto. O mentor mede isso antes
+  de ensinar, pra nao pular etapas nem te encher de obvio.
+- **Persona / modo mentor** — o ajuste (passo 2 acima) que faz a IA ensinar em
+  vez de resolver no seu lugar.
+
+---
+
+## Como funciona por dentro
+
+_(daqui pra baixo e pra quem quer entender, manter ou portar o toolkit.)_
 
 O toolkit e **agnostico de LLM**: o metodo vive em markdown neutro (`mentor/`) e
 cada ferramenta tem so um adaptador fino apontando pra ele.
@@ -31,62 +123,8 @@ Os procedimentos do metodo:
 | `mentor/debug.md` | Protocolo de forense para transformar erros em aprendizado. |
 | `mentor/spidr-split.md` | Quebra marcos grandes em fatias usando SPIDR Splitting. |
 
-A skill puxa `reference.md` sob demanda (granularidade, templates, layout), mantendo o
-`SKILL.md` enxuto.
-
-## Como usar
-
-### Com Claude Code
-
-1. Abra o Claude Code **dentro deste repositorio** (os arquivos tem escopo local em `.claude/`).
-2. Ative a persona **mentor-projeto** (uma vez por projeto): rode `/config`,
-   escolha **Output style** e selecione **mentor-projeto**. Sem menu, adicione
-   o campo abaixo em `.claude/settings.local.json` (efetivo após `/clear` ou
-   nova sessão):
-
-   ```json
-   { "outputStyle": "mentor-projeto" }
-   ```
-
-3. Faca o bootstrap do seu projeto de aprendizado e descreva no chat o que quer construir
-   (anexe um arquivo de referencia, ex.: um PDF de design-alvo, se tiver):
-
-   ```text
-   /novo-projeto
-   ```
-
-4. Depois do bootstrap, **toda sessao de estudo comeca com o tutor copiloto**:
-
-   ```text
-   /tutor                # restaura onde voce parou, conduz o passo atual e revisa
-   ```
-
-5. Durante o projeto, use as skills auxiliares conforme necessario (o `/tutor`
-   roteia para elas automaticamente):
-
-   ```text
-   /spidr-split          # quando um marco parece grande demais
-   /fecha-marco          # quando voce termina um marco
-   /debug                # quando esta travado num erro
-   ```
-
-### Com Codex CLI, Kimi CLI, Cursor e outros
-
-1. Abra a ferramenta **dentro deste repositorio**. Ferramentas que leem `AGENTS.md`
-   (Codex CLI, Kimi CLI, Cursor, entre outras) ja assumem o papel de mentor
-   automaticamente.
-2. Nao ha slash commands: fale naturalmente. O `AGENTS.md` roteia cada situacao
-   para o procedimento certo de `mentor/`:
-
-   ```text
-   "quero aprender a construir X"   -> bootstrap (mentor/novo-projeto.md)
-   "vamos continuar" / "fiz, olha"  -> sessao de tutoria (mentor/tutor.md)
-   "terminei o marco"               -> fechamento (mentor/fecha-marco.md)
-   "ta dando erro e nao sei por que" -> forense (mentor/debug.md)
-   ```
-
-3. Se a ferramenta usa outro arquivo de contexto (ex: `GEMINI.md`), crie esse
-   arquivo com uma linha: "Leia e siga `AGENTS.md`".
+Os procedimentos puxam o `reference.md` sob demanda (granularidade, templates,
+layout), mantendo cada arquivo enxuto.
 
 ## Principios
 
@@ -136,12 +174,13 @@ scripts/
 └── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o referencias/
 ```
 
-No repo do aluno, o bootstrap gera dois documentos centrais:
+No repo do aluno, o bootstrap gera **tres** documentos centrais:
 
 - `CAMINHO.md` — design: todos os passos do aprendizado (conceito, pressupostos,
   entregavel) + mapa passos -> marcos.
 - `PROGRESSO.md` — acompanhamento: tabela de substrato por assunto, DoD, marcos,
   dividas e log.
+- `APRENDIZADO.md` — diario do aluno: licoes, padroes de erro, decisoes.
 
 > Os adaptadores apontam para `mentor/` por caminho relativo a raiz do repo — por isso
 > o escopo e local: use o toolkit abrindo a ferramenta dentro deste repositorio (o
