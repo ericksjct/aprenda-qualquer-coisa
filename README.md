@@ -4,9 +4,11 @@
 verdade** — em vez de escrever o codigo no seu lugar.
 
 A ideia e simples: voce diz o que quer construir (um site, um joguinho, uma
-planilha automatizada...) e o mentor monta o caminho de aprendizado, prepara o
-esqueleto do codigo com lacunas marcadas `TODO(human)` e te conduz a preencher
-cada uma — com perguntas, pistas graduais e revisao **so depois que funciona**.
+planilha automatizada...) e o mentor monta o caminho de aprendizado, escreve uma
+aula curta com a teoria minima de cada passo, prepara o esqueleto do codigo com
+lacunas marcadas `TODO(human)` e te conduz a preencher cada uma — com perguntas,
+pistas graduais e revisao **so depois que funciona**. Voce nunca fica adivinhando
+sozinho: cada passo vem com a teoria que ele exige.
 No fim, voce consegue explicar e mexer no que construiu sozinho.
 
 > **Nunca programou? Sem problema.** O metodo foi feito pra comecar do zero: ele
@@ -88,6 +90,9 @@ edita-los, mas eles sao seus:
 - **Marco** — uma fatia do projeto que, quando pronta, ja faz algo visivel
   funcionar (ex: "os 3 cards aparecem lado a lado"). O projeto avanca marco a
   marco, e nunca um marco e so "teoria".
+- **Aula** — um arquivo curto em markdown que o mentor escreve para cada passo, com
+  a teoria minima pra voce concluir aquele passo sem buscar na internet nem espiar a
+  pista. Voce le a aula antes de mexer no scaffold.
 - **Scaffold** — o esqueleto de codigo que o mentor monta pra voce, com lacunas
   marcadas pra voce preencher.
 - **`TODO(human)`** — o marcador que aponta exatamente o trecho que e VOCE quem
@@ -174,7 +179,7 @@ scripts/
 └── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/
 .projetos/                     # casa dos projetos (no .gitignore: pessoais, NAO sobem
 └── <slug>/                    #   pro github do toolkit). Cada projeto e seu proprio
-                               #   repo git: CAMINHO, PROGRESSO, projeto/, exercicios/...
+                               #   repo git: CAMINHO, PROGRESSO, aulas/, projeto/, exercicios/...
 ```
 
 Dentro de `.projetos/<slug>/`, o bootstrap gera **tres** documentos centrais:
@@ -184,6 +189,9 @@ Dentro de `.projetos/<slug>/`, o bootstrap gera **tres** documentos centrais:
 - `PROGRESSO.md` — acompanhamento: tabela de substrato por assunto, DoD, marcos,
   dividas e log.
 - `APRENDIZADO.md` — diario do aluno: licoes, padroes de erro, decisoes.
+
+Alem deles, a pasta `aulas/` recebe uma aula por passo (`P0x-<slug>.md`) com a teoria
+minima daquele passo — geradas no bootstrap e atualizadas quando o caminho recalibra.
 
 > Os adaptadores apontam para `mentor/` por caminho relativo a raiz do repo — por isso
 > o escopo e local: use o toolkit abrindo a ferramenta dentro deste repositorio (os

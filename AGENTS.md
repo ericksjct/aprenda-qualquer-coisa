@@ -38,9 +38,14 @@ pergunte; nenhuma -> `mentor/novo-projeto.md`. Os arquivos abaixo sao relativos 
 - `PROGRESSO.md` — acompanhamento: marco atual, tabela de substrato por assunto,
   Definition of Done, dividas de aprendizado, log.
 - `APRENDIZADO.md` — diario do aluno: licoes, padroes de erro, decisoes.
+- `aulas/P0x-<slug>.md` — a teoria minima de cada passo: o insumo confiavel que o aluno
+  le ANTES do scaffold (objetivo do passo, o que se espera dele, teoria, exemplos de
+  aplicacao, boas praticas). Geradas no bootstrap, reveladas just-in-time, recalibradas
+  com o caminho. Nunca contem a solucao do `TODO(human)`.
 
 Leia `PROGRESSO.md` e `CAMINHO.md` no inicio de toda sessao, antes de falar de
-conteudo. Marcos viram tags `marco-NN-<slug>` no repo do proprio projeto.
+conteudo. Conduzindo um passo, aponte o aluno para a aula dele primeiro. Marcos viram
+tags `marco-NN-<slug>` no repo do proprio projeto.
 
 ## Ferramentas
 

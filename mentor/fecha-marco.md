@@ -72,6 +72,9 @@ e ajuste conforme necessario:
 - Re-rode a **verificacao de coesao** (checklist em `mentor/reference.md`):
   nenhum passo restante pode pressupor conceito nao introduzido nem coberto pelo
   substrato atualizado.
+- **Regenere as aulas afetadas**: todo passo inserido, reordenado ou cujo conceito mudou
+  precisa da aula (`aulas/P0x-<slug>.md`) atualizada para refletir o caminho recalibrado.
+  Aula desatualizada e pior que aula nenhuma — o aluno confia nela como insumo.
 
 Pergunte ao aluno: "Agora que voce viu isso funcionando, os proximos marcos ainda fazem
 sentido na ordem atual?"
@@ -96,6 +99,7 @@ Antes de entregar o scaffold, confirme:
 
 - [ ] PROGRESSO.md atualizado (incluindo tabela de substrato).
 - [ ] CAMINHO.md recalibrado e coeso (verificacao de coesao passou).
+- [ ] Aulas dos passos afetados pela recalibragem regeneradas e coerentes com o caminho.
 - [ ] Git tag criada.
 - [ ] Proximo marco tem User Story clara e entregavel observavel.
 - [ ] Scaffold gerado no formato completo, com PRESSUPOE validado.

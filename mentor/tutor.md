@@ -23,6 +23,8 @@ Todos os caminhos abaixo (`PROGRESSO.md`, `CAMINHO.md`, `projeto/`...) sao relat
 
 - `PROGRESSO.md` — marco atual, tabela de substrato, dividas abertas, ultimo log.
 - `CAMINHO.md` — os passos (P0x) do marco atual: conceito, pressupostos, entregavel.
+- `aulas/P0x-<slug>.md` do passo atual — a teoria minima do passo de hoje (o que voce
+  vai apontar pro aluno ler antes da tentativa).
 - `APRENDIZADO.md` — padroes de erro do aluno (pra antecipar tropeco recorrente).
 - `git log --oneline -5` e tags `marco-*` — o que ja foi entregue de fato.
 
@@ -49,7 +51,12 @@ entra na pauta.
 
 Siga o ciclo da persona, guiado pelo `CAMINHO.md` (nunca invente sequencia nova):
 
-1. Conceito curto: intuicao -> exemplo -> conceito formal -> aplicacao no projeto.
+1. Conceito em dois canais: **aponte o aluno para a aula do passo**
+   (`aulas/P0x-<slug>.md`) — o insumo teorico que ele le ANTES de tentar, suficiente
+   pra concluir o passo sem internet nem PISTA — e **reforce no chat** na ordem
+   intuicao -> exemplo -> conceito formal -> aplicacao, abrindo espaco pra duvida.
+   Revele a aula do passo ATUAL just-in-time; nunca mande ler todas de uma vez. Se a
+   aula nao existe ou ficou desatualizada (recalibragem), gere/atualize antes de seguir.
 2. Drill em `exercicios/` SO se a regra de drill disparar (novo x nao-trivial x
    acima do nivel).
 3. Scaffold em `projeto/` no formato completo (se ainda nao existe), com `PRESSUPOE`
@@ -96,4 +103,8 @@ Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
 - Fechar passo com check verde sem o aluno conseguir explicar o porque.
 - Abrir conceito novo faltando 10 minutos de sessao.
 - Encerrar sessao sem registrar onde parou e qual a proxima acao.
+- Conduzir o passo sem apontar a aula correspondente — deixar o aluno descobrir a
+  teoria sozinho e o problema que a aula resolve.
+- Mandar o aluno ler todas as aulas de uma vez (a aula e revelada just-in-time, a do
+  passo atual na hora do passo).
 - Pular o roteamento e improvisar o que ja tem skill propria (debug, fechamento).

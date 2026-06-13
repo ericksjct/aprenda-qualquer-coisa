@@ -106,6 +106,8 @@ Checklist mecanico — falhou, conserta o caminho antes de qualquer scaffold:
 - [ ] Cada marco termina em algo que roda/renderiza (fatia vertical, nao tema).
 - [ ] O primeiro marco e um Walking Skeleton.
 - [ ] Todo entregavel e observavel (descreve o que o aluno VE, nao so o que "aprende").
+- [ ] Todo passo tem uma aula (`aulas/P0x-<slug>.md`) com a teoria minima para conclui-lo
+      sem internet nem PISTA, e nenhuma aula contem a solucao do `TODO(human)`.
 
 ## Marcos verticais, nunca temas
 
@@ -174,6 +176,8 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 ├── PROGRESSO.md          # acompanhamento: substrato, DoD, marcos, dividas, log
 ├── APRENDIZADO.md        # diario de bordo: licoes, padroes de erro, decisoes
 ├── referencias/          # roadmaps de referencia (scripts/roadmap_fetch.py)
+├── aulas/                # teoria minima POR PASSO (P0x), lida ANTES do scaffold
+│   └── P0x-<slug>.md      #   uma aula por passo do CAMINHO.md
 ├── exercicios/           # drills ISOLADOS, gerados just-in-time
 │   └── NN-<conceito>/     #   pasta-por-conceito so aqui
 └── projeto/              # o ARTEFATO UNICO; cresce marco a marco (marcos = git tags)
@@ -252,6 +256,78 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 
 - <divida> — registrada em <data> — revisitar no marco <NN>
 ```
+
+## Template — aula (`aulas/P0x-<slug>.md`)
+
+Cada passo do `CAMINHO.md` tem uma aula: o **insumo teorico confiavel** que o aluno
+le ANTES de encarar o scaffold. Ela existe para resolver a queixa central — o aluno
+nunca deve ter que adivinhar intuitivamente, buscar na internet ou depender da PISTA
+para saber COMO fazer. A aula entrega a teoria minima; o scaffold pede a aplicacao.
+
+Contrato inegociavel: **a aula ensina o mecanismo, nunca resolve o passo**. Os exemplos
+da aula usam uma instancia DIFERENTE da do `TODO(human)` (mesma regra do drill: angulo
+diferente da aplicacao). Se um exemplo da aula, copiado, fecha o `TODO`, a aula virou
+gabarito — esta errada.
+
+```markdown
+# Aula — P0x: <titulo do passo>
+
+> Leia ANTES de abrir o scaffold. Esta aula te da a teoria minima para concluir P0x
+> sem buscar na internet nem descomentar a PISTA. Ela NAO contem a solucao do
+> TODO(human): os exemplos usam uma instancia diferente da do seu projeto; transferir
+> para o seu artefato e a sua parte.
+
+## Objetivo do passo
+
+<o que vai ficar pronto ao final de P0x — espelha o "Entregavel" do CAMINHO.md,
+concreto e observavel, em 1-2 linhas>
+
+## O que o tutor espera de voce
+
+<explicito: o que voce precisa PRODUZIR e DEMONSTRAR. Ex: "escrever a funcao que
+recebe X e devolve Y, e me explicar em 2 frases por que ela funciona". Conecta com
+o DONE e a PERGUNTA-GUIA do scaffold.>
+
+## Teoria minima
+
+Conceito dominante: c0x-<slug>.
+
+- **Intuicao**: <por que isso existe / analogia, 2-3 linhas>
+- **Exemplo**: <um exemplo curto e concreto do mecanismo, instancia DIFERENTE da do projeto>
+- **Conceito formal**: <a definicao precisa, a sintaxe e as regras que valem>
+
+## Exemplos de aplicacao
+
+<1-2 exemplos resolvidos e explicados, SEMPRE em instancia diferente do TODO(human).
+Mostram como o conceito vira codigo sem entregar o codigo-alvo. Se o assunto esta
+zero-absoluto na tabela de substrato, este e o "eu faco" do "eu faco -> voce faz".>
+
+## Boas praticas (quando aplicavel)
+
+<guia idiomatico do conceito: a forma convencional/elegante, armadilhas comuns, o que
+evitar. So inclua quando houver boa pratica real a ensinar neste passo; nao force secao
+vazia. Mantenha curto e ancorado no que o passo exercita.>
+
+## Para conferir antes de codar
+
+- [ ] Consigo explicar <conceito> com minhas palavras.
+- [ ] Sei qual e a entrada e a saida esperadas do que vou escrever.
+- [ ] Se algo aqui e novidade total, avisei o tutor (o caminho ajusta, nao eu).
+```
+
+Regras da aula:
+
+- **Uma por passo** (`aulas/P0x-<slug>.md`), nomeada pelo ID do passo do `CAMINHO.md`.
+- **Geradas no bootstrap** (`/novo-projeto`), mas **reveladas just-in-time**: o tutor
+  aponta o aluno para a aula do passo ATUAL na hora do passo — nunca manda ler todas de
+  uma vez (isso recriaria o paredao de teoria que o metodo combate).
+- **Recalibradas junto com o caminho**: ao recalibrar o `CAMINHO.md` no fechamento de
+  marco, regenere as aulas dos passos que mudaram ou foram inseridos. Aula desatualizada
+  e pior que aula nenhuma.
+- **Teoria minima, nao enciclopedia**: o corte e "o suficiente para concluir ESTE passo".
+  Conceito futuro entra na aula do passo futuro, nao aqui.
+- **Boas praticas so quando aplicavel**: se o passo nao tem convencao relevante a ensinar,
+  omita a secao em vez de inventar conteudo.
 
 ## Formato do scaffold (TODO human)
 

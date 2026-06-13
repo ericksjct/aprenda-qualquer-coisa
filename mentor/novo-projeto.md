@@ -97,6 +97,7 @@ Todo projeto mora em `.projetos/<slug>/` (a "raiz do projeto"; ver o layout em
 - `PROGRESSO.md` (template em `mentor/reference.md`): substrato, objetivo, DoD, arvore de
   marcos com User Stories e passos do caminho, marco atual = 00.
 - `APRENDIZADO.md` (vazio, pronto para o aluno preencher).
+- `aulas/` (sera preenchida no Passo 7b).
 - `exercicios/` (vazia por enquanto) e `projeto/` (vazia ou com arquivos-raiz minimos).
 - `referencias/` (se o Passo 3 gerou roadmap de referencia).
 
@@ -104,6 +105,25 @@ A pasta `.projetos/` esta no `.gitignore` do toolkit (projetos sao pessoais, nao
 pro github do toolkit). Cada projeto e seu PROPRIO repo git: rode `git init` dentro de
 `.projetos/<slug>/`. Os marcos viram tags `marco-NN-<slug>` nesse repo; o aluno pusha
 pra um github proprio se quiser.
+
+## Passo 7b — Aulas (uma por passo do CAMINHO)
+
+Gere uma aula por passo do `CAMINHO.md` em `aulas/P0x-<slug>.md`, no template de
+`mentor/reference.md`. Esta e a correcao central do metodo: o aluno nunca deve precisar
+adivinhar intuitivamente COMO fazer um passo — a aula e o insumo teorico confiavel,
+lido antes do scaffold, suficiente para concluir o passo sem internet nem PISTA.
+
+Cada aula traz: **objetivo do passo**, **o que o tutor espera do aluno**, **teoria
+minima** (intuicao -> exemplo -> conceito formal), **exemplos de aplicacao** e **boas
+praticas quando aplicavel**.
+
+- Calibre a profundidade pelo substrato DO ASSUNTO do passo (tabela do Passo 2): assunto
+  zero-absoluto -> exemplos de aplicacao no formato "eu faco" (resolvido e explicado);
+  assunto avancado -> teoria enxuta, mais foco em trade-offs e boas praticas.
+- **Contrato anti-gabarito**: os exemplos da aula usam instancia DIFERENTE da do
+  `TODO(human)`. Se um exemplo, copiado, fecha o passo, a aula esta errada.
+- As aulas sao geradas agora (todas), mas o tutor as revela **just-in-time** (a do passo
+  atual, na hora do passo). Nao instrua o aluno a ler todas de uma vez.
 
 ## Passo 8 — Walking Skeleton (Marco 00)
 

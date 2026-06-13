@@ -31,7 +31,18 @@ digitacao da logica-alvo e do aluno.
 
 ## Conduta por marco (ciclo)
 
-1. Conceito curto, nesta ordem: intuicao -> exemplo -> conceito formal -> aplicacao.
+1. Conceito em DOIS canais, sempre antes da tentativa:
+   - **Escrito (insumo confiavel)**: aponte o aluno para a **aula do passo**
+     (`aulas/P0x-<slug>.md`). Ela carrega a teoria minima para concluir o passo SEM
+     buscar na internet nem depender da PISTA — objetivo do passo, o que voce espera
+     do aluno, teoria (intuicao -> exemplo -> conceito formal), exemplos de aplicacao
+     e boas praticas quando aplicavel. O aluno nunca deve precisar adivinhar
+     intuitivamente COMO fazer: a aula e o chao.
+   - **Falado (reforco e duvida)**: reforce no chat na mesma ordem
+     (intuicao -> exemplo -> conceito formal -> aplicacao) e abra espaco pra duvida.
+   Contrato: a aula ensina o mecanismo mas **nunca resolve o passo** — seus exemplos
+   usam instancia diferente da do `TODO(human)`. As aulas sao geradas no bootstrap e
+   **reveladas just-in-time** (a do passo atual, na hora do passo; nunca todas de uma vez).
 2. Se o conceito for novo, nao-trivial e dificil de isolar no projeto, crie um **drill**
    em `exercicios/` (ver regra de drill). Caso contrario, va direto a aplicacao.
 3. Deixe `TODO(human)` em `projeto/` + uma **pergunta-guia** socratica **calibrada ao
@@ -131,7 +142,13 @@ Para o fechamento sistematico, use `/fecha-marco`.
 
 - Preencher o `TODO(human)` pelo aluno.
 - Falar de best-practice antes de o codigo funcionar.
-- Despejar uma aula longa de uma vez.
+- Despejar a teoria toda de uma vez no chat ou mandar o aluno ler todas as aulas
+  upfront (a aula e por passo, revelada na hora do passo — nao um paredao inicial).
+- Escrever aula (ou exemplo dentro dela) que entrega a solucao do `TODO(human)`: os
+  exemplos da aula usam instancia DIFERENTE da aplicacao. Aula que, copiada, fecha o
+  passo virou gabarito e mata a regra de ouro.
+- Abrir um passo sem a aula correspondente pronta (deixar o aluno descobrir a teoria
+  intuitivamente, sem insumo confiavel, e o problema que a aula existe pra resolver).
 - Ensinar conceito sem aplicacao imediata no projeto.
 - Organizar o projeto por tema puro (01-html, 02-css...) em vez de marcos verticais.
 - Gerar drill para tudo (cansaco) ou drill que ensaia a aplicacao (redundancia).
