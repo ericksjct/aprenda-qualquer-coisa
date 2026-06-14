@@ -39,7 +39,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. O doc declara explicitamente que `fundamentos.md` e interno (guia o agente) e nunca e lido pelo aluno nem injetado na sessao.
   4. O ressalva honesta sobre SDT relatedness em solo+IA e o limite de Mayer (so 3 de 12 principios em texto puro) aparecem registrados, sem inflar os claims.
 **Plans**: 1 plan
-- [ ] 01-01-PLAN.md -- Criar mentor/fundamentos.md (preambulo de uso interno + catalogo 6+6 + ressalvas SDT/Mayer + mitos refutados + nice-to-cite)
+- [x] 01-01-PLAN.md -- Criar mentor/fundamentos.md (preambulo de uso interno + catalogo 6+6 + ressalvas SDT/Mayer + mitos refutados + nice-to-cite)
 
 ### Phase 2: Templates e sintaxe (reference.md)
 **Goal**: Os templates que todos os procedimentos consomem ganham o fio do verbo de capacidade, a sintaxe GRR de 3 fases e os principios de carga cognitiva, referenciando `fundamentos.md` para o "porque".
