@@ -341,6 +341,11 @@ Regras da aula:
   Conceito futuro entra na aula do passo futuro, nao aqui.
 - **Boas praticas so quando aplicavel**: se o passo nao tem convencao relevante a ensinar,
   omita a secao em vez de inventar conteudo.
+- **Apresentacao (texto puro):** aplique os 3 principios de Mayer que transferem para
+  texto — coerencia (corte o superfluo), sinalizacao (destaque o essencial), segmentacao
+  (um passo atomico por vez) — e linguagem simples/legivel. Os outros 9 tratam de
+  audio/video e nao se aplicam: ver
+  [so 3 de 12 principios transferem](fundamentos.md#mayer-so-3-de-12-principios-em-texto-puro).
 
 ## Formato do scaffold (TODO human)
 
