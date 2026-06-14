@@ -54,3 +54,43 @@ com recuperacao ativa e a aterrissagem prevista para a Fase 4.
 
 **Spacing:** e uma LACUNA hoje (so parcial via dividas em `PROGRESSO.md`); a aterrissagem real
 (reuso cumulativo, revisao espacada) e prevista para a Fase 4.
+
+## Limites e ressalvas
+
+Registre o limite SEM inflar o claim. Estas duas ressalvas sao honestas e inegociaveis.
+
+### SDT relatedness em solo+IA
+
+> Ressalva SDT: a SDT preve 3 necessidades (autonomia, competencia, relatedness). Em estudo
+> solo mediado por IA nao ha interlocutor humano real, entao relatedness e estruturalmente
+> fraca. Ancoramos o anti-evasao em autonomia (o aluno escolhe o projeto real) e competencia
+> (entregavel observavel por marco). NAO inflamos um claim de relatedness que o formato nao
+> sustenta.
+
+### Mayer: so 3 de 12 principios em texto puro
+
+> Ressalva Mayer: dos 12 principios multimidia de Mayer, so 3 transferem para texto puro
+> (coerencia: corte o superfluo; sinalizacao: destaque o essencial; segmentacao: um passo
+> atomico por vez). Os outros 9 tratam de audio/video/animacao que o metodo (markdown) nao
+> tem, entao nao se aplicam. Citamos so os 3 aplicaveis; nao inflamos para "aplicamos Mayer".
+
+## O que NAO usamos e por que
+
+Estes 4 mitos SO aparecem aqui, com a razao da refutacao. Nunca cite nenhum positivamente
+fora desta secao.
+
+| Mito (NAO usar) | Razao da refutacao | Fonte de refutacao | Use no lugar |
+|-----------------|--------------------|--------------------|--------------|
+| Estilos de aprendizagem (VAK/VARK; "sou visual/auditivo") | A "meshing hypothesis" (ensinar no estilo preferido melhora aprendizado) foi testada e refutada repetidamente; e neuromito. 71 modelos revisados, nenhum se sustentou. | Pashler et al. (2008); BPS | Adaptar ao SUBSTRATO (conhecimento previo medido por sondagem), nao a "estilo" |
+| "Nativos digitais" | Jovens nao tem proficiencia tecnologica inata; multitarefa e mito; design baseado nisso prejudica. | Kirschner & De Bruyckere (2017); Nature (2017) | Nao presumir competencia por idade; medir substrato sempre |
+| Piramide de Aprendizagem / Cone de Dale com percentuais ("lembramos 10% do que lemos, 90% do que ensinamos") | Numeros fabricados, sem fonte/metodologia; corrupcao do Cone de Dale (1946, que nunca falou de retencao); rastreados a Treichler (1967, Mobil Oil). | Treichler (1967) corrompido; Thalheimer (worklearning.com); T&F (2018) | Para "ensinar e a melhor forma de aprender", citar testing effect / retrieval practice (efeito real, sem numeros inventados) |
+| Taxonomia de Bloom como piramide rigida/sequencial ("dominar 'lembrar' antes de 'criar'") | Interpretacao equivocada; os niveis nao sao estritamente hierarquicos nem pre-requisitos lineares. Aprendizagem por projeto opera em "criar/aplicar" desde cedo. | Anderson & Krathwohl (2001, revisao) | Bloom so como banco de VERBOS para objetivos verificaveis, nao como sequencia obrigatoria |
+
+## Nice-to-cite
+
+Reforco, NAO estrutura -- 1 linha por item, fora do catalogo canonico 6+6. Nao construa secao
+em torno destes.
+
+- **Taxonomia de Bloom revisada** (Anderson & Krathwohl 2001) -- banco de VERBOS para objetivos; nao usar como piramide.
+- **Principios Multimidia de Mayer** (2001/2021) -- ver ressalva acima (so 3 de 12 transferem).
+- **ADDIE / SAM / Gagne** -- citar 1x so para situar a linhagem do design instrucional; nao estruturar nada neles.
