@@ -74,16 +74,34 @@
 
 ## Traceability
 
-> Preenchida pelo roadmapper na criação do ROADMAP.md.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (a mapear) | — | Pending |
+| FUND-01 | Phase 1 | Pending |
+| FUND-02 | Phase 1 | Pending |
+| FUND-03 | Phase 1 | Pending |
+| EST-01 | Phase 2 | Pending |
+| EST-02 | Phase 2 | Pending |
+| EST-04 | Phase 2 | Pending |
+| CARGA-01 | Phase 2 | Pending |
+| CARGA-02 | Phase 2 | Pending |
+| CARGA-03 | Phase 2 | Pending |
+| EST-03 | Phase 3 | Pending |
+| ENG-02 | Phase 3 | Pending |
+| ENG-01 | Phase 4 | Pending |
+| AVAL-01 | Phase 4 | Pending |
+| AVAL-02 | Phase 4 | Pending |
+| AVAL-03 | Phase 4 | Pending |
+| AVAL-04 | Phase 4 | Pending |
+| AVAL-05 | Phase 5 | Pending |
+| AVAL-06 | Phase 5 | Pending |
+| CONS-01 | Phase 5 | Pending |
+| CONS-02 | Phase 6 | Pending |
+| CONS-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 21 total
-- Mapped to phases: 0 (pré-roadmap)
-- Unmapped: 21 ⚠️ (será resolvido pelo roadmapper)
+- Mapped to phases: 21 ✓
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-06-13*
