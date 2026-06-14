@@ -16,10 +16,10 @@ progress:
 
 ## Current Position
 
-Phase: Not started (roadmap criado — pronto para planejar a Fase 1)
-Plan: —
-Status: Roadmap criado, pronto para `/gsd-plan-phase 1`
-Last activity: 2026-06-14 — Projeto inicializado; pesquisa + requisitos + roadmap (6 fases) prontos
+Phase: 1 — Fundação teórica (`fundamentos.md`) — contexto capturado
+Plan: — (pronto para `/gsd-plan-phase 1`)
+Status: CONTEXT.md da Fase 1 escrito; pronto para planejar
+Last activity: 2026-06-14 — Discuss da Fase 1: 4 decisões de forma capturadas (D-01..D-05). Resume: `.planning/phases/01-fundacao-teorica-fundamentos-md/01-CONTEXT.md`
 
 ## Project Reference
 
