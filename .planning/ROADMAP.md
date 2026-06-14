@@ -51,7 +51,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Backward design e GRR estao nomeados onde ja ocorrem, com referencia a `fundamentos.md` (sem reescrever a teoria localmente).
   4. O fading de scaffold por substrato (recuo do andaime conforme o dominio sobe) e o worked example analogo antes do `TODO(human)` para substrato baixo estao formalizados na sintaxe.
   5. A apresentacao de aula/scaffold aplica os 3 principios de Mayer que transferem para texto puro (coerencia, sinalizacao, segmentacao) e adota linguagem simples/legivel, citando honestamente o limite dos demais principios.
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 02-01-PLAN.md -- Wave 0: extrator de blocos cercados (anti-leak CONS-01) + smoke-test estatico da fase
+- [ ] 02-02-PLAN.md -- Fio do verbo de capacidade (EST-01): Objetivo no CAMINHO + aula espelha capacidade/artefato + DONE reenquadrado
+- [ ] 02-03-PLAN.md -- GRR 3 fases (EST-04) + fading/worked-example (CARGA-01/02) + Mayer (CARGA-03) + citacoes por hyperlink (EST-02)
 **UI hint**: yes
 
 ### Phase 3: Bootstrap com Stage 2 (novo-projeto.md)
