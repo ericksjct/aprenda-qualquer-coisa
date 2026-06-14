@@ -225,6 +225,7 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 ### 00 -- <slug> (Walking Skeleton)  <- ATUAL
 
 **User Story:** Como [usuario], eu quero [capacidade basica], para que [valor minimo].
+**Capacidade:** ao terminar, voce consegue <verbo> <conceito>
 **Passos do caminho:** P01-P02 (ver CAMINHO.md)
 **Entregavel:** <o que o aluno VE funcionando ao fechar o marco>
 
@@ -233,6 +234,7 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 ### 01 -- <slug>
 
 **User Story:** Como [usuario], eu quero [capacidade], para que [valor].
+**Capacidade:** ao terminar, voce consegue <verbo> <conceito>
 **Passos do caminho:** P03-P05
 **Entregavel:** <concreto e observavel>
 
