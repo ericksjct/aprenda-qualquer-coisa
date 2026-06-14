@@ -362,8 +362,8 @@ Cada arquivo entregue ao aluno em `projeto/` recebe, no topo, um comentario assi
   ARQUIVOS: <quais arquivos o aluno cria/edita neste marco>
   EXEMPLO-DE-RESULTADO: <o que o aluno VE quando der certo, concreto: "ao abrir
     index.html aparece uma lista com 3 itens; clicar num item risca o texto">
-  DONE: <evidencia observavel de que voce JA CONSEGUE <a capacidade do passo>: o que roda/aparece quando voce a demonstra, nao so "o codigo compila">
   PERGUNTA-GUIA: <pergunta socratica que o aluno responde ANTES de codar>
+  DONE: <evidencia observavel de que voce JA CONSEGUE <a capacidade do passo>: o que roda/aparece quando voce a demonstra, nao so "o codigo compila">
 */
 // TODO(human): <o que digitar, descrito como COMPORTAMENTO: "escreva a funcao que
 //   recebe X e retorna Y", nunca "implemente a logica">
