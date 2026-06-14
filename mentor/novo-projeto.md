@@ -72,8 +72,19 @@ So agora agrupe os passos em marcos:
 - Cada marco = sequencia de passos **consecutivos** do caminho que, juntos, entregam
   algo que roda/renderiza (**fatia vertical**, nunca tema).
 - Aplique a regra de granularidade de `mentor/reference.md` (sessao de ~30-90 min).
+- Dimensione o **primeiro marco** (Walking Skeleton) como o MENOR possivel: a primeira
+  vitoria precisa vir rapido (ver Passo 8, "primeiro done leve").
 - Enquadre cada marco como **User Story**: "Como [usuario], eu quero [capacidade],
   para que [beneficio]". Historia grande demais -> `/spidr-split` ANTES de seguir.
+- Junto da User Story, escreva no `PROGRESSO.md` a **frase de capacidade** daquele
+  marco, no formato `ao terminar, voce consegue <verbo> <conceito>` (campo
+  `**Capacidade:**` da arvore de marcos do template em `mentor/reference.md`). E a
+  evidencia de maestria do marco (backward design: defina a capacidade-alvo antes de
+  detalhar os passos). O que voce GRAVA no `PROGRESSO.md` e so o verbo de capacidade
+  puro — sem nomes de framework (o aluno le esse arquivo).
+- **Teto rigido:** exatamente 1 frase de capacidade por marco. Se virou lista, rubrica
+  ou sub-doc, esta errado — corte. Obrigatorio por marco (o gate de fechamento depende
+  dessa frase existir), nunca opcional.
 - Traduza a barra de qualidade numa **Definition of Done** objetiva, distribuida
   pelos marcos.
 - Rode a **verificacao de coesao** de `mentor/reference.md` (checklist mecanico). Se falhar,
