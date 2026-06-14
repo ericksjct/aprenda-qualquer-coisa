@@ -1,8 +1,8 @@
 ---
 phase: 3
 slug: bootstrap-com-stage-2-novo-projeto-md
-status: draft
-nyquist_compliant: false
+status: approved
+nyquist_compliant: true
 wave_0_complete: false
 created: 2026-06-14
 ---
@@ -76,11 +76,11 @@ created: 2026-06-14
 
 ## Validation Sign-Off
 
-- [ ] Todas as tarefas tem verificacao `grep`/leitura ou reusam o smoke-test da Fase 2
-- [ ] Sampling continuity: cada tarefa tem ao menos um criterio verificavel por leitura
-- [ ] Wave 0 cobre o requisito anti-leak (reuso Fase 2) — sem gaps MISSING
-- [ ] Nenhuma ancora de link quebrada em `fundamentos.md`
-- [ ] Feedback latency < 30s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] Todas as tarefas tem verificacao `grep`/leitura (auto-contidas; nao dependem da Fase 2 ter rodado)
+- [x] Sampling continuity: cada tarefa tem ao menos um criterio verificavel por leitura
+- [x] Wave 0 cobre o requisito anti-leak via grep scoped na secao `## Marcos` — sem gaps MISSING
+- [x] Nenhuma ancora de link quebrada em `fundamentos.md` (ambas verificadas pelo plan-checker: linhas 19 e 41)
+- [x] Feedback latency < 30s
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** approved 2026-06-14 (plan-checker PASSED; warnings 1-3 resolvidas no plano)
