@@ -1,4 +1,4 @@
-# Referencia — Mentor de Projeto
+# Referencia -- Mentor de Projeto
 
 ## Sondagem de substrato
 
@@ -7,19 +7,19 @@ e intermediario. Sonde na pratica, com 2-3 sondas rapidas por assunto duvidoso:
 
 - **Reconhecimento**: mostre um snippet de 3-5 linhas do assunto e pergunte
   "o que esse trecho faz?". Quem nao reconhece a sintaxe e zero-absoluto.
-- **Producao descrita**: "como voce faria X?" — descricao em palavras basta;
+- **Producao descrita**: "como voce faria X?" -- descricao em palavras basta;
   nao exija codigo perfeito no chat.
-- **Vocabulario**: "o que significa [termo central do assunto]?" — vocabulario
+- **Vocabulario**: "o que significa [termo central do assunto]?" -- vocabulario
   avancado sinaliza profundidade desejada, nao maestria; confirme com as outras sondas.
 
 Classificacao por assunto:
 
-- **zero-absoluto** — nao reconhece a sintaxe; nao tem materia-prima pra deduzir.
+- **zero-absoluto** -- nao reconhece a sintaxe; nao tem materia-prima pra deduzir.
   Andaime: "eu faco -> voce faz" obrigatorio na entrada do assunto.
-- **iniciante** — reconhece e le, mas nao produz sem apoio. Andaime: pergunta-guia
+- **iniciante** -- reconhece e le, mas nao produz sem apoio. Andaime: pergunta-guia
   + scaffold detalhado.
-- **intermediario** — produz com hesitacao. Andaime: pergunta-guia + scaffold padrao.
-- **avancado** — produz e explica trade-offs. Andaime: mais buraco, menos pista.
+- **intermediario** -- produz com hesitacao. Andaime: pergunta-guia + scaffold padrao.
+- **avancado** -- produz e explica trade-offs. Andaime: mais buraco, menos pista.
 
 Regras:
 
@@ -30,7 +30,7 @@ Regras:
   ser zero-absoluto em sintaxe de frontend. Calibre pelo substrato DO ASSUNTO em jogo.
 - Re-sonde de leve quando o vocabulario do aluno mudar ou um marco fechar com folga
   ou com muito sofrimento.
-- **O andaime RECUA conforme a maestria sobe** — e o
+- **O andaime RECUA conforme a maestria sobe** -- e o
   [expertise-reversal effect](fundamentos.md#frameworks-foundational-load-bearing):
   suporte demais ATRAPALHA o avancado (vira ruido), enquanto o iniciante precisa do
   exemplo resolvido. Calibre a densidade de andaime + pista pelo substrato DO ASSUNTO:
@@ -50,34 +50,34 @@ Regras:
 - **Granularidade ~ 1/nivel**: iniciante -> unidades menores + mais andaime; avancado ->
   unidades maiores + mais buraco a preencher.
 
-## Template — CAMINHO.md
+## Template -- CAMINHO.md
 
 O `CAMINHO.md` e a expansao completa do caminho de aprendizado, gerada ANTES da
 montagem dos marcos. E o documento de design; o `PROGRESSO.md` e o de acompanhamento.
 
 ```markdown
-# CAMINHO — <nome do projeto>
+# CAMINHO -- <nome do projeto>
 
 > Regra de ouro: o passo N so pode pressupor conceitos introduzidos em P01..P(N-1)
 > ou cobertos pelo substrato do aluno (tabela no PROGRESSO.md).
 
 ## Conceitos (indice)
 
-- c01-<slug> — <definicao de 1 linha> (introduzido em P01)
-- c02-<slug> — <definicao de 1 linha> (introduzido em P02)
+- c01-<slug> -- <definicao de 1 linha> (introduzido em P01)
+- c02-<slug> -- <definicao de 1 linha> (introduzido em P02)
 
 ## Passos
 
-### P01 — <titulo curto>
+### P01 -- <titulo curto>
 
 - Conceito dominante (novo): c01-<slug>
-- Pressupoe: (nenhum — entrada coberta pelo substrato)
+- Pressupoe: (nenhum -- entrada coberta pelo substrato)
 - Substrato exigido: <assunto>: zero-absoluto ok ("eu faco -> voce faz")
 - Objetivo (capacidade): ao terminar, voce consegue <verbo> <conceito>
 - Entregavel: <o que o aluno ESCREVE> + <o que ele VE funcionando ao terminar>
 - Arquivos: <paths em projeto/>
 
-### P02 — <titulo curto>
+### P02 -- <titulo curto>
 
 - Conceito dominante (novo): c02-<slug>
 - Pressupoe: c01-<slug>
@@ -88,8 +88,8 @@ montagem dos marcos. E o documento de design; o `PROGRESSO.md` e o de acompanham
 
 ## Mapa passos -> marcos
 
-- Marco 00 (Walking Skeleton): P01-P02 — coeso porque <1 linha>
-- Marco 01: P03-P05 — coeso porque <1 linha>
+- Marco 00 (Walking Skeleton): P01-P02 -- coeso porque <1 linha>
+- Marco 01: P03-P05 -- coeso porque <1 linha>
 ```
 
 Regras do caminho:
@@ -107,7 +107,7 @@ Regras do caminho:
 
 ## Verificacao de coesao (rodar no Passe 2 e em toda recalibragem)
 
-Checklist mecanico — falhou, conserta o caminho antes de qualquer scaffold:
+Checklist mecanico -- falhou, conserta o caminho antes de qualquer scaffold:
 
 - [ ] Todo conceito em "Pressupoe" de P(N) e dominante de algum P(<N), OU esta coberto
       pelo substrato em nivel >= iniciante.
@@ -147,7 +147,7 @@ Como [tipo de usuario], eu quero [capacidade], para que [beneficio].
 A historia e o norte do marco. Se o aluno nao consegue articular o "para que", o marco
 esta mal definido ou muito grande. Use `/spidr-split` para decompor.
 
-## SPIDR Splitting — quando um marco e grande demais
+## SPIDR Splitting -- quando um marco e grande demais
 
 Cinco eixos para decompor uma historia grande em fatias menores:
 
@@ -174,7 +174,7 @@ com `git tag marco-NN-<slug>`, NAO pastas. `projeto/` tem UM conjunto de arquivo
 evolui marco a marco. Pastas-por-conceito existem apenas em `exercicios/` (drills isolados).
 
 As tags vivem no repo git do PROPRIO projeto (cada `.projetos/<slug>/` tem o seu, criado
-com `git init` no bootstrap) — independente do repo do toolkit, que ignora `.projetos/`.
+com `git init` no bootstrap) -- independente do repo do toolkit, que ignora `.projetos/`.
 
 ## Layout do repo do aluno
 
@@ -184,21 +184,21 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 
 ```text
 .projetos/<slug>/
-├── CAMINHO.md            # design: passos detalhados + mapa passos -> marcos
-├── PROGRESSO.md          # acompanhamento: substrato, DoD, marcos, dividas, log
-├── APRENDIZADO.md        # diario de bordo: licoes, padroes de erro, decisoes
-├── referencias/          # roadmaps de referencia (scripts/roadmap_fetch.py)
-├── aulas/                # teoria minima POR PASSO (P0x), lida ANTES do scaffold
-│   └── P0x-<slug>.md      #   uma aula por passo do CAMINHO.md
-├── exercicios/           # drills ISOLADOS, gerados just-in-time
-│   └── NN-<conceito>/     #   pasta-por-conceito so aqui
-└── projeto/              # o ARTEFATO UNICO; cresce marco a marco (marcos = git tags)
+|-- CAMINHO.md            # design: passos detalhados + mapa passos -> marcos
+|-- PROGRESSO.md          # acompanhamento: substrato, DoD, marcos, dividas, log
+|-- APRENDIZADO.md        # diario de bordo: licoes, padroes de erro, decisoes
+|-- referencias/          # roadmaps de referencia (scripts/roadmap_fetch.py)
+|-- aulas/                # teoria minima POR PASSO (P0x), lida ANTES do scaffold
+|   `-- P0x-<slug>.md      #   uma aula por passo do CAMINHO.md
+|-- exercicios/           # drills ISOLADOS, gerados just-in-time
+|   `-- NN-<conceito>/     #   pasta-por-conceito so aqui
+`-- projeto/              # o ARTEFATO UNICO; cresce marco a marco (marcos = git tags)
 ```
 
-## Template — PROGRESSO.md
+## Template -- PROGRESSO.md
 
 ```markdown
-# PROGRESSO — <nome do projeto>
+# PROGRESSO -- <nome do projeto>
 
 ## Substrato por assunto
 
@@ -222,7 +222,7 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 
 ## Marcos
 
-### 00 — <slug> (Walking Skeleton)  <- ATUAL
+### 00 -- <slug> (Walking Skeleton)  <- ATUAL
 
 **User Story:** Como [usuario], eu quero [capacidade basica], para que [valor minimo].
 **Passos do caminho:** P01-P02 (ver CAMINHO.md)
@@ -230,7 +230,7 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 
 - [ ] <criterio de done>
 
-### 01 — <slug>
+### 01 -- <slug>
 
 **User Story:** Como [usuario], eu quero [capacidade], para que [valor].
 **Passos do caminho:** P03-P05
@@ -244,45 +244,45 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 
 ## Log
 
-- AAAA-MM-DD — marco-00 fechado: <o que ficou pronto>
+- AAAA-MM-DD -- marco-00 fechado: <o que ficou pronto>
 ```
 
-## Template — APRENDIZADO.md
+## Template -- APRENDIZADO.md
 
 ```markdown
-# Diario de Aprendizado — <nome do projeto>
+# Diario de Aprendizado -- <nome do projeto>
 
 ## Licoes
 
-- AAAA-MM-DD — <conceito aprendido> (contexto: <em que marco/situacao>)
+- AAAA-MM-DD -- <conceito aprendido> (contexto: <em que marco/situacao>)
 
 ## Padroes de erro
 
-- AAAA-MM-DD — <erro recorrente> → <causa raiz> → <como evitar da proxima vez>
+- AAAA-MM-DD -- <erro recorrente> -> <causa raiz> -> <como evitar da proxima vez>
 
 ## Decisoes arquiteturais
 
-- AAAA-MM-DD — <decisao tomada> (contexto: <por que escolhemos isso>)
+- AAAA-MM-DD -- <decisao tomada> (contexto: <por que escolhemos isso>)
 
 ## Dividas de aprendizado (da curadoria)
 
-- <divida> — registrada em <data> — revisitar no marco <NN>
+- <divida> -- registrada em <data> -- revisitar no marco <NN>
 ```
 
-## Template — aula (`aulas/P0x-<slug>.md`)
+## Template -- aula (`aulas/P0x-<slug>.md`)
 
 Cada passo do `CAMINHO.md` tem uma aula: o **insumo teorico confiavel** que o aluno
-le ANTES de encarar o scaffold. Ela existe para resolver a queixa central — o aluno
+le ANTES de encarar o scaffold. Ela existe para resolver a queixa central -- o aluno
 nunca deve ter que adivinhar intuitivamente, buscar na internet ou depender da PISTA
 para saber COMO fazer. A aula entrega a teoria minima; o scaffold pede a aplicacao.
 
 Contrato inegociavel: **a aula ensina o mecanismo, nunca resolve o passo**. Os exemplos
 da aula usam uma instancia DIFERENTE da do `TODO(human)` (mesma regra do drill: angulo
 diferente da aplicacao). Se um exemplo da aula, copiado, fecha o `TODO`, a aula virou
-gabarito — esta errada.
+gabarito -- esta errada.
 
 ```markdown
-# Aula — P0x: <titulo do passo>
+# Aula -- P0x: <titulo do passo>
 
 > Leia ANTES de abrir o scaffold. Esta aula te da a teoria minima para concluir P0x
 > sem buscar na internet nem descomentar a PISTA. Ela NAO contem a solucao do
@@ -292,7 +292,7 @@ gabarito — esta errada.
 ## Objetivo do passo
 
 <capacidade: ao terminar, voce consegue <verbo> <conceito>; e o artefato que prova isso:
-o que vai ficar pronto, concreto e observavel — espelha o "Objetivo (capacidade)" e o
+o que vai ficar pronto, concreto e observavel -- espelha o "Objetivo (capacidade)" e o
 "Entregavel" do CAMINHO.md, em 1-2 linhas>
 
 ## O que o tutor espera de voce
@@ -332,7 +332,7 @@ Regras da aula:
 
 - **Uma por passo** (`aulas/P0x-<slug>.md`), nomeada pelo ID do passo do `CAMINHO.md`.
 - **Geradas no bootstrap** (`/novo-projeto`), mas **reveladas just-in-time**: o tutor
-  aponta o aluno para a aula do passo ATUAL na hora do passo — nunca manda ler todas de
+  aponta o aluno para a aula do passo ATUAL na hora do passo -- nunca manda ler todas de
   uma vez (isso recriaria o paredao de teoria que o metodo combate).
 - **Recalibradas junto com o caminho**: ao recalibrar o `CAMINHO.md` no fechamento de
   marco, regenere as aulas dos passos que mudaram ou foram inseridos. Aula desatualizada
@@ -342,8 +342,8 @@ Regras da aula:
 - **Boas praticas so quando aplicavel**: se o passo nao tem convencao relevante a ensinar,
   omita a secao em vez de inventar conteudo.
 - **Apresentacao (texto puro):** aplique os 3 principios de Mayer que transferem para
-  texto — coerencia (corte o superfluo), sinalizacao (destaque o essencial), segmentacao
-  (um passo atomico por vez) — e linguagem simples/legivel. Os outros 9 tratam de
+  texto -- coerencia (corte o superfluo), sinalizacao (destaque o essencial), segmentacao
+  (um passo atomico por vez) -- e linguagem simples/legivel. Os outros 9 tratam de
   audio/video e nao se aplicam: ver
   [so 3 de 12 principios transferem](fundamentos.md#mayer-so-3-de-12-principios-em-texto-puro).
 
@@ -354,11 +354,11 @@ Cada arquivo entregue ao aluno em `projeto/` recebe, no topo, um comentario assi
 
 ```text
 /*
-  MARCO NN — <nome>  (passos P0x-P0y do CAMINHO.md)
+  MARCO NN -- <nome>  (passos P0x-P0y do CAMINHO.md)
   META: <o que vai ficar pronto>
   PORQUE: <que capacidade isso destrava no projeto>
   PRESSUPOE: <conceitos ja introduzidos, por ID (ex: c01-tags-html). Se algum for
-    novidade pra voce, AVISE antes de comecar — o caminho e que ajusta, nao voce.>
+    novidade pra voce, AVISE antes de comecar -- o caminho e que ajusta, nao voce.>
   ARQUIVOS: <quais arquivos o aluno cria/edita neste marco>
   EXEMPLO-DE-RESULTADO: <o que o aluno VE quando der certo, concreto: "ao abrir
     index.html aparece uma lista com 3 itens; clicar num item risca o texto">
@@ -385,7 +385,7 @@ Validacao obrigatoria antes de entregar qualquer scaffold:
 ### Como o aluno le o scaffold (explique na 1a entrega)
 
 Os campos sao uma SEQUENCIA, nao um menu pra escolher "qual seguir". Na primeira vez que
-entregar um scaffold, diga ao aluno a ordem de leitura — senao ele trava sem saber qual
+entregar um scaffold, diga ao aluno a ordem de leitura -- senao ele trava sem saber qual
 campo executar:
 
 - META -> onde voce quer chegar (o destino)
@@ -401,7 +401,7 @@ campo executar:
 
 Descoberta socratica so funciona quando o aluno tem materia-prima pra raciocinar. Se o
 TODO exige uma sintaxe que o aluno NUNCA viu (zero-absoluto no assunto), a pergunta-guia
-vira abismo e a PISTA acaba sendo a unica saida — o que forca copia cega, nao aprendizado.
+vira abismo e a PISTA acaba sendo a unica saida -- o que forca copia cega, nao aprendizado.
 
 A [liberacao gradual de responsabilidade](fundamentos.md#frameworks-foundational-load-bearing)
 formaliza tres fases; o exemplo resolvido na fase "eu faco" e um worked example (instancia
@@ -410,8 +410,8 @@ diferente da do `TODO(human)`). As 3 fases, nomeadas e em ordem:
 - **eu faco:** o agente MOSTRA um exemplo resolvido completo, explicando cada pedaco, numa
   instancia DIFERENTE da do `TODO(human)` (= worked example analogo). Para substrato
   zero-absoluto no conceito dominante, esse exemplo resolvido e OBRIGATORIO antes do solo.
-- **nos fazemos:** pratica conjunta guiada — o agente puxa cada micro-decisao, o aluno
-  responde, o agente confirma — numa instancia AINDA diferente da do `TODO(human)` solo.
+- **nos fazemos:** pratica conjunta guiada -- o agente puxa cada micro-decisao, o aluno
+  responde, o agente confirma -- numa instancia AINDA diferente da do `TODO(human)` solo.
   Esta e a ponte que faltava entre o exemplo e o solo.
 - **voce faz:** o `TODO(human)` solo, o aluno aplica numa VARIACAO (outro nome, outro valor).
   Isso prova entendimento sem ser copia.
@@ -423,7 +423,7 @@ o fading da Sondagem: o andaime recua conforme a maestria sobe). A pergunta-guia
 seca volta a fazer sentido nos marcos seguintes, quando ja houver substrato acumulado.
 
 A PISTA e rede de seguranca, NUNCA a ponte principal. Se o unico jeito de o aluno avancar
-e descomentar a PISTA, o scaffold esta mal calibrado pro substrato dele — conserte o
+e descomentar a PISTA, o scaffold esta mal calibrado pro substrato dele -- conserte o
 scaffold, nao culpe o aluno.
 
 ## Protocolo de forense (para erros)
