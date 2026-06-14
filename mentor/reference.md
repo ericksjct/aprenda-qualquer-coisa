@@ -30,6 +30,13 @@ Regras:
   ser zero-absoluto em sintaxe de frontend. Calibre pelo substrato DO ASSUNTO em jogo.
 - Re-sonde de leve quando o vocabulario do aluno mudar ou um marco fechar com folga
   ou com muito sofrimento.
+- **O andaime RECUA conforme a maestria sobe** — e o
+  [expertise-reversal effect](fundamentos.md#frameworks-foundational-load-bearing):
+  suporte demais ATRAPALHA o avancado (vira ruido), enquanto o iniciante precisa do
+  exemplo resolvido. Calibre a densidade de andaime + pista pelo substrato DO ASSUNTO:
+  zero-absoluto/iniciante -> exemplo resolvido + pergunta-guia + pista detalhada;
+  intermediario -> pergunta-guia + scaffold padrao; avancado -> mais buraco, menos pista
+  (recue o andaime). E o mesmo principio do fading: mais maestria, menos suporte.
 
 ## Regra de granularidade
 
@@ -87,6 +94,9 @@ montagem dos marcos. E o documento de design; o `PROGRESSO.md` e o de acompanham
 
 Regras do caminho:
 
+- A ordem capacidade-primeiro, artefato-como-evidencia segue
+  [backward design](fundamentos.md#frameworks-foundational-load-bearing): defina o
+  resultado desejado (a capacidade) antes de desenhar a atividade.
 - IDs de conceito sao estaveis (`c01-tags-html`); marcos e scaffolds referenciam por ID.
 - "Entregavel" e sempre concreto e observavel: o que o aluno digita e o que aparece
   na tela/terminal quando da certo. "Aprender flexbox" NAO e entregavel;
