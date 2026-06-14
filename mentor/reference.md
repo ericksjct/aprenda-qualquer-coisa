@@ -388,10 +388,24 @@ Descoberta socratica so funciona quando o aluno tem materia-prima pra raciocinar
 TODO exige uma sintaxe que o aluno NUNCA viu (zero-absoluto no assunto), a pergunta-guia
 vira abismo e a PISTA acaba sendo a unica saida — o que forca copia cega, nao aprendizado.
 
-Nesse caso, inverta a ordem: MOSTRE um exemplo resolvido primeiro (o "eu faco"), explique
-cada pedaco, e so entao peca ao aluno pra APLICAR numa VARIACAO (outro nome, outro valor —
-o "voce faz"). Isso prova entendimento sem ser copia. A pergunta-guia socratica seca volta
-a fazer sentido nos marcos seguintes, quando ja houver substrato acumulado.
+A [liberacao gradual de responsabilidade](fundamentos.md#frameworks-foundational-load-bearing)
+formaliza tres fases; o exemplo resolvido na fase "eu faco" e um worked example (instancia
+diferente da do `TODO(human)`). As 3 fases, nomeadas e em ordem:
+
+- **eu faco:** o agente MOSTRA um exemplo resolvido completo, explicando cada pedaco, numa
+  instancia DIFERENTE da do `TODO(human)` (= worked example analogo). Para substrato
+  zero-absoluto no conceito dominante, esse exemplo resolvido e OBRIGATORIO antes do solo.
+- **nos fazemos:** pratica conjunta guiada — o agente puxa cada micro-decisao, o aluno
+  responde, o agente confirma — numa instancia AINDA diferente da do `TODO(human)` solo.
+  Esta e a ponte que faltava entre o exemplo e o solo.
+- **voce faz:** o `TODO(human)` solo, o aluno aplica numa VARIACAO (outro nome, outro valor).
+  Isso prova entendimento sem ser copia.
+
+Gatilho CONDICIONAL do "nos fazemos": ligue a etapa quando o substrato no conceito dominante
+e zero-absoluto/iniciante OU quando o salto do exemplo resolvido para o solo e grande. PULE
+o "nos fazemos" em intermediario/avancado, onde a pratica conjunta vira atrito (conecta com
+o fading da Sondagem: o andaime recua conforme a maestria sobe). A pergunta-guia socratica
+seca volta a fazer sentido nos marcos seguintes, quando ja houver substrato acumulado.
 
 A PISTA e rede de seguranca, NUNCA a ponte principal. Se o unico jeito de o aluno avancar
 e descomentar a PISTA, o scaffold esta mal calibrado pro substrato dele — conserte o
