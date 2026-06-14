@@ -66,6 +66,7 @@ montagem dos marcos. E o documento de design; o `PROGRESSO.md` e o de acompanham
 - Conceito dominante (novo): c01-<slug>
 - Pressupoe: (nenhum — entrada coberta pelo substrato)
 - Substrato exigido: <assunto>: zero-absoluto ok ("eu faco -> voce faz")
+- Objetivo (capacidade): ao terminar, voce consegue <verbo> <conceito>
 - Entregavel: <o que o aluno ESCREVE> + <o que ele VE funcionando ao terminar>
 - Arquivos: <paths em projeto/>
 
@@ -74,6 +75,7 @@ montagem dos marcos. E o documento de design; o `PROGRESSO.md` e o de acompanham
 - Conceito dominante (novo): c02-<slug>
 - Pressupoe: c01-<slug>
 - Substrato exigido: <assunto>: >= iniciante
+- Objetivo (capacidade): ao terminar, voce consegue <verbo> <conceito>
 - Entregavel: ...
 - Arquivos: ...
 
