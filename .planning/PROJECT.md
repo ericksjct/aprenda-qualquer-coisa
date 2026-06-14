@@ -112,4 +112,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-13 after initialization*
+*Last updated: 2026-06-14 — Phase 2 complete (templates de `reference.md` ganharam verbo de capacidade, GRR 3 fases, fading/worked-example e principios de Mayer, citando `fundamentos.md`). Avanca as dims. Estrutura & objetivos e Carga cognitiva; `reference.md` feito dentro de "Tecer nos docs existentes".*
