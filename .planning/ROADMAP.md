@@ -68,7 +68,7 @@ Plans:
   3. O metodo nomeia e reforca o "primeiro done leve" (reduzir time-to-first-success) como principio anti-evasao, conectado explicitamente ao Walking Skeleton.
 **Plans**: 2 plans
 Plans:
-- [ ] 03-01-PLAN.md -- PAR ACOPLADO (D-02): campo Capacidade: no template PROGRESSO.md (reference.md) + Passo 5 instrui gravar a frase por marco + guardrail D-04 + primeiro marco menor
+- [x] 03-01-PLAN.md -- PAR ACOPLADO (D-02): campo Capacidade: no template PROGRESSO.md (reference.md) + Passo 5 instrui gravar a frase por marco + guardrail D-04 + primeiro marco menor
 - [ ] 03-02-PLAN.md -- Nomeacao + link: Passo 4 nomeia backward design; Passo 8 nomeia primeiro done leve (ENG-02), ambos com hyperlink para fundamentos.md
 
 ### Phase 4: Gate e retrieval (fecha-marco.md + tutor.md)
