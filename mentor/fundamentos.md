@@ -37,3 +37,20 @@ teoria na sessao do aluno.
 
 **Retrieval Practice:** e uma LACUNA hoje (so parcial em `mentor/tutor.md`); a abertura do tutor
 com recuperacao ativa e a aterrissagem prevista para a Fase 4.
+
+## Frameworks supporting (ancoram um doc)
+
+| Framework | Definicao (1 linha) | Fonte primaria | Termo no metodo | Aplicado em (doc + status) |
+|-----------|---------------------|----------------|-----------------|----------------------------|
+| Self-Determination Theory (SDT) | Motivacao sustentavel exige 3 necessidades: autonomia, competencia, relacionamento. | Deci & Ryan (1985; 2017) | Anti-evasao; "proxima acao unica" (Log do `PROGRESSO.md` + despedida do tutor); autonomia (aluno escolhe o projeto real) + competencia (entregavel observavel por marco / micro-vitorias) | `mentor/tutor.md`, `PROGRESSO.md` (via `mentor/reference.md`) (Fase 4, pendente) |
+| Scaffolding + Zona de Desenvolvimento Proximal (ZPD) | Ensine no espaco entre o que o aluno faz sozinho e o que faz com apoio; reduza o apoio gradualmente. | Vygotsky (ZPD); Wood, Bruner & Ross (1976) | O proprio termo "scaffold"; andaime calibrado ao substrato; "nem trivial nem impossivel" (`TODO(human)` dimensionado) | `mentor/reference.md`, `mentor/metodo.md` (ja presente) |
+| Mastery Learning | Avancar so apos dominio do pre-requisito; correcao antes de prosseguir. | Bloom (1968); Guskey | Gate de "done"; "so depois de funcionar"; "passo N nunca pressupoe conceito nao introduzido"; criterio de fechamento verificavel | `mentor/fecha-marco.md` (Fase 4, pendente) |
+| Avaliacao Formativa | Avaliacao a servico do aprendizado (durante), nao so do julgamento (depois). | Black & Wiliam (1998) | DONE / pergunta-guia / diario `APRENDIZADO.md` como instrumentos formativos (nao nota); check formativo no gate de curadoria | `mentor/metodo.md`, `mentor/fecha-marco.md` (Fase 5, pendente) |
+| Modelo de Feedback (Feed Up / Back / Forward) | Bom feedback responde 3 perguntas: Aonde vou? Como estou indo? Para onde a seguir? | Hattie & Timperley (2007) | PERGUNTA-GUIA e PISTA do scaffold; protocolo de forense; "elogie o processo, nao so o acerto"; PISTA como feed-forward (nao da a resposta) | `mentor/debug.md` (Fase 5, pendente) |
+| Spacing Effect / Pratica Distribuida | Estudo espalhado no tempo retem mais que massado; segunda estrategia "alta utilidade" de Dunlosky. | Cepeda et al. (2006); Dunlosky (2013) | Dividas de aprendizado em `PROGRESSO.md`; reuso cumulativo de conceitos antigos em marcos novos | `mentor/fecha-marco.md`, `PROGRESSO.md` (Fase 4, pendente) |
+
+**SDT:** ancore o anti-evasao em **autonomia + competencia**, nao em relatedness -- ver a secao
+"Limites e ressalvas" (em estudo solo+IA a relatedness e estruturalmente fraca).
+
+**Spacing:** e uma LACUNA hoje (so parcial via dividas em `PROGRESSO.md`); a aterrissagem real
+(reuso cumulativo, revisao espacada) e prevista para a Fase 4.
