@@ -53,6 +53,19 @@ que a pesquisa marcou como MEDIUM confidence).
   como cabecalho/preambulo no topo do arquivo, antes do catalogo, para que qualquer
   leitor (humano ou agente) veja a regra primeiro.
 
+### Resolucoes pos-pesquisa (2026-06-14, confirmadas pelo usuario)
+- **D-06 (conflito D-01 vs D-02 — mini-notas):** RESOLVIDO seguindo D-01. A mini-nota
+  "como usamos no metodo" e OPCIONAL por entrada — aparece SO onde ha nuance, nao nas 12
+  entradas. D-02 define o FORMATO da mini-nota (campo separado, 1-2 frases curtas) QUANDO
+  ela existe; nao a torna obrigatoria. Resolve o conflito A3 sinalizado na pesquisa.
+- **D-07 (GRR — Gradual Release of Responsibility):** Nao vira 13a entrada canonica. E
+  coberto pela entrada Worked-Example (a sintaxe "eu faco -> voce faz" do metodo ja
+  materializa o GRR) e sera nomeado explicitamente na Fase 2 (dona de `reference.md`).
+  Mantem a lista canonica em 6+6, alinhada com FUND-01/ROADMAP.
+- **D-08 (bloco "nice-to-cite"):** INCLUIR no doc, bem curto (1 linha por item:
+  Bloom-verbos, Mayer-contexto, ADDIE/linhagem). E reforco, NAO estrutura — fica fora do
+  catalogo canonico 6+6 e nao infla as entradas principais.
+
 ### Claude's Discretion
 - **D-05 (campo "aplicado em <doc>" antecipado):** O usuario delegou esta decisao.
   Abordagem adotada: **forward-reference com marcador de status**. Como a ordem de build
