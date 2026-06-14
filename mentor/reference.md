@@ -281,8 +281,9 @@ gabarito — esta errada.
 
 ## Objetivo do passo
 
-<o que vai ficar pronto ao final de P0x — espelha o "Entregavel" do CAMINHO.md,
-concreto e observavel, em 1-2 linhas>
+<capacidade: ao terminar, voce consegue <verbo> <conceito>; e o artefato que prova isso:
+o que vai ficar pronto, concreto e observavel — espelha o "Objetivo (capacidade)" e o
+"Entregavel" do CAMINHO.md, em 1-2 linhas>
 
 ## O que o tutor espera de voce
 
@@ -346,7 +347,7 @@ Cada arquivo entregue ao aluno em `projeto/` recebe, no topo, um comentario assi
   ARQUIVOS: <quais arquivos o aluno cria/edita neste marco>
   EXEMPLO-DE-RESULTADO: <o que o aluno VE quando der certo, concreto: "ao abrir
     index.html aparece uma lista com 3 itens; clicar num item risca o texto">
-  DONE: <como o aluno sabe que terminou>
+  DONE: <evidencia observavel de que voce JA CONSEGUE <a capacidade do passo>: o que roda/aparece quando voce a demonstra, nao so "o codigo compila">
   PERGUNTA-GUIA: <pergunta socratica que o aluno responde ANTES de codar>
 */
 // TODO(human): <o que digitar, descrito como COMPORTAMENTO: "escreva a funcao que
