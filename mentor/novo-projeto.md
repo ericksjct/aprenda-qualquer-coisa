@@ -145,6 +145,11 @@ O primeiro marco e um **Walking Skeleton** — o esqueleto mais fino que prova q
 todas as camadas funcionam juntas (exemplos por tipo de projeto em `mentor/reference.md`).
 Ele NAO implementa logica de negocio.
 
+Esse e o **primeiro done leve**: o menor entregavel que ja "roda" reduz o
+time-to-first-success e e a principal defesa contra a evasao do estudo assincrono
+([anti-evasao da SDT](fundamentos.md#frameworks-supporting-ancoram-um-doc) —
+competencia via micro-vitorias). Quanto antes a primeira vitoria, melhor.
+
 Gere o scaffold do Marco 00 em `projeto/` no formato de `mentor/reference.md`, que inclui
 obrigatoriamente `PRESSUPOE`, `ARQUIVOS` e `EXEMPLO-DE-RESULTADO`:
 
