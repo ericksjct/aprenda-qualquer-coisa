@@ -2,7 +2,7 @@
 phase: 4
 slug: gate-e-retrieval-fecha-marco-md-tutor-md
 status: draft
-nyquist_compliant: false
+nyquist_compliant: true
 wave_0_complete: false
 created: 2026-06-15
 ---
