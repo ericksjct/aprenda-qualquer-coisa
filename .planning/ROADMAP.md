@@ -69,7 +69,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 03-01-PLAN.md -- PAR ACOPLADO (D-02): campo Capacidade: no template PROGRESSO.md (reference.md) + Passo 5 instrui gravar a frase por marco + guardrail D-04 + primeiro marco menor
-- [ ] 03-02-PLAN.md -- Nomeacao + link: Passo 4 nomeia backward design; Passo 8 nomeia primeiro done leve (ENG-02), ambos com hyperlink para fundamentos.md
+- [x] 03-02-PLAN.md -- Nomeacao + link: Passo 4 nomeia backward design; Passo 8 nomeia primeiro done leve (ENG-02), ambos com hyperlink para fundamentos.md
 
 ### Phase 4: Gate e retrieval (fecha-marco.md + tutor.md)
 **Goal**: As duas maiores lacunas de avaliacao sao fechadas: o fechamento de marco vira mastery gate com sintese/transferencia e agenda de revisao espacada, e a sessao do tutor abre com recuperacao ativa e garante uma proxima acao unica.
