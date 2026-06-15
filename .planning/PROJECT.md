@@ -112,4 +112,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-14 — Phase 2 complete (templates de `reference.md` ganharam verbo de capacidade, GRR 3 fases, fading/worked-example e principios de Mayer, citando `fundamentos.md`). Avanca as dims. Estrutura & objetivos e Carga cognitiva; `reference.md` feito dentro de "Tecer nos docs existentes".*
+*Last updated: 2026-06-15 — Phase 3 complete (bootstrap em `novo-projeto.md` ganhou evidencia de maestria por marco: campo `**Capacidade:**` no template PROGRESSO.md + instrucao no Passo 5, e nomeacao de backward design (Passo 4) e "primeiro done leve" anti-evasao (Passo 8), ambos linkando `fundamentos.md`). Avanca as dims. Estrutura & objetivos e Engajamento & retencao; `novo-projeto.md` feito dentro de "Tecer nos docs existentes". Antes: Phase 2 complete (templates de `reference.md` — verbo de capacidade, GRR 3 fases, fading/worked-example, Mayer).*
