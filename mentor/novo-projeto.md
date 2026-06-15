@@ -55,6 +55,9 @@ Expanda o caminho de aprendizado INTEIRO antes de pensar em marcos:
 
 - Engenharia reversa do output final -> capacidades necessarias -> conceitos
   necessarios -> ordene por dependencia (use a referencia do Passo 3 como guia).
+- Essa engenharia reversa (capacidade-alvo -> atividade) e o
+  [backward design](fundamentos.md#frameworks-foundational-load-bearing): defina o
+  resultado desejado (a capacidade) antes de desenhar os passos.
 - Quebre em **passos**, cada um com: 1 conceito dominante novo (com ID estavel),
   o que pressupoe, substrato exigido, **entregavel concreto** (o que o aluno escreve
   E o que ele ve funcionando) e arquivos tocados. Template em `mentor/reference.md`.
