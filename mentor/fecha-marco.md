@@ -126,7 +126,7 @@ Antes de entregar o scaffold, confirme:
 A proxima acao unica ancora a motivacao em autonomia (voce escolheu o projeto) e
 competencia (voce ja VE o marco funcionando) —
 [SDT](fundamentos.md#frameworks-supporting-ancoram-um-doc), com a
-[ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-solo-ia).
+[ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-soloia).
 A acao que o aluno LE no Log do `PROGRESSO.md` fica sem jargao.
 
 ## Anti-padroes

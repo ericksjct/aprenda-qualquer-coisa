@@ -1,13 +1,12 @@
 ---
 phase: 04-gate-e-retrieval-fecha-marco-md-tutor-md
 verified: 2026-06-16T01:45:53Z
-status: human_needed
+status: passed
 score: 5/5 must-haves verified
 overrides_applied: 0
-human_verification:
-  - test: "Renderizar mentor/tutor.md e mentor/fecha-marco.md no renderer alvo (GitHub/VS Code preview) e clicar no link `[ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-solo-ia)`"
-    expected: "O link navega ate o heading `### SDT relatedness em solo+IA` em fundamentos.md sem 404/no-op"
-    why_human: "A slug de ancora para `solo+IA` depende do algoritmo de slugificacao do renderer (o `+` sem espacos pode virar `soloia` em vez de `solo-ia`). Sem precedente no repo para essa ancora especifica e nao decidivel por grep. Os outros 2 anchors (#frameworks-foundational-load-bearing, #frameworks-supporting-ancoram-um-doc) ja tem precedente verificado em novo-projeto.md/reference.md."
+human_verification_resolved:
+  - test: "Anchor `solo+IA` slug resolution"
+    resolution: "Resolved 2026-06-15. Confirmed deterministically: GitHub strips `+`, so `### SDT relatedness em solo+IA` -> `sdt-relatedness-em-soloia`. User chose to fix the link slug: both link targets (tutor.md:106, fecha-marco.md:129) and the harness V-12-sdt-anchor grep updated from `#sdt-relatedness-em-solo-ia` to `#sdt-relatedness-em-soloia`. Harness re-run: == 0 fail(s) ==. See 04-HUMAN-UAT.md (status: resolved)."
 ---
 
 # Phase 4: Gate e retrieval (fecha-marco.md + tutor.md) Verification Report

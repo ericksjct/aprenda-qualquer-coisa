@@ -99,7 +99,7 @@ check_min "V-11b" "$(count 'exatamente 1|uma .*proxima acao|1 proxima acao' "$FC
 # V-12 (ENG-01/D-13): link SDT em prosa nos dois arquivos
 check_min "V-12-supp-tut" "$(count 'fundamentos\.md#frameworks-supporting-ancoram-um-doc' "$TUT")" 1
 check_min "V-12-supp-fch" "$(count 'fundamentos\.md#frameworks-supporting-ancoram-um-doc' "$FCH")" 1
-v12_sdt=$(( $(count 'fundamentos\.md#sdt-relatedness-em-solo-ia' "$TUT") + $(count 'fundamentos\.md#sdt-relatedness-em-solo-ia' "$FCH") ))
+v12_sdt=$(( $(count 'fundamentos\.md#sdt-relatedness-em-soloia' "$TUT") + $(count 'fundamentos\.md#sdt-relatedness-em-soloia' "$FCH") ))
 check_min "V-12-sdt-anchor" "$v12_sdt" 1
 
 # V-13 (CONTRACT cross-file): literal "Agenda de retrieval" nos 3 arquivos

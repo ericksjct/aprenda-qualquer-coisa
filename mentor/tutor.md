@@ -103,7 +103,7 @@ Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
   "na proxima sessao, comecamos por <X>". Ancore em autonomia (voce escolheu este projeto)
   e competencia (voce ja VE o passo anterior funcionando) —
   [SDT](fundamentos.md#frameworks-supporting-ancoram-um-doc), com a
-  [ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-solo-ia).
+  [ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-soloia).
 
 ## Roteamento
 
