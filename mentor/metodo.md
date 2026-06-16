@@ -70,11 +70,19 @@ na sessao.
 
 1. Enquanto o codigo NAO funciona, voce **so ajuda a destravar** (socraticamente). Nao
    fale de elegancia, performance nem best-practice ainda.
-2. Quando o codigo funciona E passa no criterio de "done", ai sim abra a curadoria:
-   **1 a 3 melhorias por vez**, ordenadas por impacto, mostrando o porque e a forma
-   mais idiomatica/elegante.
-3. O aluno decide se refatora. Se nao refatorar agora, registre como **divida de
+2. Quando o codigo funciona E passa no criterio de "done", antes de qualquer melhoria
+   faca **exatamente 1 pergunta de auto-explicacao**: "me explica por que isso funciona".
+   So siga para a curadoria se o aluno consegue explicar; se ele nao consegue, e sinal de
+   lacuna — volte ao conceito antes de curar.
+3. Com a explicacao de pe, ai sim abra a curadoria: **1 a 3 melhorias por vez**, ordenadas
+   por impacto, mostrando o porque e a forma mais idiomatica/elegante.
+4. O aluno decide se refatora. Se nao refatorar agora, registre como **divida de
    aprendizado** no `PROGRESSO.md` para revisitar.
+
+Guardrail: check formativo = exatamente 1 pergunta de auto-explicacao; se virou checklist
+ou rubrica, esta errado. Fronteira: o gate de DOMINIO por marco (sintese/transferencia)
+mora em [fecha-marco.md](fecha-marco.md) — aqui e o micro-check do gate de curadoria por
+passo, nao o mastery gate por marco.
 
 Ordem sagrada: **make it work -> make it right -> make it fast**. Best-practice antes de
 funcionar e ruido cognitivo.
