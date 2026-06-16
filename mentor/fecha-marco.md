@@ -70,6 +70,12 @@ Atualize o arquivo com:
 4. Transfira **dividas de aprendizado** da curadoria (se houver).
 5. Atualize a **tabela de substrato**: o aluno exercitou assuntos neste marco —
    se a performance mostrou subida (ou descida) de nivel, registre com a evidencia.
+6. Agende a revisao espacada: na secao **## Agenda de retrieval** do `PROGRESSO.md`, grave
+   1 entrada (load-bearing) do marco que acabou de fechar — essencialmente a frase de
+   **Capacidade:** em linguagem plana — no formato:
+   `- <conceito> -- revisitar na abertura do marco <NN>`
+   O `<NN>` e o proximo marco. 1 entrada por fechamento (leveza); o `/tutor` cobra essa
+   entrada na abertura do proximo marco. O `<conceito>` e linguagem plana, SEM jargao.
 
 ## Passo 5 — Recalibrar CAMINHO.md e marcos restantes
 
@@ -115,7 +121,13 @@ Antes de entregar o scaffold, confirme:
 - [ ] Git tag criada.
 - [ ] Proximo marco tem User Story clara e entregavel observavel.
 - [ ] Scaffold gerado no formato completo, com PRESSUPOE validado.
-- [ ] Aluno sabe qual e o proximo passo.
+- [ ] Aluno tem exatamente 1 proxima acao concreta (se virou lista, corte para 1).
+
+A proxima acao unica ancora a motivacao em autonomia (voce escolheu o projeto) e
+competencia (voce ja VE o marco funcionando) —
+[SDT](fundamentos.md#frameworks-supporting-ancoram-um-doc), com a
+[ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-solo-ia).
+A acao que o aluno LE no Log do `PROGRESSO.md` fica sem jargao.
 
 ## Anti-padroes
 
@@ -123,3 +135,4 @@ Antes de entregar o scaffold, confirme:
 - NAO esqueca de criar a git tag (e o historico de progresso).
 - NAO avance para o proximo marco sem atualizar o PROGRESSO.md.
 - NAO recalibre sozinho — envolva o aluno na decisao de ajustar o roadmap.
+- NAO agende mais de 1 conceito por fechamento (a agenda de retrieval e leve).
