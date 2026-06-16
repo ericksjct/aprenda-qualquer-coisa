@@ -82,8 +82,8 @@ Plans:
   4. A mecanica de retrieval e gate permanece leve (1 pergunta na abertura; gate = verificacao de done ja existente renomeada + 1 criterio de capacidade), sem virar quiz formal ou checklist gigante.
 **Plans**: 4 plans
 Plans:
-- [ ] 04-01-PLAN.md -- Wave 0: clonar extract-fenced.sh + autorar check-phase4.sh (V-01..V-15)
-- [ ] 04-02-PLAN.md -- reference.md: secao `## Agenda de retrieval` no template PROGRESSO.md (D-09), dona do contrato cross-file
+- [x] 04-01-PLAN.md -- Wave 0: clonar extract-fenced.sh + autorar check-phase4.sh (V-01..V-15)
+- [x] 04-02-PLAN.md -- reference.md: secao `## Agenda de retrieval` no template PROGRESSO.md (D-09), dona do contrato cross-file
 - [ ] 04-03-PLAN.md -- fecha-marco.md: mastery gate + extensao (D-05..D-08), escreve a agenda (D-10), proxima acao unica + SDT (D-12/D-13)
 - [ ] 04-04-PLAN.md -- tutor.md: passo de Recuperacao ativa antes do recap (D-01..D-04), proxima acao unica + SDT (D-12/D-13) + gate cross-file (V-13)
 
