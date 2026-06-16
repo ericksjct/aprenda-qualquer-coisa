@@ -34,7 +34,22 @@ para `/novo-projeto` e pare.
 Se o estado dos arquivos divergir do `PROGRESSO.md` (ex: codigo mais adiantado que
 o log), pergunte ao aluno o que houve antes de assumir qualquer coisa.
 
-## Passo 1 — Abertura da sessao (ritual de 30 segundos)
+## Passo 1 — Recuperacao ativa (antes do recap)
+
+Leia a secao **## Agenda de retrieval** do PROGRESSO.md.
+
+- Se ha 1 entrada agendada para este marco, faca 1 pergunta de recuperacao sobre esse
+  conceito ANTES de qualquer recap ou aula — o aluno responde de cabeca, SEM consultar a
+  aula. Use ESTRITAMENTE o conceito agendado; nao invente pergunta ad-hoc
+  ([retrieval practice](fundamentos.md#frameworks-foundational-load-bearing)).
+- E formativa, nao teste: se o aluno nao lembra, sem penalidade — mantenha como divida de
+  revisao e reaponte a aula daquele conceito. NUNCA bloqueia a sessao.
+- Se a **## Agenda de retrieval** esta vazia (1a sessao, ou Marco 00 antes do 1o
+  fechamento), pule este passo e va direto ao recap. Sem fallback ad-hoc.
+
+Apenas 1 pergunta. Depois siga para o recap.
+
+## Passo 2 — Abertura da sessao (ritual de 30 segundos)
 
 Recapitule em no maximo 4 linhas, sem aula:
 
@@ -47,7 +62,7 @@ Recapitule em no maximo 4 linhas, sem aula:
 Se ha divida de aprendizado marcada para revisitar neste marco, anuncie que ela
 entra na pauta.
 
-## Passo 2 — Conduzir o passo atual
+## Passo 3 — Conduzir o passo atual
 
 Siga o ciclo da persona, guiado pelo `CAMINHO.md` (nunca invente sequencia nova):
 
@@ -64,7 +79,7 @@ Siga o ciclo da persona, guiado pelo `CAMINHO.md` (nunca invente sequencia nova)
 4. **Pare e espere a tentativa.** Silencio do tutor enquanto o aluno tenta e feature,
    nao bug. Responda perguntas pontuais sem entregar o TODO.
 
-## Passo 3 — Revisar a tentativa (quando o aluno diz "fiz" / "pronto")
+## Passo 4 — Revisar a tentativa (quando o aluno diz "fiz" / "pronto")
 
 - Leia o que o aluno escreveu em `projeto/` (leia de verdade — nao confie no relato).
 - Compare com o `DONE` e o `EXEMPLO-DE-RESULTADO` do scaffold; rode/abra se possivel.
@@ -76,7 +91,7 @@ Siga o ciclo da persona, guiado pelo `CAMINHO.md` (nunca invente sequencia nova)
 - **Funciona mas o aluno nao sabe por que**: trate como nao-fechado; volte 1 nivel
   (pergunta-guia sobre o trecho que ele nao explica).
 
-## Passo 4 — Fechamento da sessao (mesmo no meio de um passo)
+## Passo 5 — Fechamento da sessao (mesmo no meio de um passo)
 
 Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
 
@@ -84,7 +99,11 @@ Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
   1 linha>; proxima acao: <acao concreta de 1 linha>`.
 - Se surgiu licao/padrao de erro, lembre o aluno de anotar no `APRENDIZADO.md`
   (ou anote com ele).
-- Despeca com a proxima acao explicita: "na proxima sessao, comecamos por <X>".
+- Despeca com exatamente 1 proxima acao concreta (se virou lista, corte para 1):
+  "na proxima sessao, comecamos por <X>". Ancore em autonomia (voce escolheu este projeto)
+  e competencia (voce ja VE o passo anterior funcionando) —
+  [SDT](fundamentos.md#frameworks-supporting-ancoram-um-doc), com a
+  [ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-solo-ia).
 
 ## Roteamento
 
@@ -108,3 +127,5 @@ Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
 - Mandar o aluno ler todas as aulas de uma vez (a aula e revelada just-in-time, a do
   passo atual na hora do passo).
 - Pular o roteamento e improvisar o que ja tem skill propria (debug, fechamento).
+- Disparar a recuperacao ativa sem entrada na agenda (se vazia, pule).
+- Fechar a sessao com uma lista de proximas acoes em vez de exatamente 1.
