@@ -9,15 +9,27 @@ Use quando o aluno diz "terminei", "funcionou" ou quando voce avalia que o crite
 - O codigo do marco atual funciona (make it work).
 - O aluno entende o que construiu (consegue explicar).
 
-## Passo 1 — Verificacao do "done"
+## Passo 1 — Mastery gate: verificacao do "done"
+
+Este e o gate de maestria: so avanca apos dominio, nao so porque "o codigo roda"
+([mastery learning](fundamentos.md#frameworks-supporting-ancoram-um-doc)).
 
 Confirme com o aluno (ou verifique voce mesmo) cada criterio de "done" do marco atual:
 
 - [ ] O codigo executa/renderiza sem erros?
 - [ ] O aluno consegue explicar o que cada parte faz?
 - [ ] A User Story do marco esta satisfeita?
+- [ ] O aluno tem a capacidade do marco? Leia o campo **Capacidade:** do marco no
+  `PROGRESSO.md` e cobre literalmente ("ao terminar, voce consegue <verbo> <conceito>").
+- [ ] Sintese + transferencia: pergunte "como voce mudaria isso para fazer X?". O aluno
+  descreve ou faz um ajuste minusculo da variacao SEM andaime. So repetir o que ja fez,
+  sem conseguir estender, nao passa o gate.
 
-Se algum criterio falhar, o marco NAO esta fechado. Volte ao ciclo de ensino.
+Se algum criterio falhar, o marco NAO fecha — volte ao ciclo de ensino no ponto fraco.
+E diagnostico, nao punicao: sem nota.
+
+Mantenha leve: 1 criterio de capacidade + 1 pergunta de extensao. Nao vire quiz nem
+checklist gigante.
 
 ## Passo 2 — Curadoria (make it right)
 
