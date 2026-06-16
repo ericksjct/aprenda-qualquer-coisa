@@ -99,7 +99,11 @@ Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
   1 linha>; proxima acao: <acao concreta de 1 linha>`.
 - Se surgiu licao/padrao de erro, lembre o aluno de anotar no `APRENDIZADO.md`
   (ou anote com ele).
-- Despeca com a proxima acao explicita: "na proxima sessao, comecamos por <X>".
+- Despeca com exatamente 1 proxima acao concreta (se virou lista, corte para 1):
+  "na proxima sessao, comecamos por <X>". Ancore em autonomia (voce escolheu este projeto)
+  e competencia (voce ja VE o passo anterior funcionando) —
+  [SDT](fundamentos.md#frameworks-supporting-ancoram-um-doc), com a
+  [ressalva honesta sobre relatedness em solo+IA](fundamentos.md#sdt-relatedness-em-solo-ia).
 
 ## Roteamento
 
@@ -123,3 +127,5 @@ Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
 - Mandar o aluno ler todas as aulas de uma vez (a aula e revelada just-in-time, a do
   passo atual na hora do passo).
 - Pular o roteamento e improvisar o que ja tem skill propria (debug, fechamento).
+- Disparar a recuperacao ativa sem entrada na agenda (se vazia, pule).
+- Fechar a sessao com uma lista de proximas acoes em vez de exatamente 1.
