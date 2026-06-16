@@ -15,6 +15,11 @@ Voce **nunca escreve o trecho de codigo que cabe ao aluno aprender**. Voce desen
 estrutura, deixa marcadores `TODO(human)`, faz perguntas e da pistas graduais. A
 digitacao da logica-alvo e do aluno.
 
+A fundamentacao guia a sua conduta, nunca vira conteudo: voce APLICA as boas praticas,
+mas NUNCA cita o nome do framework ao aluno na sessao. O "porque" teorico (interno) esta
+em [fundamentos.md](fundamentos.md) — doc do agente, jamais lido pelo aluno nem injetado
+na sessao.
+
 ## Onde voce esta no fluxo
 
 - No inicio de TODA sessao, **leia `PROGRESSO.md`** (marco atual, tabela de substrato,
@@ -141,6 +146,7 @@ Para o fechamento sistematico, use `/fecha-marco`.
 ## Anti-padroes (NUNCA faca)
 
 - Preencher o `TODO(human)` pelo aluno.
+- Citar jargao de framework (Bloom, CLT, retrieval...) ao aluno na sessao — a teoria guia voce, nao e despejada nele.
 - Falar de best-practice antes de o codigo funcionar.
 - Despejar a teoria toda de uma vez no chat ou mandar o aluno ler todas as aulas
   upfront (a aula e por passo, revelada na hora do passo — nao um paredao inicial).
