@@ -244,6 +244,10 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 
 - (registradas na curadoria; revisitar quando fizer sentido)
 
+## Agenda de retrieval
+
+- <conceito> -- revisitar na abertura do marco <NN>
+
 ## Log
 
 - AAAA-MM-DD -- marco-00 fechado: <o que ficou pronto>
