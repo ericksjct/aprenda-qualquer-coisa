@@ -47,7 +47,7 @@ created: 2026-06-15
 |----------|----------|---------------------|-----------|----------------------------|-------------|--------|
 | V-01 | AVAL-01 / SC1 | New recall step heading exists in `tutor.md` BEFORE the recap heading | grep + order | `rg -n "[Rr]ecuperacao ativa" mentor/tutor.md` then confirm its line < the "Abertura da sessao" recap line | ✅ | ⬜ pending |
 | V-02 | AVAL-01 / D-02 | Tutor reads STRICTLY the agenda, no ad-hoc question | grep | `rg -n "Agenda de retrieval" mentor/tutor.md` | ✅ | ⬜ pending |
-| V-03 | AVAL-01 / D-04 | Empty-agenda skip rule present | grep | `rg -n "agenda.*vazia\|nenhum conceito\|pule\|sem entrada" mentor/tutor.md` | ✅ | ⬜ pending |
+| V-03 | AVAL-01 / D-04 | Empty-agenda skip rule present | grep | `rg -n "[Aa]genda.*vazia|[Nn]enhum conceito|[Pp]ule|[Ss]em entrada" mentor/tutor.md` (case-robusto via classes de char; sem `-i`) — PADRAO CANONICO, identico a plano 01 e plano 04 acceptance_criteria | ✅ | ⬜ pending |
 | V-04 | AVAL-03 / SC2 | Passo 1 heading reframed as mastery gate | grep | `rg -n "mastery gate\|gate de maestria\|gate de marco" mentor/fecha-marco.md` | ✅ | ⬜ pending |
 | V-05 | AVAL-03 / D-06 | Gate reads `**Capacidade:**` and demands it literally | grep | `rg -n "Capacidade" mentor/fecha-marco.md` (within the gate step) | ✅ | ⬜ pending |
 | V-06 | AVAL-04 / D-07 | Extension/transfer question present (1, oral, no scaffold) | grep | `rg -n "como voce mudaria\|estender\|extensao\|transferencia" mentor/fecha-marco.md` | ✅ | ⬜ pending |
@@ -59,7 +59,7 @@ created: 2026-06-15
 | V-12 | ENG-01 / D-13 | SDT named in prose + link (both files) | grep link | `rg -n "fundamentos\.md#frameworks-supporting-ancoram-um-doc" mentor/tutor.md mentor/fecha-marco.md` AND `rg -n "fundamentos\.md#sdt-relatedness-em-solo-ia"` | ✅ | ⬜ pending |
 | V-13 | CONTRACT | Section name + entry format identical across the 3 files | cross-file grep | `rg -n "Agenda de retrieval" mentor/reference.md mentor/fecha-marco.md mentor/tutor.md` (all present, same literal) | ✅ | ⬜ pending |
 | V-14 | ANCHOR-RESOLVE | Every `fundamentos.md#anchor` used resolves to a real heading | anchor resolve | `rg -q '^## Frameworks supporting \(ancoram um doc\)' mentor/fundamentos.md` AND `rg -q '^### SDT relatedness em solo' mentor/fundamentos.md` AND `rg -q '^## Frameworks foundational \(load-bearing\)' mentor/fundamentos.md` | ✅ | ⬜ pending |
-| V-15 | CONS-01 (anti-leak) | No framework jargon inside the PROGRESSO template fenced block | grep negative | `sh scripts/extract-fenced.sh mentor/reference.md \| rg -c "SDT\|retrieval\|mastery\|spacing\|backward design\|Bloom\|GRR\|Mayer"` → must be 0 | ✅ | ⬜ pending |
+| V-15 | CONS-01 (anti-leak) | No framework jargon inside the PROGRESSO template fenced block | grep negative | `sh scripts/extract-fenced.sh mentor/reference.md \| rg -c "SDT|mastery|spacing|backward design|Bloom|GRR|Mayer|retrieval practice|testing effect"` → must be 0 | ✅ | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
