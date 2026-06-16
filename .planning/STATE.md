@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: verifying
-last_updated: "2026-06-16T09:57:51.631Z"
+last_updated: "2026-06-16T22:27:07.574Z"
 last_activity: 2026-06-16
 progress:
   total_phases: 6
@@ -17,17 +17,17 @@ progress:
 
 ## Current Position
 
-Phase: 05 (persona-e-feedback-metodo-md-debug-md) — EXECUTING
-Plan: 3 of 3
-Status: Phase complete — ready for verification
-Last activity: 2026-06-16 -- 05-03 completo (debug.md: AVAL-06 overlay Hattie + PISTA=feed-forward); Fase 5 fechada, check-phase5.sh exit 0
+Phase: 6 (auditoria-de-consistencia) — READY TO PLAN
+Plan: Not started
+Status: Fase 5 FECHADA (verifier passed + aval humano dos 2 itens de UAT em 2026-06-16). Ultima fase do milestone v1.0.
+Last activity: 2026-06-16 -- Fase 5 marcada completa apos aprovacao humana (links + tom editorial); proxima e a Fase 6 (auditoria transversal anti-drift/anti-cargo-cult)
 
 ## Project Reference
 
 See: `.planning/PROJECT.md` (updated 2026-06-13)
 
 **Core value:** O agente ensina a construir (aluno sai capaz de explicar e estender o projeto sozinho), ancorado em ciência da aprendizagem reconhecida — nunca resolve pelo aluno.
-**Current focus:** Phase 05 — persona-e-feedback-metodo-md-debug-md
+**Current focus:** Phase 06 — auditoria-de-consistencia (ultima fase do milestone)
 
 ## Accumulated Context
 
