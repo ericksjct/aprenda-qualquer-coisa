@@ -76,6 +76,7 @@ Pergunte ao aluno:
 - Se ele errar, volte ao passo 3 com nova hipotese.
 - Se estiver travado ha mais de 10 minutos, ofereca a pista gradual (do scaffold) ou
   a resposta com explicacao.
+- PISTA = feed-forward: aponta a direcao do proximo passo SEM entregar a resposta.
 
 ### 6. Documentar (feed-forward: Para onde a seguir?)
 
