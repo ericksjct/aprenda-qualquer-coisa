@@ -28,8 +28,8 @@ Pergunte ao aluno:
 ```
 
 - Capture a expectativa vs realidade.
-- Peça a mensagem de erro completa (copiar/colar).
-- Se nao houver mensagem de erro, peça para descrever o comportamento observado.
+- Peca a mensagem de erro completa (copiar/colar).
+- Se nao houver mensagem de erro, peca para descrever o comportamento observado.
 
 ### 2. Isolar (feed-back: Como estou indo?)
 
