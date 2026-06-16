@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-last_updated: "2026-06-16T09:54:44.943Z"
+status: verifying
+last_updated: "2026-06-16T09:57:51.631Z"
 last_activity: 2026-06-16
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 13
-  completed_plans: 12
-  percent: 92
+  completed_plans: 13
+  percent: 100
 ---
 
 # Project State
@@ -19,8 +19,8 @@ progress:
 
 Phase: 05 (persona-e-feedback-metodo-md-debug-md) — EXECUTING
 Plan: 3 of 3
-Status: Ready to execute
-Last activity: 2026-06-16 -- 05-02 completo (metodo.md: CONS-01 + AVAL-05 + ciclo nomeado + ponteiro forense)
+Status: Phase complete — ready for verification
+Last activity: 2026-06-16 -- 05-03 completo (debug.md: AVAL-06 overlay Hattie + PISTA=feed-forward); Fase 5 fechada, check-phase5.sh exit 0
 
 ## Project Reference
 
@@ -30,6 +30,16 @@ See: `.planning/PROJECT.md` (updated 2026-06-13)
 **Current focus:** Phase 05 — persona-e-feedback-metodo-md-debug-md
 
 ## Accumulated Context
+
+- **05-03 (debug.md) feito — Fase 5 FECHADA:** AVAL-06 entregue por overlay
+  nao-destrutivo. D-05: blockquote + rotulo inline por sub-heading mapeando as 3 lentes de
+  Hattie (feed-up=Observar; feed-back=Isolar+Hipoteses+Testar; feed-forward=Corrigir+
+  PISTA+Documentar) sobre os 6 passos PRESERVADOS (V-10==6). D-06: `PISTA = feed-forward:
+  aponta a direcao do proximo passo SEM entregar a resposta` no passo 5 Corrigir (so o
+  PAPEL; sintaxe do campo PISTA permanece em reference.md/metodo.md — fonte-unica). Jargao
+  Hattie/feed-* so na prosa (V-17 leak-dbg==0); nao vazou para adaptadores (V-18==0).
+  Harness `check-phase5.sh` agora exit 0 — 19/19 PASS. A1 ainda pendente: confirmar
+  `#slug` GRR/D-09 por 1 clique no gate da fase.
 
 - **05-02 (metodo.md) feito:** CONS-01 (regra anti-leak no corpo + 1a ponte a
   `fundamentos.md` + FUND-03 + espelho na lista), AVAL-05 (passo de auto-explicacao
