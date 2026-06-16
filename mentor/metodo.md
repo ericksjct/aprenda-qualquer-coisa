@@ -36,7 +36,9 @@ na sessao.
 
 ## Conduta por marco (ciclo)
 
-1. Conceito em DOIS canais, sempre antes da tentativa:
+1. Conceito em DOIS canais, sempre antes da tentativa — essa abertura e o **retrieval
+   (recuperacao ativa)**: puxe o que ele ja sabe antes de apresentar o novo (a forma de
+   sessao esta em [tutor.md](tutor.md), "Passo 1 — Recuperacao ativa").
    - **Escrito (insumo confiavel)**: aponte o aluno para a **aula do passo**
      (`aulas/P0x-<slug>.md`). Ela carrega a teoria minima para concluir o passo SEM
      buscar na internet nem depender da PISTA — objetivo do passo, o que voce espera
@@ -52,9 +54,10 @@ na sessao.
    em `exercicios/` (ver regra de drill). Caso contrario, va direto a aplicacao.
 3. Deixe `TODO(human)` em `projeto/` + uma **pergunta-guia** socratica **calibrada ao
    substrato**: a pergunta so vale se o aluno tem materia-prima pra responde-la. Se o
-   `TODO` exige sintaxe que ele NUNCA viu (zero-absoluto no assunto), inverta para
-   "eu faco -> voce faz": mostre um exemplo resolvido e explicado, e peca a aplicacao
-   numa variacao. O scaffold usa o formato completo (META, PORQUE, PRESSUPOE, ARQUIVOS,
+   `TODO` exige sintaxe que ele NUNCA viu (zero-absoluto no assunto), inverta para a
+   **GRR 3 fases** (eu faco -> nos fazemos -> voce faz; sintaxe no dono
+   [reference.md](reference.md), "Sintaxe nova de verdade"): mostre um exemplo resolvido
+   e explicado, e peca a aplicacao numa variacao. O scaffold usa o formato completo (META, PORQUE, PRESSUPOE, ARQUIVOS,
    EXEMPLO-DE-RESULTADO, DONE, PERGUNTA-GUIA, TODO, PISTA) — antes de entregar, valide
    o `PRESSUPOE` contra os passos ja fechados do `CAMINHO.md` e a tabela de substrato
    do `PROGRESSO.md`; o `TODO(human)` descreve COMPORTAMENTO (entrada -> saida, o que
@@ -101,6 +104,8 @@ Em vez de apenas apontar o erro, conduza uma investigacao sistematica:
 Se o aluno estiver travado ha mais de 10 minutos no mesmo erro, ofereca a pista
 gradual (comentada no scaffold) ou, em ultimo caso, a resposta com explicacao.
 
+Esse protocolo e um ciclo de feedback tri-partido — veja `/debug` para a forma completa.
+
 ## Regra de drill (`exercicios/`)
 
 - **Condicional**, nao obrigatorio: gere drill so quando o conceito for novo x nao-trivial
@@ -143,6 +148,9 @@ ajuste: o aluno so consegue avancar copiando a PISTA — isso quer dizer andaime
 demais pro substrato, conserte o scaffold.
 
 ## Fechamento de marco
+
+O fechamento e o **mastery gate** do ciclo — a verificacao de dominio por marco mora no
+dono [fecha-marco.md](fecha-marco.md) ("Passo 1 — Mastery gate").
 
 Passou no "done" -> curadoria -> `git tag marco-NN-<slug>` (no repo do proprio projeto)
 -> atualize `PROGRESSO.md`
