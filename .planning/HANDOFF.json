@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-06-16T10:07:19.666Z",
+  "phase": "05",
+  "phase_name": "persona-e-feedback-metodo-md-debug-md",
+  "phase_dir": ".planning/phases/05-persona-e-feedback-metodo-md-debug-md",
+  "plan": 3,
+  "task": null,
+  "total_tasks": 7,
+  "status": "paused",
+  "completed_tasks": [
+    {"id": 1, "name": "05-01 harness Wave 0 (extract-fenced.sh + check-phase5.sh V-01..V-18)", "status": "done", "commit": "05c10fd"},
+    {"id": 2, "name": "05-02 metodo.md (anti-leak D-01/02, check formativo D-03/04, ciclo nomeado D-08/09, ponteiro forense D-07)", "status": "done", "commit": "dac7d98"},
+    {"id": 3, "name": "05-03 debug.md (overlay Hattie D-05, PISTA=feed-forward D-06)", "status": "done", "commit": "12605e8"},
+    {"id": 4, "name": "code review (0 critical, 0 warning, 1 info IN-01)", "status": "done", "commit": "536439e"},
+    {"id": 5, "name": "regression gate (harnesses fases 2/4/5 todos exit 0) + schema drift none", "status": "done"},
+    {"id": 6, "name": "verify_phase_goal (gsd-verifier: 4/4 must-haves, status human_needed)", "status": "done"},
+    {"id": 7, "name": "05-HUMAN-UAT.md persisted (2 itens pendentes)", "status": "done", "commit": "489709e"}
+  ],
+  "remaining_tasks": [
+    {"id": 8, "name": "Usuario aprova os 2 itens de verificacao humana OU reporta problema", "status": "not_started"},
+    {"id": 9, "name": "Se aprovado: marcar fase completa (phase complete 05) + commit ROADMAP/STATE/REQUIREMENTS/05-VERIFICATION.md + evoluir PROJECT.md", "status": "not_started"},
+    {"id": 10, "name": "Apontar Fase 6 (auditoria de consistencia)", "status": "not_started"}
+  ],
+  "blockers": [
+    {"description": "Fase 5 nao pode ser marcada completa ate o usuario decidir sobre os 2 itens de verificacao humana (navegacao dos links + tom editorial)", "type": "human_action", "workaround": "O agente pode ler os arquivos renderizados e adiantar os 2 checks se o usuario autorizar"}
+  ],
+  "human_actions_pending": [
+    {"action": "Clicar os links inline de metodo.md/debug.md (reference.md/tutor.md/fecha-marco.md//debug) e confirmar navegacao", "context": "verify_phase_goal retornou human_needed; A1 ja resolvido (links sao ref de arquivo plana, sem #slug)", "blocking": true},
+    {"action": "Ler o gate de curadoria + overlay de Hattie e confirmar tom (1 pergunta formativa, nao quiz; overlay enquadra, nao reescreve)", "context": "item editorial do verifier", "blocking": true}
+  ],
+  "decisions": [
+    {"decision": "Execucao SEQUENCIAL sem worktree", "rationale": "Windows (worktrees frageis) + fase trivial (5 tasks de doc); planos da Wave 2 tocam arquivos disjuntos", "phase": "05"},
+    {"decision": "A1 (slug fragil do GRR) considerado resolvido", "rationale": "os links do ciclo usam referencia de arquivo plana [reference.md](reference.md) SEM #slug; a fragilidade do slug nao se aplica", "phase": "05"},
+    {"decision": "IN-01 (acentos em debug.md:31-32) registrado como advisory, nao gap", "rationale": "acentos pre-existentes anteriores ao diff base desta fase; limpeza fica para a auditoria da Fase 6", "phase": "05"}
+  ],
+  "uncommitted_files": [
+    ".planning/phases/05-persona-e-feedback-metodo-md-debug-md/05-VERIFICATION.md (saida do verifier; sera commitada no fechamento da fase)",
+    ".planning/config.json (modificacao pre-existente, nao desta sessao)",
+    ".planning/phases/04-gate-e-retrieval-fecha-marco-md-tutor-md/04-02-PLAN.md (modificacao pre-existente, nao desta sessao)"
+  ],
+  "next_action": "Perguntar ao usuario: 'aprovado' (marcar fase completa) ou reportar problema nos 2 itens de 05-HUMAN-UAT.md (gap closure). Se aprovado: rodar `node gsd-tools.cjs phase complete 05`, commitar tracking + 05-VERIFICATION.md, evoluir PROJECT.md, e apontar /gsd-discuss-phase 6 ou /gsd-plan-phase 6.",
+  "context_notes": "Pipeline GSD discuss->plan->execute da Fase 5 concluido nesta sequencia de sessoes. Tudo verde no automatico (harness 19/19, regressao 2/4/5 ok, code review limpo). So falta o aval humano para fechar. NAO marcar completa sem o usuario decidir. A descoberta-chave foi o A1 ja estar resolvido pela escolha de links de arquivo plano."
+}
