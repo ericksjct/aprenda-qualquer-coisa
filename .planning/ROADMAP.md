@@ -113,7 +113,7 @@ Plans:
   4. Nenhuma pratica deste milestone foi duplicada nos adaptadores (`.claude/`, `AGENTS.md`): eles continuam so apontando para `mentor/`, sem conteudo de metodo.
 **Plans**: 3 plans
 Plans:
-- [ ] 06-01-PLAN.md -- Wave 1: escrever o harness permanente `scripts/check-consistencia.sh` (V-01..V-16; V-16 red esperado)
+- [x] 06-01-PLAN.md -- Wave 1: escrever o harness permanente `scripts/check-consistencia.sh` (V-01..V-16; V-16 red esperado)
 - [ ] 06-02-PLAN.md -- Wave 2: fix IN-01 (acentos debug.md:31-32) + flip dos 10 status pendentes em fundamentos.md (D-04) -> suite verde
 - [ ] 06-03-PLAN.md -- Wave 3: relatorio de fechamento `06-AUDITORIA.md` (confirmacao semantica D-03 + politica de escalacao D-05)
 

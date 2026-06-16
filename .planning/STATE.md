@@ -2,34 +2,46 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-last_updated: "2026-06-16T22:54:01.375Z"
-last_activity: 2026-06-16 -- Fase 5 marcada completa apos aprovacao humana (links + tom editorial); proxima e a Fase 6 (auditoria transversal anti-drift/anti-cargo-cult)
+status: executing
+last_updated: "2026-06-16T23:33:18.448Z"
+last_activity: 2026-06-16
 progress:
   total_phases: 6
   completed_phases: 5
-  total_plans: 13
-  completed_plans: 13
-  percent: 100
+  total_plans: 16
+  completed_plans: 14
+  percent: 88
 ---
 
 # Project State
 
 ## Current Position
 
-Phase: 6 (auditoria-de-consistencia) — READY TO PLAN
-Plan: Not started
-Status: Fase 5 FECHADA (verifier passed + aval humano dos 2 itens de UAT em 2026-06-16). Ultima fase do milestone v1.0.
-Last activity: 2026-06-16 -- Fase 5 marcada completa apos aprovacao humana (links + tom editorial); proxima e a Fase 6 (auditoria transversal anti-drift/anti-cargo-cult)
+Phase: 06 (auditoria-de-consistencia) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-06-16
 
 ## Project Reference
 
 See: `.planning/PROJECT.md` (updated 2026-06-13)
 
 **Core value:** O agente ensina a construir (aluno sai capaz de explicar e estender o projeto sozinho), ancorado em ciência da aprendizagem reconhecida — nunca resolve pelo aluno.
-**Current focus:** Phase 06 — auditoria-de-consistencia (ultima fase do milestone)
+**Current focus:** Phase 06 — auditoria-de-consistencia
 
 ## Accumulated Context
+
+- **06-01 (harness) feito:** `scripts/check-consistencia.sh` commitado (`2861024`) — PRIMEIRO
+  tool de verificacao permanente do toolkit (D-01 artefato a). Codifica V-01..V-16:
+  11 `check_has` anti-cargo-cult (CONS-02, todos PASS), V-12 comando<->arquivo (set fechado),
+  V-13 backtick-paths (SKIP not-in-repo), V-14 zero jargao nos adaptadores (`AGENTS.md`+`.claude/`),
+  V-15 set-equality DOIS-LADOS por arquivo (AGENTS.md/README.md/metodo.md — 3 PASS), V-16 acentos.
+  Decisao chave: V-15 negativo extrai `/comando` delimitado por backtick (`` `/x` ``) — o
+  `/[a-z-]+` aberto casava componentes de path (`mentor/metodo.md`->`/metodo`) gerando falsos.
+  Baseline (confirmado por execucao): V-01..V-15 PASS, V-16 FAIL got=2 (cedilhas em
+  `debug.md:31-32`), exit 1 — red ESPERADO. CONS-02 e CONS-03 marcados completos.
+  **Plano 02** consome este baseline: fix do IN-01 (V-16->verde) + flip D-04 em `fundamentos.md`
+  + relatorio de fechamento (D-03 semantica + D-05 escalacoes, nenhuma esperada).
 
 - **05-03 (debug.md) feito — Fase 5 FECHADA:** AVAL-06 entregue por overlay
   nao-destrutivo. D-05: blockquote + rotulo inline por sub-heading mapeando as 3 lentes de

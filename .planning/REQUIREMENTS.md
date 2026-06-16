@@ -45,8 +45,8 @@
 ### Consistência & integridade (CONS)
 
 - [x] **CONS-01**: `metodo.md` declara como regra/anti-padrão que a fundamentação guia o agente mas o jargão de framework nunca é citado ao aluno na sessão (anti theory-leak)
-- [ ] **CONS-02**: Cada prática listada em `fundamentos.md` tem um "aplicado em <doc>" verificável (anti cargo-cult: nenhuma teoria sem aterrissagem)
-- [ ] **CONS-03**: Auditoria de consistência final passa: todo `/comando` tem `mentor/<comando>.md`; paths em backticks resolvem; `README`/`AGENTS.md`/`metodo.md` descrevem o mesmo conjunto de procedimentos; nenhuma prática foi duplicada nos adaptadores (`.claude/`, `AGENTS.md`)
+- [x] **CONS-02**: Cada prática listada em `fundamentos.md` tem um "aplicado em <doc>" verificável (anti cargo-cult: nenhuma teoria sem aterrissagem)
+- [x] **CONS-03**: Auditoria de consistência final passa: todo `/comando` tem `mentor/<comando>.md`; paths em backticks resolvem; `README`/`AGENTS.md`/`metodo.md` descrevem o mesmo conjunto de procedimentos; nenhuma prática foi duplicada nos adaptadores (`.claude/`, `AGENTS.md`)
 
 ## v2 Requirements
 
@@ -95,8 +95,8 @@
 | AVAL-05 | Phase 5 | Complete |
 | AVAL-06 | Phase 5 | Complete |
 | CONS-01 | Phase 5 | Complete |
-| CONS-02 | Phase 6 | Pending |
-| CONS-03 | Phase 6 | Pending |
+| CONS-02 | Phase 6 | Complete |
+| CONS-03 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 21 total
