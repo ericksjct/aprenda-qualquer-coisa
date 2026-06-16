@@ -33,8 +33,8 @@
 - [ ] **AVAL-02**: `fecha-marco.md` agenda revisão espaçada (spacing) de conceitos de marcos anteriores, e `PROGRESSO.md` ganha um campo de agenda de retrieval/dívidas para registrar isso
 - [ ] **AVAL-03**: `fecha-marco.md` enquadra o gate de marco explicitamente como mastery gate, com critério de capacidade (não só "o código roda")
 - [ ] **AVAL-04**: O gate inclui um componente de síntese/transferência (o aluno explica e estende sem andaime), combatendo proxy-completion / atomização
-- [ ] **AVAL-05**: O gate de curadoria (`metodo.md`) inclui um check formativo + prompt de auto-explicação antes de avançar
-- [ ] **AVAL-06**: O protocolo de forense (`debug.md`) é reescrito como feedback tri-partido (feed-up / feed-back / feed-forward, Hattie & Timperley), com a PISTA enquadrada como feed-forward que preserva a reflexão
+- [x] **AVAL-05**: O gate de curadoria (`metodo.md`) inclui um check formativo + prompt de auto-explicação antes de avançar
+- [x] **AVAL-06**: O protocolo de forense (`debug.md`) é reescrito como feedback tri-partido (feed-up / feed-back / feed-forward, Hattie & Timperley), com a PISTA enquadrada como feed-forward que preserva a reflexão
 
 ### Carga cognitiva & acessibilidade (CARGA)
 
@@ -44,7 +44,7 @@
 
 ### Consistência & integridade (CONS)
 
-- [ ] **CONS-01**: `metodo.md` declara como regra/anti-padrão que a fundamentação guia o agente mas o jargão de framework nunca é citado ao aluno na sessão (anti theory-leak)
+- [x] **CONS-01**: `metodo.md` declara como regra/anti-padrão que a fundamentação guia o agente mas o jargão de framework nunca é citado ao aluno na sessão (anti theory-leak)
 - [ ] **CONS-02**: Cada prática listada em `fundamentos.md` tem um "aplicado em <doc>" verificável (anti cargo-cult: nenhuma teoria sem aterrissagem)
 - [ ] **CONS-03**: Auditoria de consistência final passa: todo `/comando` tem `mentor/<comando>.md`; paths em backticks resolvem; `README`/`AGENTS.md`/`metodo.md` descrevem o mesmo conjunto de procedimentos; nenhuma prática foi duplicada nos adaptadores (`.claude/`, `AGENTS.md`)
 
@@ -92,9 +92,9 @@
 | AVAL-02 | Phase 4 | Pending |
 | AVAL-03 | Phase 4 | Pending |
 | AVAL-04 | Phase 4 | Pending |
-| AVAL-05 | Phase 5 | Pending |
-| AVAL-06 | Phase 5 | Pending |
-| CONS-01 | Phase 5 | Pending |
+| AVAL-05 | Phase 5 | Complete |
+| AVAL-06 | Phase 5 | Complete |
+| CONS-01 | Phase 5 | Complete |
 | CONS-02 | Phase 6 | Pending |
 | CONS-03 | Phase 6 | Pending |
 

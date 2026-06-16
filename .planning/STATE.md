@@ -3,33 +3,41 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-06-16T01:55:07.220Z"
+last_updated: "2026-06-16T09:50:03.939Z"
 last_activity: 2026-06-16
 progress:
   total_phases: 6
   completed_phases: 4
-  total_plans: 10
-  completed_plans: 10
-  percent: 100
+  total_plans: 13
+  completed_plans: 11
+  percent: 85
 ---
 
 # Project State
 
 ## Current Position
 
-Phase: 05
-Plan: Not started
-Status: Executing Phase 04
-Last activity: 2026-06-16
+Phase: 05 (persona-e-feedback-metodo-md-debug-md) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
+Last activity: 2026-06-16 -- 05-01 completo (harness Wave 0)
 
 ## Project Reference
 
 See: `.planning/PROJECT.md` (updated 2026-06-13)
 
 **Core value:** O agente ensina a construir (aluno sai capaz de explicar e estender o projeto sozinho), ancorado em ciência da aprendizagem reconhecida — nunca resolve pelo aluno.
-**Current focus:** Phase 04 — gate-e-retrieval-fecha-marco-md-tutor-md
+**Current focus:** Phase 05 — persona-e-feedback-metodo-md-debug-md
 
 ## Accumulated Context
+
+- **Harness Wave 0 da Fase 5 pronto** (05-01): `scripts/extract-fenced.sh` (clone
+  byte-a-byte da Fase 4) + `scripts/check-phase5.sh` codificam V-01..V-18. Baseline
+  coerente com Fases 2/4: positivos de prosa-nao-escrita em red, V-16 (ANCHOR-RESOLVE),
+  V-17 (anti-leak escopado a blocos cercados) e V-18 (anti-drift adaptadores) em green.
+  05-02/05-03 editam `mentor/metodo.md` e `mentor/debug.md` com prova por check.
+  Lembrete A1: confirmar o `#slug` dos links D-09 por 1 clique no gate (V-16 so prova
+  que o heading literal existe).
 
 - Projeto brownfield: o toolkit "Mentor de Aprendizado por Projeto" já existe e está
   mapeado em `.planning/codebase/`. Este milestone edita docs de `mentor/`, não cria
