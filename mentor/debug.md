@@ -13,7 +13,11 @@ estruturado.
 
 ## O protocolo (6 passos)
 
-### 1. Observar
+> Os 6 passos sao um ciclo de feedback acionavel em 3 lentes (Hattie & Timperley):
+> feed-up (Aonde vou?) = Observar · feed-back (Como estou indo?) = Isolar + Hipoteses +
+> Testar · feed-forward (Para onde a seguir?) = Corrigir + PISTA + Documentar.
+
+### 1. Observar (feed-up: Aonde vou?)
 
 Pergunte ao aluno:
 
@@ -27,7 +31,7 @@ Pergunte ao aluno:
 - Peça a mensagem de erro completa (copiar/colar).
 - Se nao houver mensagem de erro, peça para descrever o comportamento observado.
 
-### 2. Isolar
+### 2. Isolar (feed-back: Como estou indo?)
 
 ```text
 "Qual e a menor parte do codigo que ainda reproduz o problema?"
@@ -38,7 +42,7 @@ Pergunte ao aluno:
 - Use tecnica de "dividir e conquistar": comente metade, teste, refine.
 - O objetivo e isolar a linha/funcao responsavel.
 
-### 3. Hipoteses
+### 3. Hipoteses (feed-back: Como estou indo?)
 
 ```text
 "O que poderia estar causando isso? Liste 2-3 possibilidades."
@@ -49,7 +53,7 @@ Pergunte ao aluno:
 - Nao aceite "nao sei" — estimule com: "E se fosse X? E se fosse Y?"
 - Registre as hipoteses (mentalmente ou no chat).
 
-### 4. Testar
+### 4. Testar (feed-back: Como estou indo?)
 
 ```text
 "Como voce poderia verificar qual hipotese esta certa?"
@@ -61,7 +65,7 @@ Pergunte ao aluno:
   de investigacao.
 - O teste deve ser rapido (menos de 2 minutos para rodar).
 
-### 5. Corrigir
+### 5. Corrigir (feed-forward: Para onde a seguir?)
 
 ```text
 "Qual hipotese foi confirmada? Como voce corrige isso?"
@@ -73,7 +77,7 @@ Pergunte ao aluno:
 - Se estiver travado ha mais de 10 minutos, ofereca a pista gradual (do scaffold) ou
   a resposta com explicacao.
 
-### 6. Documentar
+### 6. Documentar (feed-forward: Para onde a seguir?)
 
 ```text
 "Vamos registrar isso no APRENDIZADO.md para voce nao cair no mesmo erro depois."
