@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-06-16T23:33:18.448Z"
+last_updated: "2026-06-16T23:37:56.295Z"
 last_activity: 2026-06-16
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 16
-  completed_plans: 14
-  percent: 88
+  completed_plans: 15
+  percent: 94
 ---
 
 # Project State
@@ -18,9 +18,10 @@ progress:
 ## Current Position
 
 Phase: 06 (auditoria-de-consistencia) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-06-16
+Stopped at: Completed 06-02-PLAN.md
 
 ## Project Reference
 
@@ -30,6 +31,17 @@ See: `.planning/PROJECT.md` (updated 2026-06-13)
 **Current focus:** Phase 06 — auditoria-de-consistencia
 
 ## Accumulated Context
+
+- **06-02 (fixes IN-01 + D-04) feito:** commit `086a82b`. IN-01/D-07 quitado: `Peça`/`peça`
+  removidos de `debug.md:31-32` (V-16 red->green; `mentor/` com zero acentos). D-04: as 10
+  marcas `pendente` da coluna "Aplicado em" de `fundamentos.md` viraram `(aplicado)`; zero
+  `pendente` no arquivo; as 3 linhas `(ja presente)` (First Principles, CLT-core, ZPD)
+  intactas. Auto-fix (Rule 1): a meta-descricao da coluna (linha 16-17) ainda citava
+  `(Fase N, pendente)` como exemplo — reescrita para `(aplicado)`, satisfazendo o criterio
+  `rg -c pendente => 0` e mantendo coerencia com a tabela. Suite `check-consistencia.sh`
+  agora exit 0 (V-01..V-16 todos PASS). NENHUMA escalacao estrutural (D-05) — os 11 anchors
+  CONS-02 ja estavam verdes no Plano 01. **Plano 03** = relatorio de fechamento (D-03
+  semantica + D-05 escalacoes, nenhuma esperada).
 
 - **06-01 (harness) feito:** `scripts/check-consistencia.sh` commitado (`2861024`) — PRIMEIRO
   tool de verificacao permanente do toolkit (D-01 artefato a). Codifica V-01..V-16:
@@ -41,6 +53,7 @@ See: `.planning/PROJECT.md` (updated 2026-06-13)
   Baseline (confirmado por execucao): V-01..V-15 PASS, V-16 FAIL got=2 (cedilhas em
   `debug.md:31-32`), exit 1 — red ESPERADO. CONS-02 e CONS-03 marcados completos.
   **Plano 02** consome este baseline: fix do IN-01 (V-16->verde) + flip D-04 em `fundamentos.md`
+
   + relatorio de fechamento (D-03 semantica + D-05 escalacoes, nenhuma esperada).
 
 - **05-03 (debug.md) feito — Fase 5 FECHADA:** AVAL-06 entregue por overlay
