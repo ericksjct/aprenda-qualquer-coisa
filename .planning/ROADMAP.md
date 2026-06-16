@@ -84,8 +84,8 @@ Plans:
 Plans:
 - [x] 04-01-PLAN.md -- Wave 0: clonar extract-fenced.sh + autorar check-phase4.sh (V-01..V-15)
 - [x] 04-02-PLAN.md -- reference.md: secao `## Agenda de retrieval` no template PROGRESSO.md (D-09), dona do contrato cross-file
-- [ ] 04-03-PLAN.md -- fecha-marco.md: mastery gate + extensao (D-05..D-08), escreve a agenda (D-10), proxima acao unica + SDT (D-12/D-13)
-- [ ] 04-04-PLAN.md -- tutor.md: passo de Recuperacao ativa antes do recap (D-01..D-04), proxima acao unica + SDT (D-12/D-13) + gate cross-file (V-13)
+- [x] 04-03-PLAN.md -- fecha-marco.md: mastery gate + extensao (D-05..D-08), escreve a agenda (D-10), proxima acao unica + SDT (D-12/D-13)
+- [x] 04-04-PLAN.md -- tutor.md: passo de Recuperacao ativa antes do recap (D-01..D-04), proxima acao unica + SDT (D-12/D-13) + gate cross-file (V-13)
 
 ### Phase 5: Persona e feedback (metodo.md + debug.md)
 **Goal**: A persona amarra o ciclo por marco nomeando as etapas ja definidas, fixa a regra anti-theory-leak e o check formativo de curadoria, e o protocolo de forense vira feedback tri-partido.
