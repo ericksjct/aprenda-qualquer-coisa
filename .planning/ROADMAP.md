@@ -96,7 +96,11 @@ Plans:
   2. O gate de curadoria em `metodo.md` inclui um check formativo + prompt de auto-explicacao antes de avancar.
   3. O protocolo de forense em `debug.md` esta reescrito como feedback tri-partido (feed-up / feed-back / feed-forward, Hattie & Timperley), com a PISTA enquadrada como feed-forward que preserva a reflexao do aluno (nao entrega a resposta).
   4. O ciclo por marco em `metodo.md` cita as etapas nomeadas (gate, retrieval, GRR 3 fases) por referencia, sem duplicar a teoria que mora em `fundamentos.md` nem as definicoes que moram nos docs donos.
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 05-01-PLAN.md -- Wave 0: clonar extract-fenced.sh + autorar check-phase5.sh (V-01..V-18)
+- [ ] 05-02-PLAN.md -- metodo.md: anti-leak+FUND-03 (CONS-01) + check formativo (AVAL-05) + ciclo nomeado (C4) + ponteiro forense (D-07)
+- [ ] 05-03-PLAN.md -- debug.md: overlay Hattie feed-up/back/forward sobre os 6 passos + PISTA=feed-forward (AVAL-06)
 
 ### Phase 6: Auditoria de consistencia
 **Goal**: Uma verificacao transversal final confirma que nenhuma teoria ficou sem aterrissagem (anti-cargo-cult) e que nenhum conteudo vazou para os adaptadores (anti-drift) apos editar 6+ docs em lote.
