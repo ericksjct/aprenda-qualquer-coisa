@@ -99,7 +99,7 @@ Plans:
 **Plans**: 3 plans
 Plans:
 - [x] 05-01-PLAN.md -- Wave 0: clonar extract-fenced.sh + autorar check-phase5.sh (V-01..V-18)
-- [ ] 05-02-PLAN.md -- metodo.md: anti-leak+FUND-03 (CONS-01) + check formativo (AVAL-05) + ciclo nomeado (C4) + ponteiro forense (D-07)
+- [x] 05-02-PLAN.md -- metodo.md: anti-leak+FUND-03 (CONS-01) + check formativo (AVAL-05) + ciclo nomeado (C4) + ponteiro forense (D-07)
 - [ ] 05-03-PLAN.md -- debug.md: overlay Hattie feed-up/back/forward sobre os 6 passos + PISTA=feed-forward (AVAL-06)
 
 ### Phase 6: Auditoria de consistencia
