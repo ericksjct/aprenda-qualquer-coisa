@@ -2,26 +2,27 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-last_updated: "2026-06-16T23:37:56.295Z"
-last_activity: 2026-06-16
+status: verifying
+stopped_at: Completed 06-03-PLAN.md
+last_updated: "2026-06-17T09:47:40.969Z"
+last_activity: 2026-06-17
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 16
-  completed_plans: 15
-  percent: 94
+  completed_plans: 16
+  percent: 100
 ---
 
 # Project State
 
 ## Current Position
 
-Phase: 06 (auditoria-de-consistencia) — EXECUTING
-Plan: 3 of 3
-Status: Ready to execute
-Last activity: 2026-06-16
-Stopped at: Completed 06-02-PLAN.md
+Phase: 06
+Plan: Not started
+Status: Phase complete — ready for verification
+Last activity: 2026-06-17
+Stopped at: Completed 06-03-PLAN.md
 
 ## Project Reference
 
@@ -31,6 +32,19 @@ See: `.planning/PROJECT.md` (updated 2026-06-13)
 **Current focus:** Phase 06 — auditoria-de-consistencia
 
 ## Accumulated Context
+
+- **06-03 (relatorio de fechamento) feito -- Fase 6 FECHADA:** commit `1d1622d`. Criado
+  `.planning/phases/06-auditoria-de-consistencia/06-AUDITORIA.md` (D-01 artefato b), o segundo
+  e ultimo entregavel da fase. Cola a prova mecanica (`sh scripts/check-consistencia.sh` =>
+  `== 0 fail(s) ==`, exit 0, V-01..V-16) + mapeamento check->V. Confirmacao semantica D-03
+  one-time (a unica verificacao MANUAL da fase): o agente ABRIU cada linha de aterrissagem do
+  semantic_confirmation_map e julgou o sentido -- 10/10 praticas CONS-02 fazem sentido (citacao
+  direta da frase lida em cada veredito; nao mencao incidental). Politica D-05 declarada; 0
+  achados estruturais; correcoes triviais (IN-01 + 10 flips D-04) documentadas; FUT-04 + linter
+  de acentos permanente marcados fora de escopo (v2). Relatorio com ZERO letras acentuadas
+  (`rg -c` => 0). NENHUMA edicao em `mentor/` ou no script -- so documenta o estado verde.
+  CONS-02 e CONS-03 fechados. Ambos os artefatos de D-01 entregues. **Milestone v1.0 pronto
+  para `/gsd-verify-work` + `/gsd-complete-milestone`.**
 
 - **06-02 (fixes IN-01 + D-04) feito:** commit `086a82b`. IN-01/D-07 quitado: `Peça`/`peça`
   removidos de `debug.md:31-32` (V-16 red->green; `mentor/` com zero acentos). D-04: as 10
