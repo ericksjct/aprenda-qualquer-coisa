@@ -34,26 +34,34 @@ reconhecida**, não em método caseiro.
 - ✓ Agnosticismo de LLM (mesmo método em múltiplas ferramentas) — existing
 - ✓ Script opcional de referência de roadmap (`scripts/roadmap_fetch.py`, stdlib) — existing
 
+<!-- Entregue no marco v1.0 (Ancoragem em ciencia da aprendizagem) — 21/21 requisitos. -->
+
+- ✓ **Dim. Estrutura & objetivos** — verbo de capacidade (Objetivo) no CAMINHO, backward design
+  e GRR de 3 fases nomeados em `reference.md`/`novo-projeto.md` — v1.0
+- ✓ **Dim. Engajamento & retenção** — "próxima ação única" no `tutor.md`/`PROGRESSO.md` e
+  "primeiro done leve" anti-evasão ligado ao Walking Skeleton — v1.0
+- ✓ **Dim. Avaliação & feedback** — mastery gate com síntese/transferência, retrieval ativo na
+  abertura, revisão espaçada e feedback tri-partido de Hattie no `debug.md` — v1.0
+- ✓ **Dim. Carga cognitiva & acessibilidade** — fading por substrato, worked example análogo e
+  os 3 princípios de Mayer que transferem para texto em `reference.md` — v1.0
+- ✓ **Doc de fundação** — `mentor/fundamentos.md` catalogando 6+6 frameworks com fontes,
+  vocabulário do método, "aplicado em <doc>" e mitos refutados — v1.0
+- ✓ **Tecer nos docs existentes** — práticas embutidas em `metodo.md`, `reference.md`,
+  `novo-projeto.md`, `tutor.md`, `fecha-marco.md`, `debug.md` — v1.0
+- ✓ **Anti-drift mecânico** — `scripts/check-consistencia.sh` verifica anti-cargo-cult +
+  anti-drift dos adaptadores a cada execução (fecha o concern #1 do mapa de codebase) — v1.0
+
 ### Active
 
-<!-- Milestone atual: ancorar o método em fundação reconhecida de design instrucional
-     e boas práticas de cursos online assíncronos, nas 4 dimensões. Hipóteses até
-     entregues; escopo concreto será recortado em REQUIREMENTS.md após a pesquisa. -->
+<!-- Proximo marco v2.0: localizacao / i18n do toolkit (pre-escopado). Escopo concreto
+     sera recortado em REQUIREMENTS.md via /gsd-new-milestone apos a pesquisa. -->
 
-- [ ] **Dim. Estrutura & objetivos** — o método ancora estrutura/sequenciamento em design
-  instrucional reconhecido (ex: backward design, objetivos de aprendizagem mensuráveis,
-  Bloom) e aplica isso ao CAMINHO/marcos
-- [ ] **Dim. Engajamento & retenção** — o método trata a evasão característica do async
-  (motivação, microlearning, ritmo, senso de progresso) com práticas fundamentadas
-- [ ] **Dim. Avaliação & feedback** — o método ancora "done"/curadoria/diário em
-  avaliação formativa, mastery learning, retrieval practice e repetição espaçada
-- [ ] **Dim. Carga cognitiva & acessibilidade** — apresentação de aula/scaffold ancorada
-  em Cognitive Load Theory, princípios multimídia (Mayer) e design inclusivo
-- [ ] **Doc de fundação** — novo `mentor/fundamentos.md` catalogando as práticas adotadas
-  com fontes, traduzidas para o vocabulário do método
-- [ ] **Tecer nos docs existentes** — aplicações concretas das práticas embutidas em
-  `metodo.md`, `reference.md`, `novo-projeto.md`, `tutor.md`, `fecha-marco.md`, `debug.md`
-  (checklists e templates atualizados)
+- [ ] **v2.0 — Localização (i18n)** — tornar o método/adaptadores utilizáveis em mais de um
+  idioma sem quebrar fonte-única nem agnosticismo de LLM (escopo a definir)
+- [ ] **FUT-04 carregado** — o anti-drift mecânico (`check-consistencia.sh`) já cobre o concern
+  #1; avaliar estendê-lo conforme novos docs/idiomas entrarem
+- [ ] **Backlog v2 (FUT-01/02/03/05)** — interleaving, modo "tente antes" (Productive Failure,
+  validar evidência), desafio opcional (SDT) e rubrica reutilizável de curadoria
 
 ### Out of Scope
 
@@ -67,12 +75,13 @@ reconhecida**, não em método caseiro.
 
 ## Context
 
-- Toolkit brownfield já mapeado em `.planning/codebase/` (7 docs). Releia
-  `ARCHITECTURE.md` e `STRUCTURE.md` antes de planejar mudanças.
+- **Estado pós-v1.0:** toolkit brownfield (markdown + scripts), ~1.412 linhas em `mentor/`,
+  método ancorado em ciência da aprendizagem em todos os 7 docs. Mapa em `.planning/codebase/`
+  (7 docs) — releia `ARCHITECTURE.md`/`STRUCTURE.md` antes de mudanças.
 - Idioma do repo: português, predominantemente **sem acentos** (escolha de robustez de
-  encoding). Manter o padrão ao editar.
-- Concern aberto do mapa (#1): **drift** entre `mentor/` e adaptadores não tem verificação
-  automatizada — relevante porque este milestone vai mexer em vários docs de `mentor/`.
+  encoding). Manter o padrão ao editar `mentor/`.
+- Concern #1 do mapa (drift `mentor/`↔adaptadores) **RESOLVIDO** em v1.0:
+  `scripts/check-consistencia.sh` é o gate mecânico permanente (anti-cargo-cult + anti-drift).
 - Risco de execução: o agente pode não aplicar o método (persona não ativada). Reforçar
   boas práticas como instruções verificáveis ajuda a mitigar.
 
@@ -88,11 +97,12 @@ reconhecida**, não em método caseiro.
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Ancorar o método em fundação reconhecida (vs. método caseiro) | Dor principal relatada: falta autoridade e completude | — Pending |
-| Cobrir as 4 dimensões (estrutura, engajamento, avaliação, carga cognitiva) | Usuário marcou todas como relevantes | — Pending |
-| Aberto a reestruturar a espinha se a pesquisa justificar | Usuário não quer travar conceitos centrais se houver organização melhor | ⚠️ Revisit (proteger identidade do produto: ensinar-construindo, agnóstico de LLM) |
-| Forma: `mentor/fundamentos.md` novo + tecer nos docs existentes | Mantém fonte-única e dá um catálogo rastreável de fontes | — Pending |
-| Pesquisa-primeiro antes de definir requisitos/"done" | "Done" indefinido; práticas de mercado guiam o recorte | — Pending |
+| Ancorar o método em fundação reconhecida (vs. método caseiro) | Dor principal relatada: falta autoridade e completude | ✓ Good — entregue em v1.0 (`fundamentos.md` + tecido nos docs) |
+| Cobrir as 4 dimensões (estrutura, engajamento, avaliação, carga cognitiva) | Usuário marcou todas como relevantes | ✓ Good — todas as 4 validadas em v1.0 |
+| Aberto a reestruturar a espinha se a pesquisa justificar | Usuário não quer travar conceitos centrais se houver organização melhor | ✓ Good — identidade preservada (ensinar-construindo, agnóstico de LLM); ancoragem feita por overlay, sem reescrever a espinha |
+| Forma: `mentor/fundamentos.md` novo + tecer nos docs existentes | Mantém fonte-única e dá um catálogo rastreável de fontes | ✓ Good — fonte-única preservada; auditoria de consistência verde |
+| Pesquisa-primeiro antes de definir requisitos/"done" | "Done" indefinido; práticas de mercado guiam o recorte | ✓ Good — pesquisa guiou os 21 requisitos v1, todos satisfeitos |
+| Harness mecânico permanente (`check-consistencia.sh`) como gate anti-drift | Concern #1 do mapa de codebase: drift `mentor/`↔adaptadores não tinha verificação | ✓ Good — codifica anti-cargo-cult + anti-drift; roda da raiz, exit 0 |
 
 ## Evolution
 
@@ -112,4 +122,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-16 — Phase 5 complete (persona/feedback: `metodo.md` fixa a regra anti-theory-leak + check formativo de auto-explicacao no gate de curadoria e nomeia gate/retrieval/GRR por link aos docs donos; `debug.md` ganhou overlay tri-partido de Hattie (feed-up/back/forward) sobre os 6 passos preservados, com a PISTA enquadrada como feed-forward que nao entrega a resposta). Satisfaz AVAL-05, AVAL-06, CONS-01 — avanca a dim. Avaliacao & feedback. Verifier 4/4 + aval humano (navegacao dos links + tom editorial). Resta so a Phase 6 (auditoria de consistencia) para fechar o milestone v1.0. Antes: Phase 3 complete (bootstrap em `novo-projeto.md` ganhou evidencia de maestria por marco: campo `**Capacidade:**` no template PROGRESSO.md + instrucao no Passo 5, e nomeacao de backward design (Passo 4) e "primeiro done leve" anti-evasao (Passo 8), ambos linkando `fundamentos.md`). Avanca as dims. Estrutura & objetivos e Engajamento & retencao; `novo-projeto.md` feito dentro de "Tecer nos docs existentes". Antes: Phase 2 complete (templates de `reference.md` — verbo de capacidade, GRR 3 fases, fading/worked-example, Mayer).*
+*Last updated: 2026-06-17 — v1.0 "Ancoragem em ciencia da aprendizagem" SHIPPED. 6 fases, 16 planos, 21/21 requisitos satisfeitos (auditoria 3 fontes). O método deixou de ser caseiro: ganhou `fundamentos.md` (catálogo de frameworks com fontes) tecido em todos os docs de `mentor/`, mais um harness mecânico permanente (`check-consistencia.sh`) que fecha o concern #1 de drift. Próximo marco: v2.0 (localização/i18n) — definir via `/gsd-new-milestone`.*
