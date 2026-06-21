@@ -1,17 +1,16 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: Ancoragem em ciencia da aprendizagem
-status: shipped
-stopped_at: v1.0 milestone shipped (2026-06-17)
-last_updated: "2026-06-17T22:27:11.235Z"
+milestone_name: milestone
+status: completed
+stopped_at: Phase 7 context gathered
+last_updated: "2026-06-21T21:39:00.415Z"
 last_activity: 2026-06-17
 progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 16
-  completed_plans: 16
-  percent: 100
+  total_phases: 1
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
 ---
 
 # Project State
@@ -21,7 +20,7 @@ progress:
 Milestone: v1.0 — SHIPPED 2026-06-17 (tag v1.0)
 Status: Milestone complete — 6/6 fases, 16/16 planos, 21/21 requisitos
 Last activity: 2026-06-17
-Stopped at: v1.0 milestone shipped
+Stopped at: Phase 7 context gathered
 
 ## Project Reference
 
@@ -31,6 +30,12 @@ See: `.planning/PROJECT.md` (updated 2026-06-17)
 **Current focus:** Planejando o próximo marco — v2.0 (localização/i18n) via `/gsd-new-milestone`
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 7 added (marco v2.0): Ingestao de PDF do livro do aluno -> markdown via docling
+  (scripts Python). Dir `.planning/phases/07-ingestao-pdf-livro-via-docling/`. v2.0 mantem
+  i18n (pre-escopado) + esta phase; formalizar o marco com `/gsd-new-milestone`.
 
 - **06-03 (relatorio de fechamento) feito -- Fase 6 FECHADA:** commit `1d1622d`. Criado
   `.planning/phases/06-auditoria-de-consistencia/06-AUDITORIA.md` (D-01 artefato b), o segundo
