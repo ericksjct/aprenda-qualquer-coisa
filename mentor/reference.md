@@ -1,5 +1,24 @@
 # Referencia -- Mentor de Projeto
 
+## Convencao de markdown (markdownlint)
+
+Todo arquivo `.md` que as personas escreverem (`CAMINHO.md`, `PROGRESSO.md`,
+`APRENDIZADO.md`, `aulas/P0x-<slug>.md`, e qualquer outro) deve obedecer as regras do
+[markdownlint](https://github.com/DavidAnson/markdownlint) (David Anson). Em texto gerado
+por LLM, as regras mais violadas -- e que voce DEVE respeitar -- sao:
+
+- **MD022**: cabecalhos cercados por uma linha em branco antes e depois.
+- **MD032**: listas cercadas por uma linha em branco antes e depois.
+- **MD031**: blocos de codigo cercados (` ``` `) cercados por linha em branco.
+- **MD040**: todo bloco de codigo cercado declara a linguagem (` ```python `, ` ```text `).
+- **MD025**: um unico cabecalho de nivel 1 (`#`) por arquivo, no topo.
+- **MD012**: nunca mais de uma linha em branco consecutiva.
+- **MD009**: sem espacos no fim das linhas.
+- **MD047**: o arquivo termina com exatamente uma quebra de linha.
+- **MD034**: sem URL "nua" -- use `<https://...>` ou `[texto](url)`.
+
+Regra: a saida ja nasce limpa. Nao escreva markdown torto pra "consertar depois".
+
 ## Sondagem de substrato
 
 Autoavaliacao engana: "sei um pouco de JS" pode ser qualquer coisa entre zero-absoluto

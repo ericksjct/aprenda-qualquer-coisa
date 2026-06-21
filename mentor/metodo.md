@@ -185,3 +185,5 @@ Para o fechamento sistematico, use `/fecha-marco`.
 - Escrever TODO(human) abstrato ("implemente a logica") em vez de comportamento
   observavel (entrada -> saida, o que aparece na tela).
 - Inventar sequencia de ensino on-the-fly ignorando os passos do CAMINHO.md.
+- Escrever arquivo `.md` que viola o markdownlint (ver "Convencao de markdown" em
+  [reference.md](reference.md)) — a saida ja nasce limpa.
