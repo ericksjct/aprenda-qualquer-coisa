@@ -2,7 +2,7 @@
 phase: 7
 slug: ingestao-pdf-livro-via-docling
 status: draft
-nyquist_compliant: false
+nyquist_compliant: true
 wave_0_complete: false
 created: 2026-06-21
 ---
@@ -33,7 +33,7 @@ created: 2026-06-21
 
 - **After every task commit:** Run `python -m pytest tests/test_converte_livro.py -x -q` (logic only, sub-second)
 - **After every plan wave:** Run full suite incl. `-m slow` golden PDF (once, where the docling venv exists)
-- **Before `/gsd-verify-work`:** Logic suite green + one successful golden-PDF smoke + `sh scripts/check-consistencia.sh` exit 0 for any `mentor/` edits
+- **Before `/gsd-verify-work`:** Logic suite green + one successful golden-PDF smoke + `sh scripts/check-consistencia.sh` exit 0 for any `mentor/`/adapter edits
 - **Max feedback latency:** ~1 second for the logic suite
 
 ---
@@ -42,18 +42,27 @@ created: 2026-06-21
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| split-by-heading | converter | — | D-09 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_split_by_heading -x` | ❌ W0 | ⬜ pending |
-| chapter-count | converter | — | D-09 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_chapter_count -x` | ❌ W0 | ⬜ pending |
-| page-anchor-present | converter | — | D-10 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_page_anchor_present -x` | ❌ W0 | ⬜ pending |
-| page-anchor-value | converter | — | D-10 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_page_anchor_value -x` | ❌ W0 | ⬜ pending |
-| env-guards | converter | — | D-12 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_env_guards -x` | ❌ W0 | ⬜ pending |
-| lint-called | converter | — | D-12 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_lint_called -x` | ❌ W0 | ⬜ pending |
-| accents-preserved | converter | — | D-15 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_accents_preserved -x` | ❌ W0 | ⬜ pending |
-| slug-path-safety | converter | — | D-08 / V5 | path-traversal via `--slug` | reject `..`/separators, whitelist `[a-z0-9-]` | unit | `pytest tests/test_converte_livro.py::test_slug_rejected -x` | ❌ W0 | ⬜ pending |
-| golden-smoke | converter | — | D-09+D-10 | — | N/A | slow/manual | `pytest tests/ -m slow -q` (skips if docling not installed) | ❌ W0 | ⬜ pending |
-| method-consistency | mentor edits | — | D-02/D-04/D-08 | — | N/A | existing harness | `sh scripts/check-consistencia.sh` | ✅ | ⬜ pending |
+| split-by-heading | 07-01 | 1 | D-09 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_split_by_heading -x` | ❌ W0 | ⬜ pending |
+| chapter-count | 07-01 | 1 | D-09 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_chapter_count -x` | ❌ W0 | ⬜ pending |
+| page-anchor-present | 07-01 | 1 | D-10 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_page_anchor_present -x` | ❌ W0 | ⬜ pending |
+| page-anchor-value | 07-01 | 1 | D-10 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_page_anchor_value -x` | ❌ W0 | ⬜ pending |
+| env-guards | 07-01 | 1 | D-12 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_env_guards -x` | ❌ W0 | ⬜ pending |
+| lint-called | 07-01 | 1 | D-12 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_lint_called -x` | ❌ W0 | ⬜ pending |
+| accents-preserved | 07-01 | 1 | D-15 | — | N/A | unit | `pytest tests/test_converte_livro.py::test_accents_preserved -x` | ❌ W0 | ⬜ pending |
+| slug-path-safety | 07-01 | 1 | D-08 / V5 | path-traversal via `--slug` | reject `..`/separators, whitelist `[a-z0-9-]` | unit | `pytest tests/test_converte_livro.py::test_slug_rejected -x` | ❌ W0 | ⬜ pending |
+| golden-smoke | 07-01 | 1 | D-09+D-10 | — | N/A | slow/manual | `pytest tests/ -m slow -q` (skips if docling not installed) | ❌ W0 | ⬜ pending |
+| harness-reconcile | 07-02 | 2 | D-13 | — | N/A | existing harness | `sh scripts/check-consistencia.sh` | ✅ | ⬜ pending |
+| skill-adapter | 07-02 | 2 | D-13/D-14 | — | N/A | existing harness | `sh scripts/check-consistencia.sh` | ✅ | ⬜ pending |
+| novo-projeto-bootstrap | 07-02 | 2 | D-02/D-06/D-15 | — | N/A | existing harness | `sh scripts/check-consistencia.sh` | ✅ | ⬜ pending |
+| agents-readme-metodo | 07-02 | 2 | D-02/D-13 | — | N/A | existing harness (V-15 set-equality) | `sh scripts/check-consistencia.sh` | ✅ | ⬜ pending |
+| reference-livro-divergencia | 07-03 | 3 | D-04/D-08 | — | N/A | existing harness + grep | `sh scripts/check-consistencia.sh && grep -q "o livro diz" mentor/reference.md && grep -q "escolha do mentor" mentor/reference.md` | ✅ | ⬜ pending |
+| tutor-baseline-divergencia | 07-03 | 3 | D-01/D-03/D-04/D-10 | — | N/A | existing harness + grep | `sh scripts/check-consistencia.sh && grep -q "decide sozinho" mentor/tutor.md && grep -q "APRENDIZADO.md" mentor/tutor.md` | ✅ | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+
+> Plan/Wave mapping: 07-01 (Wave 1, the docling engine + pytest scaffolding), 07-02 (Wave 2, harness
+> reconciliation + skill/AGENTS/README/metodo registration + novo-projeto bootstrap), 07-03 (Wave 3,
+> reference.md + tutor.md consumption layer; depends on 07-02 so the harness is reconciled first).
 
 ---
 
@@ -64,6 +73,11 @@ created: 2026-06-21
 - [ ] `tests/fixtures/sample.pdf` — tiny 2-3 page PDF with 2 headings for the golden smoke
 - [ ] Framework install: `pip install pytest` into the opt-in PDF venv (NOT into the stdlib core)
 - [ ] Keep tests OUT of the stdlib-only core's "zero setup" promise — they live with the opt-in script and run only when the PDF venv exists
+
+> Wave 0 scaffolding lives in Plan 07-01 Task 3 (requirements-pdf.txt + tests/conftest.py +
+> tests/test_converte_livro.py + tests/fixtures/sample.pdf). Every MISSING-referenced test in the
+> Per-Task map above is created there before any 07-01 logic assertion runs — the strategy is
+> nyquist-compliant; `wave_0_complete` flips to true only after execution actually runs Wave 0.
 
 ---
 
@@ -79,11 +93,11 @@ created: 2026-06-21
 
 ## Validation Sign-Off
 
-- [ ] All tasks have automated verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references (synthetic-document fixture + pytest install)
-- [ ] No watch-mode flags
-- [ ] Feedback latency < ~1s for the logic suite
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have automated verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references (synthetic-document fixture + pytest install) — provided by 07-01 Task 3
+- [x] No watch-mode flags
+- [x] Feedback latency < ~1s for the logic suite
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** 2026-06-21
