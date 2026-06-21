@@ -65,9 +65,12 @@ for f in AGENTS.md README.md mentor/metodo.md; do
   fi
 done
 
-echo "== IN-01 (V-16): zero letras acentuadas em mentor/ =="
-acc=$(rg -c '[áàâãéêíóôõúüçÁÀÂÃÉÊÍÓÔÕÚÜÇ]' mentor/ 2>/dev/null | awk -F: '{s+=$NF} END{print s+0}')
-check_zero "accents-mentor" "$acc"
+echo "== IN-01 (V-16): zero letras acentuadas nos docs de conduta (mentor/ exceto reference.md) =="
+# Docs de conduta do agente sao ASCII (robustez de encoding). reference.md e excluido:
+# ele guarda os TEMPLATES de artefato do aluno, que por regra usam portugues acentuado
+# (ver "Idioma e acentuacao" em mentor/reference.md). Artefatos vivem em .projetos/ (gitignored).
+acc=$(rg -c '[áàâãéêíóôõúüçÁÀÂÃÉÊÍÓÔÕÚÜÇ]' mentor/ -g '!reference.md' 2>/dev/null | awk -F: '{s+=$NF} END{print s+0}')
+check_zero "accents-conduta" "$acc"
 
 echo "== $fails fail(s) =="
 exit $fails

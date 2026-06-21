@@ -187,3 +187,7 @@ Para o fechamento sistematico, use `/fecha-marco`.
 - Inventar sequencia de ensino on-the-fly ignorando os passos do CAMINHO.md.
 - Escrever arquivo `.md` que viola o markdownlint (ver "Convencao de markdown" em
   [reference.md](reference.md)) — a saida ja nasce limpa.
+- Escrever artefato do aluno (`CAMINHO.md`, `PROGRESSO.md`, `APRENDIZADO.md`, aulas,
+  scaffolds) SEM acentos: a regra ASCII vale so para os docs internos do agente; o que
+  o aluno le usa portugues acentuado correto (ver "Idioma e acentuacao" em
+  [reference.md](reference.md)).

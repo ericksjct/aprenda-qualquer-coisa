@@ -5,9 +5,12 @@
 
 ## Convencoes de escrita (markdown — o substrato dominante)
 
-- **Idioma:** portugues, predominantemente **sem acentos** (ex: "voce", "metodo",
-  "codigo"). Consistente em todo `mentor/`, `AGENTS.md`, `README.md`. Provavelmente
-  escolha deliberada para evitar problemas de encoding entre ferramentas/terminais.
+- **Idioma:** portugues. **Docs internos do agente** (`mentor/`, `fundamentos.md`,
+  `AGENTS.md`, `README.md`, `.planning/`) sao escritos **sem acentos** (ex: "voce",
+  "metodo", "codigo") -- escolha deliberada para evitar problemas de encoding entre
+  ferramentas/terminais. **Artefatos que vao para o aluno** (`.projetos/<slug>/`) usam
+  **portugues acentuado correto** -- material de estudo merece ortografia certa (ver
+  "Idioma e acentuacao" em `mentor/reference.md`).
 - **Tom:** segunda pessoa, imperativo e direto ("leia esse arquivo agora", "nunca
   escreva o trecho de codigo"). O metodo fala COM o agente, instruindo conduta.
 - **Codigo/identificadores inline:** sempre em backticks — `TODO(human)`, `CAMINHO.md`,

@@ -78,8 +78,11 @@ reconhecida**, não em método caseiro.
 - **Estado pós-v1.0:** toolkit brownfield (markdown + scripts), ~1.412 linhas em `mentor/`,
   método ancorado em ciência da aprendizagem em todos os 7 docs. Mapa em `.planning/codebase/`
   (7 docs) — releia `ARCHITECTURE.md`/`STRUCTURE.md` antes de mudanças.
-- Idioma do repo: português, predominantemente **sem acentos** (escolha de robustez de
-  encoding). Manter o padrão ao editar `mentor/`.
+- Idioma do repo: **docs internos do agente** (`mentor/`, `fundamentos.md`, `.planning/`,
+  `AGENTS.md`, `README.md`) em português **sem acentos** (robustez de encoding); manter o
+  padrão ao editá-los. **Artefatos que vão para o aluno** (`.projetos/<slug>/`: `CAMINHO.md`,
+  `PROGRESSO.md`, `APRENDIZADO.md`, aulas, scaffolds) usam **português acentuado correto**
+  (ver "Idioma e acentuacao" em `mentor/reference.md`).
 - Concern #1 do mapa (drift `mentor/`↔adaptadores) **RESOLVIDO** em v1.0:
   `scripts/check-consistencia.sh` é o gate mecânico permanente (anti-cargo-cult + anti-drift).
 - Risco de execução: o agente pode não aplicar o método (persona não ativada). Reforçar
@@ -90,7 +93,8 @@ reconhecida**, não em método caseiro.
 - **Tech stack**: Markdown neutro em `mentor/` é a fonte única; adaptadores apontam por
   caminho relativo — não mover pastas de topo sem atualizar ponteiros
 - **Arquitetura**: preservar fonte-única + adaptadores finos + agnosticismo de LLM
-- **Idioma/estilo**: português sem acentos; paths e identificadores em backticks
+- **Idioma/estilo**: docs internos do agente em português sem acentos; artefatos do aluno
+  (`.projetos/`) em português acentuado correto; paths e identificadores em backticks
 - **Processo**: nenhuma mudança em arquivos antes da pesquisa + requisitos aprovados
 
 ## Key Decisions

@@ -61,10 +61,12 @@ fracasso que o toolkit existe para evitar. Pontos sensiveis:
 
 ## Risco #5 — Idioma sem acentos e encoding
 
-Todo o conteudo usa portugues **sem acentos** (deliberado, por robustez de encoding).
-E uma escolha consciente, mas: (a) reduz legibilidade; (b) se um contribuidor futuro
-introduzir acentos misturados, a inconsistencia pode confundir. Nao ha lint que
-imponha o padrao.
+Os **docs de conduta do agente** usam portugues **sem acentos** (deliberado, por robustez
+de encoding); `check-consistencia.sh` (V-16) impoe esse padrao em `mentor/` exceto
+`reference.md`. Os **artefatos do aluno** (`.projetos/`) usam portugues acentuado correto
+(regra "Idioma e acentuacao" em `mentor/reference.md`), e os templates em `reference.md`
+ja vem acentuados. Risco residual: um contribuidor pode trocar os dois publicos por engano
+(acento em doc de conduta, ou ASCII em artefato); o lint pega o primeiro caso, nao o segundo.
 
 ## Pontos frageis no codigo (`scripts/roadmap_fetch.py`)
 

@@ -19,6 +19,29 @@ por LLM, as regras mais violadas -- e que voce DEVE respeitar -- sao:
 
 Regra: a saida ja nasce limpa. Nao escreva markdown torto pra "consertar depois".
 
+## Idioma e acentuacao -- dois publicos, duas regras
+
+O repo tem DOIS tipos de texto, e a regra de acentuacao depende de QUEM le:
+
+- **Docs internos do agente** -- tudo em `mentor/`, `mentor/fundamentos.md`, `.planning/`,
+  `AGENTS.md`, `README.md`: portugues **sem acentos** (ASCII puro). So a LLM (e o
+  mantenedor) le; o ASCII evita problemas de encoding entre ferramentas, terminais e
+  hooks. Mantenha assim. Esta e a regra que voce ja segue ao escrever conduta.
+- **Artefatos que vao para o aluno** -- `CAMINHO.md`, `PROGRESSO.md`, `APRENDIZADO.md`,
+  `aulas/P0x-<slug>.md`, os scaffolds em `projeto/`, os drills em `exercicios/` e
+  qualquer outro texto que o ALUNO le: use a **ortografia correta do portugues** --
+  acentos, cedilha, til ("voce" -> "você", "codigo" -> "código", "funcao" -> "função",
+  "licao" -> "lição"). Material de estudo sem acento passa desleixo e atrapalha a
+  leitura; o aluno merece texto bem escrito.
+
+Regra pratica: **escrito PARA a LLM -> ASCII; escrito PARA o aluno -> portugues
+acentuado.** O markdownlint acima vale nos dois casos. Salve sempre em UTF-8.
+
+Atencao aos templates abaixo: o texto fixo em portugues dentro deles (titulos de secao,
+frases-modelo) e copiado para o artefato do aluno -- ja vem acentuado de proposito.
+Reproduza a acentuacao ao instanciar. As chaves estruturais em maiusculas do scaffold
+(`META`, `PORQUE`, `PRESSUPOE`, `DONE`...) sao identificadores fixos e ficam em ASCII.
+
 ## Sondagem de substrato
 
 Autoavaliacao engana: "sei um pouco de JS" pode ser qualquer coisa entre zero-absoluto
@@ -77,32 +100,32 @@ montagem dos marcos. E o documento de design; o `PROGRESSO.md` e o de acompanham
 ```markdown
 # CAMINHO -- <nome do projeto>
 
-> Regra de ouro: o passo N so pode pressupor conceitos introduzidos em P01..P(N-1)
+> Regra de ouro: o passo N só pode pressupor conceitos introduzidos em P01..P(N-1)
 > ou cobertos pelo substrato do aluno (tabela no PROGRESSO.md).
 
-## Conceitos (indice)
+## Conceitos (índice)
 
-- c01-<slug> -- <definicao de 1 linha> (introduzido em P01)
-- c02-<slug> -- <definicao de 1 linha> (introduzido em P02)
+- c01-<slug> -- <definição de 1 linha> (introduzido em P01)
+- c02-<slug> -- <definição de 1 linha> (introduzido em P02)
 
 ## Passos
 
-### P01 -- <titulo curto>
+### P01 -- <título curto>
 
 - Conceito dominante (novo): c01-<slug>
-- Pressupoe: (nenhum -- entrada coberta pelo substrato)
-- Substrato exigido: <assunto>: zero-absoluto ok ("eu faco -> voce faz")
-- Objetivo (capacidade): ao terminar, voce consegue <verbo> <conceito>
-- Entregavel: <o que o aluno ESCREVE> + <o que ele VE funcionando ao terminar>
+- Pressupõe: (nenhum -- entrada coberta pelo substrato)
+- Substrato exigido: <assunto>: zero-absoluto ok ("eu faço -> você faz")
+- Objetivo (capacidade): ao terminar, você consegue <verbo> <conceito>
+- Entregável: <o que o aluno ESCREVE> + <o que ele VÊ funcionando ao terminar>
 - Arquivos: <paths em projeto/>
 
-### P02 -- <titulo curto>
+### P02 -- <título curto>
 
 - Conceito dominante (novo): c02-<slug>
-- Pressupoe: c01-<slug>
+- Pressupõe: c01-<slug>
 - Substrato exigido: <assunto>: >= iniciante
-- Objetivo (capacidade): ao terminar, voce consegue <verbo> <conceito>
-- Entregavel: ...
+- Objetivo (capacidade): ao terminar, você consegue <verbo> <conceito>
+- Entregável: ...
 - Arquivos: ...
 
 ## Mapa passos -> marcos
@@ -221,45 +244,45 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 
 ## Substrato por assunto
 
-| Assunto | Nivel | Evidencia da sondagem |
+| Assunto | Nível | Evidência da sondagem |
 |---|---|---|
-| <assunto> | zero-absoluto / iniciante / intermediario / avancado | <o que a sonda mostrou> |
+| <assunto> | zero-absoluto / iniciante / intermediário / avançado | <o que a sonda mostrou> |
 
 ## Objetivo
 
 - Objetivo de aprendizado: ...
-- Restricoes (stack/tempo/ferramentas): ...
+- Restrições (stack/tempo/ferramentas): ...
 
 ## Output final
 
-<descricao do que sera construido>
+<descrição do que será construído>
 
 ## Definition of Done
 
-- [ ] <criterio objetivo 1>
-- [ ] <criterio objetivo 2>
+- [ ] <critério objetivo 1>
+- [ ] <critério objetivo 2>
 
 ## Marcos
 
 ### 00 -- <slug> (Walking Skeleton)  <- ATUAL
 
-**User Story:** Como [usuario], eu quero [capacidade basica], para que [valor minimo].
-**Capacidade:** ao terminar, voce consegue <verbo> <conceito>
+**User Story:** Como [usuário], eu quero [capacidade básica], para que [valor mínimo].
+**Capacidade:** ao terminar, você consegue <verbo> <conceito>
 **Passos do caminho:** P01-P02 (ver CAMINHO.md)
-**Entregavel:** <o que o aluno VE funcionando ao fechar o marco>
+**Entregável:** <o que o aluno VÊ funcionando ao fechar o marco>
 
-- [ ] <criterio de done>
+- [ ] <critério de done>
 
 ### 01 -- <slug>
 
-**User Story:** Como [usuario], eu quero [capacidade], para que [valor].
-**Capacidade:** ao terminar, voce consegue <verbo> <conceito>
+**User Story:** Como [usuário], eu quero [capacidade], para que [valor].
+**Capacidade:** ao terminar, você consegue <verbo> <conceito>
 **Passos do caminho:** P03-P05
-**Entregavel:** <concreto e observavel>
+**Entregável:** <concreto e observável>
 
-- [ ] <criterio de done>
+- [ ] <critério de done>
 
-## Dividas de aprendizado
+## Dívidas de aprendizado
 
 - (registradas na curadoria; revisitar quando fizer sentido)
 
@@ -275,23 +298,23 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 ## Template -- APRENDIZADO.md
 
 ```markdown
-# Diario de Aprendizado -- <nome do projeto>
+# Diário de Aprendizado -- <nome do projeto>
 
-## Licoes
+## Lições
 
-- AAAA-MM-DD -- <conceito aprendido> (contexto: <em que marco/situacao>)
+- AAAA-MM-DD -- <conceito aprendido> (contexto: <em que marco/situação>)
 
-## Padroes de erro
+## Padrões de erro
 
-- AAAA-MM-DD -- <erro recorrente> -> <causa raiz> -> <como evitar da proxima vez>
+- AAAA-MM-DD -- <erro recorrente> -> <causa raiz> -> <como evitar da próxima vez>
 
-## Decisoes arquiteturais
+## Decisões arquiteturais
 
-- AAAA-MM-DD -- <decisao tomada> (contexto: <por que escolhemos isso>)
+- AAAA-MM-DD -- <decisão tomada> (contexto: <por que escolhemos isso>)
 
-## Dividas de aprendizado (da curadoria)
+## Dívidas de aprendizado (da curadoria)
 
-- <divida> -- registrada em <data> -- revisitar no marco <NN>
+- <dívida> -- registrada em <data> -- revisitar no marco <NN>
 ```
 
 ## Template -- aula (`aulas/P0x-<slug>.md`)
@@ -307,50 +330,50 @@ diferente da aplicacao). Se um exemplo da aula, copiado, fecha o `TODO`, a aula 
 gabarito -- esta errada.
 
 ```markdown
-# Aula -- P0x: <titulo do passo>
+# Aula -- P0x: <título do passo>
 
-> Leia ANTES de abrir o scaffold. Esta aula te da a teoria minima para concluir P0x
-> sem buscar na internet nem descomentar a PISTA. Ela NAO contem a solucao do
-> TODO(human): os exemplos usam uma instancia diferente da do seu projeto; transferir
-> para o seu artefato e a sua parte.
+> Leia ANTES de abrir o scaffold. Esta aula te dá a teoria mínima para concluir P0x
+> sem buscar na internet nem descomentar a PISTA. Ela NÃO contém a solução do
+> TODO(human): os exemplos usam uma instância diferente da do seu projeto; transferir
+> para o seu artefato é a sua parte.
 
 ## Objetivo do passo
 
-<capacidade: ao terminar, voce consegue <verbo> <conceito>; e o artefato que prova isso:
-o que vai ficar pronto, concreto e observavel -- espelha o "Objetivo (capacidade)" e o
-"Entregavel" do CAMINHO.md, em 1-2 linhas>
+<capacidade: ao terminar, você consegue <verbo> <conceito>; e o artefato que prova isso:
+o que vai ficar pronto, concreto e observável -- espelha o "Objetivo (capacidade)" e o
+"Entregável" do CAMINHO.md, em 1-2 linhas>
 
-## O que o tutor espera de voce
+## O que o tutor espera de você
 
-<explicito: o que voce precisa PRODUZIR e DEMONSTRAR. Ex: "escrever a funcao que
+<explícito: o que você precisa PRODUZIR e DEMONSTRAR. Ex: "escrever a função que
 recebe X e devolve Y, e me explicar em 2 frases por que ela funciona". Conecta com
 o DONE e a PERGUNTA-GUIA do scaffold.>
 
-## Teoria minima
+## Teoria mínima
 
 Conceito dominante: c0x-<slug>.
 
-- **Intuicao**: <por que isso existe / analogia, 2-3 linhas>
-- **Exemplo**: <um exemplo curto e concreto do mecanismo, instancia DIFERENTE da do projeto>
-- **Conceito formal**: <a definicao precisa, a sintaxe e as regras que valem>
+- **Intuição**: <por que isso existe / analogia, 2-3 linhas>
+- **Exemplo**: <um exemplo curto e concreto do mecanismo, instância DIFERENTE da do projeto>
+- **Conceito formal**: <a definição precisa, a sintaxe e as regras que valem>
 
-## Exemplos de aplicacao
+## Exemplos de aplicação
 
-<1-2 exemplos resolvidos e explicados, SEMPRE em instancia diferente do TODO(human).
-Mostram como o conceito vira codigo sem entregar o codigo-alvo. Se o assunto esta
-zero-absoluto na tabela de substrato, este e o "eu faco" do "eu faco -> voce faz".>
+<1-2 exemplos resolvidos e explicados, SEMPRE em instância diferente do TODO(human).
+Mostram como o conceito vira código sem entregar o código-alvo. Se o assunto está
+zero-absoluto na tabela de substrato, este é o "eu faço" do "eu faço -> você faz".>
 
-## Boas praticas (quando aplicavel)
+## Boas práticas (quando aplicável)
 
-<guia idiomatico do conceito: a forma convencional/elegante, armadilhas comuns, o que
-evitar. So inclua quando houver boa pratica real a ensinar neste passo; nao force secao
+<guia idiomático do conceito: a forma convencional/elegante, armadilhas comuns, o que
+evitar. Só inclua quando houver boa prática real a ensinar neste passo; não force seção
 vazia. Mantenha curto e ancorado no que o passo exercita.>
 
 ## Para conferir antes de codar
 
 - [ ] Consigo explicar <conceito> com minhas palavras.
-- [ ] Sei qual e a entrada e a saida esperadas do que vou escrever.
-- [ ] Se algo aqui e novidade total, avisei o tutor (o caminho ajusta, nao eu).
+- [ ] Sei qual é a entrada e a saída esperadas do que vou escrever.
+- [ ] Se algo aqui é novidade total, avisei o tutor (o caminho ajusta, não eu).
 ```
 
 Regras da aula:
