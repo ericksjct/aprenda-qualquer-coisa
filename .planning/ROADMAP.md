@@ -9,7 +9,7 @@ e o mentor consome esse `livro/` como literatura-base durante o bootstrap e a tu
 **Plans:** 3 plans
 
 Plans:
-- [ ] 07-01-PLAN.md — Engine deterministico: CLI converte_livro.py (whole-doc convert, split por heading, ancora de pagina) + requirements-pdf.txt + suite pytest (D-05/D-07/D-08/D-09/D-10/D-11/D-12)
+- [x] 07-01-PLAN.md — Engine deterministico: CLI converte_livro.py (whole-doc convert, split por heading, ancora de pagina) + requirements-pdf.txt + suite pytest (D-05/D-07/D-08/D-09/D-10/D-11/D-12)
 - [ ] 07-02-PLAN.md — Invocacao: reconcilia harness (NONCMD whitelist) + skill /converte-livro + AGENTS.md/README.md/metodo.md + passo livro-base no bootstrap com pre-aviso D-14 (D-02/D-06/D-13/D-14/D-15)
 - [ ] 07-03-PLAN.md — Consumo no metodo: tutor.md le livro/ como baseline + referencia de pagina + protocolo de divergencia datado em reference.md (D-01/D-03/D-04/D-08/D-10)
 

@@ -1,37 +1,55 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
+milestone: v2.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 7 context gathered
-last_updated: "2026-06-21T21:39:00.415Z"
-last_activity: 2026-06-17
+status: executing
+stopped_at: Completed 07-01-PLAN.md
+last_updated: "2026-06-22T22:32:13.920Z"
+last_activity: 2026-06-22
 progress:
   total_phases: 1
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 3
+  completed_plans: 1
+  percent: 33
 ---
 
 # Project State
 
 ## Current Position
 
+Phase: 07 (ingestao-pdf-livro-via-docling) — EXECUTING
+Plan: 2 of 3
 Milestone: v1.0 — SHIPPED 2026-06-17 (tag v1.0)
-Status: Milestone complete — 6/6 fases, 16/16 planos, 21/21 requisitos
-Last activity: 2026-06-17
-Stopped at: Phase 7 context gathered
+Status: Ready to execute
+Last activity: 2026-06-22
+Stopped at: Completed 07-01-PLAN.md
 
 ## Project Reference
 
 See: `.planning/PROJECT.md` (updated 2026-06-17)
 
 **Core value:** O agente ensina a construir (aluno sai capaz de explicar e estender o projeto sozinho), ancorado em ciência da aprendizagem reconhecida — nunca resolve pelo aluno.
-**Current focus:** Planejando o próximo marco — v2.0 (localização/i18n) via `/gsd-new-milestone`
+**Current focus:** Phase 07 — ingestao-pdf-livro-via-docling
 
 ## Accumulated Context
 
 ### Roadmap Evolution
+
+- **07-01 (motor de conversao) feito:** commits `b0e81b1` (RED) + `8d88a80` (GREEN) +
+  `b617cef` + `2b4254b`. Criado `scripts/converte_livro.py` (CLI OPT-IN), `requirements-pdf.txt`
+  (isolado: docling+pypdf+pytest; core stdlib intocado), `tests/conftest.py`,
+  `tests/test_converte_livro.py` (8 logic + 1 golden smoke) e `tests/fixtures/sample.pdf`.
+  Arquitetura corrigida da pesquisa: UM `convert()` do doc inteiro + split deterministico
+  por `iterate_items()` em TITLE/SECTION_HEADER<=cut_level + ancora `<!-- page: N -->` de
+  `prov[0].page_no` (substitui o chunking pypdf 1-pagina que destruia ambos os sinais).
+  Helpers puros importam SEM docling (imports lazy dentro das funcoes) -> suite verde
+  sub-segundo; o golden smoke RODOU o pipeline docling real (presente neste env) e passou.
+  Seguranca: `sanitize_slug` rejeita path-traversal (T-07-01); subprocess markdownlint usa
+  lista literal fixa (T-07-02). **CLI FIXA p/ Wave 2:**
+  `python scripts/converte_livro.py <pdf> --slug <slug> [--out <dir>] [--cut-level N]`
+  (default out `.projetos/<slug>/livro/`, cut-level 1). D-05/D-07/D-08/D-09/D-10/D-11/D-12
+  satisfeitos. **Plano 02** = reconciliacao do harness + skill/AGENTS/README/metodo + bootstrap.
 
 - Phase 7 added (marco v2.0): Ingestao de PDF do livro do aluno -> markdown via docling
   (scripts Python). Dir `.planning/phases/07-ingestao-pdf-livro-via-docling/`. v2.0 mantem
