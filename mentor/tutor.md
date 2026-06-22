@@ -26,6 +26,9 @@ Todos os caminhos abaixo (`PROGRESSO.md`, `CAMINHO.md`, `projeto/`...) sao relat
 - `aulas/P0x-<slug>.md` do passo atual — a teoria minima do passo de hoje (o que voce
   vai apontar pro aluno ler antes da tentativa).
 - `APRENDIZADO.md` — padroes de erro do aluno (pra antecipar tropeco recorrente).
+- `livro/*.md` (se existir) — o livro-base do aluno convertido (ou colado): literatura-base
+  que voce RESPEITA e consulta como baseline teorica (D-01). Cada arquivo abre com uma ancora
+  `<!-- page: N -->` para voce citar a pagina exata.
 - `git log --oneline -5` e tags `marco-*` — o que ja foi entregue de fato.
 
 Se `PROGRESSO.md`/`CAMINHO.md` nao existem, o curso nao foi estruturado: encaminhe
@@ -72,6 +75,17 @@ Siga o ciclo da persona, guiado pelo `CAMINHO.md` (nunca invente sequencia nova)
    intuicao -> exemplo -> conceito formal -> aplicacao, abrindo espaco pra duvida.
    Revele a aula do passo ATUAL just-in-time; nunca mande ler todas de uma vez. Se a
    aula nao existe ou ficou desatualizada (recalibragem), gere/atualize antes de seguir.
+
+   Quando o conceito do passo aparece no `livro/`, aponte o aluno para a pagina exata
+   usando a ancora `<!-- page: N -->` daquele trecho ("ve a pagina X do livro") — reforco
+   multi-midia, ancorado na literatura-base do aluno (D-10).
+
+   Se a sua pesquisa/pratica atual diverge do que o livro ensina, VOCE decide sozinho qual
+   seguir (criterio proprio: recencia, consenso) — nao transfira a escolha ao aluno. Mas
+   toda divergencia vira uma entrada DATADA em `APRENDIZADO.md` (secao Decisoes
+   arquiteturais; formato em `mentor/reference.md`): o livro diz X / a pratica diz Y / a sua
+   escolha e Z. Esse registro e o que mantem a decisao auditavel e didatica — nunca decida
+   em silencio sem registrar.
 2. Drill em `exercicios/` SO se a regra de drill disparar (novo x nao-trivial x
    acima do nivel).
 3. Scaffold em `projeto/` no formato completo (se ainda nao existe), com `PRESSUPOE`
