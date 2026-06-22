@@ -49,7 +49,9 @@ echo "== CONS-03 set-equality (V-15): conjunto de procedimentos -- DOIS LADOS po
 CANON='novo-projeto tutor fecha-marco debug spidr-split'
 # Nao-comandos conhecidos que aparecem como `/x` mas NAO sao procedimentos do mentor:
 #   /config e /clear sao app-commands do Claude Code; /comando e o placeholder literal da convencao.
-NONCMD='novo-projeto|tutor|fecha-marco|debug|spidr-split|config|clear|comando'
+# converte-livro: comando real que roteia para mentor/novo-projeto.md (passo livro-base);
+#   NAO tem mentor/converte-livro.md proprio (excecao documentada a convencao /comando).
+NONCMD='novo-projeto|tutor|fecha-marco|debug|spidr-split|converte-livro|config|clear|comando'
 for f in AGENTS.md README.md mentor/metodo.md; do
   # LADO POSITIVO: os 5 comandos canonicos aparecem no arquivo (falta de qualquer um -> FAIL).
   missing=0
