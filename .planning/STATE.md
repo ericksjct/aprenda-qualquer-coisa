@@ -2,28 +2,28 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 07-02-PLAN.md
-last_updated: "2026-06-22T22:39:08.349Z"
+status: verifying
+stopped_at: Completed 07-03-PLAN.md
+last_updated: "2026-06-22T22:45:03.898Z"
 last_activity: 2026-06-22
 progress:
   total_phases: 1
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
-  percent: 67
+  completed_plans: 3
+  percent: 100
 ---
 
 # Project State
 
 ## Current Position
 
-Phase: 07 (ingestao-pdf-livro-via-docling) — EXECUTING
-Plan: 3 of 3
+Phase: 07 (ingestao-pdf-livro-via-docling) — COMPLETE (3/3 plans)
+Plan: 3 of 3 — done
 Milestone: v1.0 — SHIPPED 2026-06-17 (tag v1.0)
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-06-22
-Stopped at: Completed 07-02-PLAN.md
+Stopped at: Completed 07-03-PLAN.md
 
 ## Project Reference
 
@@ -35,6 +35,21 @@ See: `.planning/PROJECT.md` (updated 2026-06-17)
 ## Accumulated Context
 
 ### Roadmap Evolution
+
+- **07-03 (camada de consumo) feito -- Fase 7 FECHADA:** commits `0e2cbca`
+  (reference.md) + `1219200` (tutor.md). `mentor/reference.md`: `livro/` no layout do
+  repo do aluno (D-08, irmao de `referencias/`, com ancora `<!-- page: N -->`) +
+  registro de divergencia no template APRENDIZADO.md (D-04: `o livro diz X / pratica
+  diz Y / escolha do mentor`, datado, acentos DENTRO da fence) + prosa ASCII de
+  referencia-cruzada apos a fence + `livro/` na lista acentuada de "Idioma e
+  acentuacao". `mentor/tutor.md` (ASCII): Passo 0 le `livro/*.md` como baseline teorica
+  respeitada (D-01); Passo 3 cita pagina exata via ancora ("ve a pagina X do livro",
+  D-10); protocolo de divergencia (D-03 `decide sozinho`) SEMPRE pareado com registro
+  datado em `APRENDIZADO.md` (D-04), apontando para `mentor/reference.md` (single-source
+  do formato). `sh scripts/check-consistencia.sh` exit 0 (V-12/V-13/V-15/V-16 verdes);
+  `tutor.md` zero acentos; greps D-01/D-03/D-04/D-08/D-10 verdes. Vertical completa da
+  Fase 7 (motor 07-01 + invocacao 07-02 + consumo 07-03). **Ultimo plano da fase** ->
+  Fase 7 pronta para `/gsd-verify-work`.
 
 - **07-02 (camada de invocacao) feito:** commits `7769cb0` (fix harness) + `f0300ac`
   (skill) + `ee4ca31` (Passo 3b) + `1333e5a` (registros). Criado
