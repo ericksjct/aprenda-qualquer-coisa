@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 07-01-PLAN.md
-last_updated: "2026-06-22T22:32:13.920Z"
+stopped_at: Completed 07-02-PLAN.md
+last_updated: "2026-06-22T22:39:08.349Z"
 last_activity: 2026-06-22
 progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 33
+  completed_plans: 2
+  percent: 67
 ---
 
 # Project State
@@ -19,11 +19,11 @@ progress:
 ## Current Position
 
 Phase: 07 (ingestao-pdf-livro-via-docling) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Milestone: v1.0 — SHIPPED 2026-06-17 (tag v1.0)
 Status: Ready to execute
 Last activity: 2026-06-22
-Stopped at: Completed 07-01-PLAN.md
+Stopped at: Completed 07-02-PLAN.md
 
 ## Project Reference
 
@@ -35,6 +35,21 @@ See: `.planning/PROJECT.md` (updated 2026-06-17)
 ## Accumulated Context
 
 ### Roadmap Evolution
+
+- **07-02 (camada de invocacao) feito:** commits `7769cb0` (fix harness) + `f0300ac`
+  (skill) + `ee4ca31` (Passo 3b) + `1333e5a` (registros). Criado
+  `.claude/skills/converte-livro/SKILL.md` (adaptador FINO que aponta para
+  `mentor/novo-projeto.md`, sem duplicar logica docling). Tecido o "Passo 3b -
+  Livro-base (opcional)" em `mentor/novo-projeto.md`: ramo D-15 (PDF -> comando
+  `.venv-pdf` exato ou `/converte-livro`; `.md` -> colar em `livro/`, zero deps),
+  pre-aviso D-14 (`nao consome tokens` / `pagina N de M` / ~2GB), regra "NUNCA roda
+  docling silenciosamente" e bullet `livro/` no esqueleto do Passo 7. Harness
+  reconciliado PRIMEIRO: `NONCMD` whitelista `converte-livro` (V-15 verde), V-12
+  set-fechado intocado. Registro set-consistente em `AGENTS.md`/`README.md`/
+  `mentor/metodo.md`; `sh scripts/check-consistencia.sh` exit 0 (V-13/V-15/V-16 verdes).
+  Excecao de roteamento (`/converte-livro` -> `mentor/novo-projeto.md`, sem
+  `mentor/converte-livro.md`) documentada em 3 superficies (skill, script, metodo.md).
+  D-02/D-06/D-13/D-14/D-15 satisfeitos. **Plano 03** = ultimo da fase.
 
 - **07-01 (motor de conversao) feito:** commits `b0e81b1` (RED) + `8d88a80` (GREEN) +
   `b617cef` + `2b4254b`. Criado `scripts/converte_livro.py` (CLI OPT-IN), `requirements-pdf.txt`
