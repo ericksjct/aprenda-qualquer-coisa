@@ -52,12 +52,18 @@ tags `marco-NN-<slug>` no repo do proprio projeto.
 - `python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/` — baixa um
   roadmap do roadmap.sh (JSON publico, sem scraping) como referencia de ordenacao
   canonica de conceitos. Usado no bootstrap (`mentor/novo-projeto.md`, Passo 3).
+- `python scripts/converte_livro.py <pdf> --slug <slug>` — converte um PDF de livro-base
+  para markdown por capitulo (com ancoras `<!-- page: N -->`) em `.projetos/<slug>/livro/`,
+  via docling. OPCIONAL e isolado: requer o venv de `requirements-pdf.txt` (o core do
+  toolkit segue stdlib-only). Usado no bootstrap (`mentor/novo-projeto.md`, Passo 3b).
+  NUNCA rode em silencio — pre-avise (demora / 0 tokens / progresso) e consuma `livro/`
+  depois.
 
 ## Nota por ferramenta
 
 - **Claude Code**: as skills nativas (`/novo-projeto`, `/tutor`, `/fecha-marco`,
-  `/debug`, `/spidr-split`) e o output style `mentor-projeto` sao adaptadores finos
-  que apontam para `mentor/` — use-os.
+  `/debug`, `/spidr-split`, `/converte-livro`) e o output style `mentor-projeto` sao
+  adaptadores finos que apontam para `mentor/` — use-os.
 - **Codex CLI, Kimi CLI, Cursor e outros que leem `AGENTS.md`**: este arquivo ja
   basta; siga o roteamento acima.
 - **Ferramentas com outro arquivo de contexto** (ex: `GEMINI.md`): aponte o arquivo

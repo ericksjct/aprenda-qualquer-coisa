@@ -115,7 +115,7 @@ cada ferramenta tem so um adaptador fino apontando pra ele.
 |---|---|---|
 | **Metodo** (fonte unica) | `mentor/` | Persona (`metodo.md`) + procedimentos (`novo-projeto`, `tutor`, `fecha-marco`, `debug`, `spidr-split`) + templates (`reference.md`). |
 | **Entrada universal** | `AGENTS.md` | Lido automaticamente por Codex CLI, Kimi CLI, Cursor e outros: define o papel e roteia cada situacao para o arquivo de `mentor/`. |
-| **Adaptadores Claude Code** | `.claude/` | Output style + skills finas (`/novo-projeto`, `/tutor`, `/fecha-marco`, `/debug`, `/spidr-split`) que apontam para `mentor/`. |
+| **Adaptadores Claude Code** | `.claude/` | Output style + skills finas (`/novo-projeto`, `/tutor`, `/fecha-marco`, `/debug`, `/spidr-split`, `/converte-livro`) que apontam para `mentor/`. |
 | **Script** (referencia) | `scripts/roadmap_fetch.py` | Baixa roadmaps do [roadmap.sh](https://roadmap.sh) como base de ordenacao canonica de conceitos. So precisa de Python 3 (stdlib). |
 
 Os procedimentos do metodo:
@@ -174,9 +174,11 @@ mentor/                        # METODO — fonte unica, markdown neutro
     ├── tutor/SKILL.md         # /tutor
     ├── spidr-split/SKILL.md   # /spidr-split
     ├── fecha-marco/SKILL.md   # /fecha-marco
-    └── debug/SKILL.md         # /debug
+    ├── debug/SKILL.md         # /debug
+    └── converte-livro/SKILL.md  # /converte-livro (opcional; aponta para novo-projeto.md)
 scripts/
-└── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/
+├── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/
+└── converte_livro.py          # python scripts/converte_livro.py <pdf> --slug <slug>  (opcional, venv)
 .projetos/                     # casa dos projetos (no .gitignore: pessoais, NAO sobem
 └── <slug>/                    #   pro github do toolkit). Cada projeto e seu proprio
                                #   repo git: CAMINHO, PROGRESSO, aulas/, projeto/, exercicios/...
