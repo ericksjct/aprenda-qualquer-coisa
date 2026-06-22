@@ -49,6 +49,36 @@ aluno (`.projetos/<slug>/referencias/`, que o Passo 7 lista no esqueleto).
   marcos verticais orientados pelo projeto do aluno, nunca por tema.
 - Se o script nao estiver acessivel ou o assunto nao tiver roadmap, siga sem ele.
 
+## Passo 3b — Livro-base (opcional)
+
+Se o aluno tem um livro-base que quer usar como literatura de apoio, o mentor
+PERGUNTA: "tem livro-base? (PDF ou `.md`)". Entao ramifique:
+
+- Se `.md`: instrua o aluno a COLAR o arquivo (ou os capitulos) em
+  `.projetos/<slug>/livro/`. Caminho sem nenhuma dependencia nova — nada de docling,
+  nada de venv.
+- Se PDF: o mentor mostra a linha de comando EXATA abaixo (ou dispara
+  `/converte-livro`), sempre com o PRE-AVISO obrigatorio:
+  "vai demorar, nao consome tokens (roda local), e mostra o progresso (pagina N de M)".
+  A 1a execucao tambem baixa modelos (~2GB).
+
+```text
+python -m venv .venv-pdf
+.\.venv-pdf\Scripts\activate
+pip install -r requirements-pdf.txt
+python scripts/converte_livro.py <pdf> --slug <slug>
+```
+
+Use o venv explicito (Python 3.10+) ativado acima — nunca o `python` global ambiguo.
+
+- A saida (markdown do livro, **um arquivo por capitulo** com ancoras
+  `<!-- page: N -->`) fica em `.projetos/<slug>/livro/`. E a literatura-base que o tutor
+  consulta depois (detalhado em `mentor/tutor.md`).
+- O mentor NUNCA roda docling silenciosamente: ele mostra o comando ou dispara a skill
+  com o pre-aviso, e so segue quando `livro/` estiver populado.
+- Se o aluno nao tem livro-base, ou o venv nao esta acessivel, siga sem ele — o livro e
+  opcional; o contrato e apenas markdown em `livro/` quando existir.
+
 ## Passo 4 — Passe 1: o caminho completo (`CAMINHO.md`)
 
 Expanda o caminho de aprendizado INTEIRO antes de pensar em marcos:
@@ -114,6 +144,7 @@ Todo projeto mora em `.projetos/<slug>/` (a "raiz do projeto"; ver o layout em
 - `aulas/` (sera preenchida no Passo 7b).
 - `exercicios/` (vazia por enquanto) e `projeto/` (vazia ou com arquivos-raiz minimos).
 - `referencias/` (se o Passo 3 gerou roadmap de referencia).
+- `livro/` (se o Passo 3b converteu/colou o livro-base do aluno).
 
 A pasta `.projetos/` esta no `.gitignore` do toolkit (projetos sao pessoais, nao sobem
 pro github do toolkit). Cada projeto e seu PROPRIO repo git: rode `git init` dentro de
