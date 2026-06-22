@@ -4,7 +4,7 @@ milestone: v2.0
 milestone_name: milestone
 status: verifying
 stopped_at: Completed 07-03-PLAN.md
-last_updated: "2026-06-22T22:45:03.898Z"
+last_updated: "2026-06-22T22:53:03.401Z"
 last_activity: 2026-06-22
 progress:
   total_phases: 1
@@ -18,8 +18,8 @@ progress:
 
 ## Current Position
 
-Phase: 07 (ingestao-pdf-livro-via-docling) — COMPLETE (3/3 plans)
-Plan: 3 of 3 — done
+Phase: 07
+Plan: Not started
 Milestone: v1.0 — SHIPPED 2026-06-17 (tag v1.0)
 Status: Phase complete — ready for verification
 Last activity: 2026-06-22
