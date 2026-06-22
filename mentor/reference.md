@@ -28,8 +28,9 @@ O repo tem DOIS tipos de texto, e a regra de acentuacao depende de QUEM le:
   mantenedor) le; o ASCII evita problemas de encoding entre ferramentas, terminais e
   hooks. Mantenha assim. Esta e a regra que voce ja segue ao escrever conduta.
 - **Artefatos que vao para o aluno** -- `CAMINHO.md`, `PROGRESSO.md`, `APRENDIZADO.md`,
-  `aulas/P0x-<slug>.md`, os scaffolds em `projeto/`, os drills em `exercicios/` e
-  qualquer outro texto que o ALUNO le: use a **ortografia correta do portugues** --
+  `aulas/P0x-<slug>.md`, o livro-base convertido em `livro/`, os scaffolds em `projeto/`,
+  os drills em `exercicios/` e qualquer outro texto que o ALUNO le: use a **ortografia
+  correta do portugues** --
   acentos, cedilha, til ("voce" -> "você", "codigo" -> "código", "funcao" -> "função",
   "licao" -> "lição"). Material de estudo sem acento passa desleixo e atrapalha a
   leitura; o aluno merece texto bem escrito.
@@ -230,6 +231,8 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 |-- PROGRESSO.md          # acompanhamento: substrato, DoD, marcos, dividas, log
 |-- APRENDIZADO.md        # diario de bordo: licoes, padroes de erro, decisoes
 |-- referencias/          # roadmaps de referencia (scripts/roadmap_fetch.py)
+|-- livro/                # livro-base do aluno em markdown (docling OU colado): baseline teorica
+|   `-- 0x-<capitulo>.md   #   um arquivo por capitulo, com ancoras <!-- page: N -->
 |-- aulas/                # teoria minima POR PASSO (P0x), lida ANTES do scaffold
 |   `-- P0x-<slug>.md      #   uma aula por passo do CAMINHO.md
 |-- exercicios/           # drills ISOLADOS, gerados just-in-time
@@ -311,11 +314,18 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 ## Decisões arquiteturais
 
 - AAAA-MM-DD -- <decisão tomada> (contexto: <por que escolhemos isso>)
+- AAAA-MM-DD -- divergência livro x prática: o livro diz <X> / a prática atual diz <Y> /
+  escolha do mentor: <Z> (critério: <recência/consenso/...>)
 
 ## Dívidas de aprendizado (da curadoria)
 
 - <dívida> -- registrada em <data> -- revisitar no marco <NN>
 ```
+
+Toda divergencia entre o livro-base e a pesquisa do mentor vira uma entrada DATADA em
+"Decisoes arquiteturais" do `APRENDIZADO.md`, no formato acima (livro diz X / pratica diz
+Y / escolha do mentor): e o mecanismo de transparencia que acompanha a decisao autonoma do
+mentor (o tutor decide sozinho, mas nunca em silencio -- ver a regra em `mentor/tutor.md`).
 
 ## Template -- aula (`aulas/P0x-<slug>.md`)
 
