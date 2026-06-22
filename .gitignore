@@ -3,3 +3,11 @@ CLAUDE.md
 # Projetos de aprendizado sao pessoais (cada usuario tem os seus) e NAO sobem
 # pro github do toolkit. Cada projeto e seu proprio repo git em .projetos/<slug>/.
 .projetos/
+
+# Artefatos gerados pela suite de testes opt-in do conversor de livro.
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Venv opt-in das deps de PDF (docling + pypdf).
+.venv-pdf/

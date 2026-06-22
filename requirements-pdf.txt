@@ -1,0 +1,9 @@
+# Dependencias OPT-IN do conversor de livro (scripts/converte_livro.py).
+# NUNCA mesclar no core stdlib-only do toolkit. Instale em um venv dedicado:
+#   python -m venv .venv-pdf
+#   .\.venv-pdf\Scripts\activate    (Windows PowerShell)
+#   pip install -r requirements-pdf.txt
+#   npm install -g markdownlint-cli  (separado; npm, nao pip)
+docling>=2.104.0
+pypdf>=4.0
+pytest>=8.0

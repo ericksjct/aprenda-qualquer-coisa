@@ -113,3 +113,23 @@ def test_slug_rejected():
     with pytest.raises(SystemExit):
         cl.sanitize_slug("a\\b")
     assert cl.sanitize_slug("meu-livro") == "meu-livro"
+
+
+# --- golden smoke (opt-in, lento; pula se docling ausente) -----------------
+
+@pytest.mark.slow
+def test_golden_smoke(tmp_path):
+    pytest.importorskip("docling")
+    sample = Path(__file__).resolve().parent / "fixtures" / "sample.pdf"
+    if not sample.is_file():
+        pytest.skip("tests/fixtures/sample.pdf ausente")
+    out_dir = tmp_path / "livro"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    doc = cl.convert_pdf(sample, 1)
+    chapters = cl.split_into_chapters(doc, 1)
+    for i, chapter in enumerate(chapters, 1):
+        path = out_dir / cl.chapter_filename(i, chapter["title"])
+        path.write_text(cl.render_chapter(chapter), encoding="utf-8")
+    written = list(out_dir.glob("*.md"))
+    assert written, "golden smoke deveria escrever ao menos 1 capitulo"
+    assert any("<!-- page:" in p.read_text(encoding="utf-8") for p in written)
