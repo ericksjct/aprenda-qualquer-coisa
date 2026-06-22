@@ -51,6 +51,16 @@ reconhecida**, não em método caseiro.
 - ✓ **Anti-drift mecânico** — `scripts/check-consistencia.sh` verifica anti-cargo-cult +
   anti-drift dos adaptadores a cada execução (fecha o concern #1 do mapa de codebase) — v1.0
 
+<!-- Entregue no marco v2.0 (em andamento) -->
+
+- ✓ **Ingestao de livro-base (PDF -> markdown)** — CLI Python opt-in `scripts/converte_livro.py`
+  (docling) converte o PDF do livro do aluno em markdown por capitulo, page-anchored
+  (`<!-- page: N -->`), sob `.projetos/<slug>/livro/`; deps isoladas (`requirements-pdf.txt`),
+  slug sanitizado anti-traversal, suite pytest. O mentor consome `livro/` como literatura-base
+  no bootstrap (`novo-projeto.md` Passo 3b) e na tutoria (`tutor.md`: baseline + referencia de
+  pagina + protocolo de divergencia datado em `APRENDIZADO.md`). Skill `/converte-livro` e
+  harness reconciliado — Validado na Phase 7 — v2.0
+
 ### Active
 
 <!-- Proximo marco v2.0: localizacao / i18n do toolkit (pre-escopado). Escopo concreto
@@ -126,4 +136,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-17 — v1.0 "Ancoragem em ciencia da aprendizagem" SHIPPED. 6 fases, 16 planos, 21/21 requisitos satisfeitos (auditoria 3 fontes). O método deixou de ser caseiro: ganhou `fundamentos.md` (catálogo de frameworks com fontes) tecido em todos os docs de `mentor/`, mais um harness mecânico permanente (`check-consistencia.sh`) que fecha o concern #1 de drift. Próximo marco: v2.0 (localização/i18n) — definir via `/gsd-new-milestone`.*
+*Last updated: 2026-06-22 — Phase 7 (Ingestao de PDF via docling) COMPLETE (3/3 planos, 19/19 must-haves): o aluno converte um PDF do livro-base em markdown por capitulo page-anchored sob `.projetos/<slug>/livro/` via CLI opt-in, e o mentor consome `livro/` no bootstrap e na tutoria. Primeira entrega do marco v2.0. — v1.0 "Ancoragem em ciencia da aprendizagem" SHIPPED. 6 fases, 16 planos, 21/21 requisitos satisfeitos (auditoria 3 fontes). O método deixou de ser caseiro: ganhou `fundamentos.md` (catálogo de frameworks com fontes) tecido em todos os docs de `mentor/`, mais um harness mecânico permanente (`check-consistencia.sh`) que fecha o concern #1 de drift. Próximo marco: v2.0 (localização/i18n) — definir via `/gsd-new-milestone`.*
