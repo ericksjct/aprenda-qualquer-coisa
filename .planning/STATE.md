@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: milestone
 status: verifying
-stopped_at: Completed 07-03-PLAN.md
-last_updated: "2026-06-22T22:53:03.401Z"
+stopped_at: Phase 07.1 context gathered
+last_updated: "2026-06-23T09:46:52.991Z"
 last_activity: 2026-06-22
 progress:
-  total_phases: 1
+  total_phases: 2
   completed_phases: 1
   total_plans: 3
   completed_plans: 3
@@ -23,7 +23,7 @@ Plan: Not started
 Milestone: v1.0 — SHIPPED 2026-06-17 (tag v1.0)
 Status: Phase complete — ready for verification
 Last activity: 2026-06-22
-Stopped at: Completed 07-03-PLAN.md
+Stopped at: Phase 07.1 context gathered
 
 ## Project Reference
 
@@ -35,6 +35,18 @@ See: `.planning/PROJECT.md` (updated 2026-06-17)
 ## Accumulated Context
 
 ### Roadmap Evolution
+
+- **Phase 07.1 inserida apos a Phase 07 (URGENT):** RAG de livro-base sobre dado
+  desestruturado com alta-fidelidade de formula. Gatilho: a Phase 07 (docling texto-puro)
+  perdeu TODAS as formulas ao converter um PDF escaneado (livro Assaf Neto em
+  `.projetos/mat-financeira/`): 778 arquivos, 0 LaTeX, 613 trechos terminando em `:` sem a
+  equacao. Fecha o item Deferred D-11 da Phase 07 (alta-fidelidade de formula). Brief
+  completo (diagnostico + arquitetura RAG + recomendacao revisada por pesquisa + golden set
+
+  + faseamento) em `.planning/phases/07.1-rag-de-livro-base-sobre-dado-desestruturado-com-alta-fidelid/07.1-HANDOFF.md`.
+  Recomendacao-chave (pos-pesquisa jun/2026): OCR-esperto que emite LaTeX
+  (MinerU/PaddleOCR-VL/olmOCR) + indice semantico + imagem-de-pagina como rede de seguranca;
+  NAO ColPali-first. Status: nao planejada ainda.
 
 - **07-03 (camada de consumo) feito -- Fase 7 FECHADA:** commits `0e2cbca`
   (reference.md) + `1219200` (tutor.md). `mentor/reference.md`: `livro/` no layout do
