@@ -3,19 +3,22 @@
 
 Ferramenta OPT-IN (NAO faz parte do core stdlib-only do toolkit). Requer o venv
 de requirements-pdf.txt (docling + pypdf) instalado a parte; o core continua
-100% stdlib e intocado. Adaptada de converter.py: faz UMA conversao do documento
-inteiro (preservando estrutura e numeros de pagina nativos), divide de forma
-deterministica por TITLE/SECTION_HEADER e grava um .md por capitulo sob
-.projetos/<slug>/livro/, cada arquivo abrindo com uma ancora `<!-- page: N -->`.
+100% stdlib e intocado. Adaptada de converter.py: converte o PDF em LOTES de
+paginas (via `page_range` nativo do docling, com `gc.collect()` entre lotes
+para evitar std::bad_alloc em livros grandes), preservando os numeros de
+pagina NATIVOS, divide de forma deterministica por TITLE/SECTION_HEADER e
+grava um .md por capitulo sob .projetos/<slug>/livro/, cada arquivo abrindo
+com uma ancora `<!-- page: N -->`.
 
 Uso:
     # Ative o venv opt-in primeiro (Windows PowerShell):
     #   python -m venv .venv-pdf; .\\.venv-pdf\\Scripts\\activate
     #   pip install -r requirements-pdf.txt
-    python scripts/converte_livro.py <pdf> --slug <slug> [--out <dir>] [--cut-level N]
+    python scripts/converte_livro.py <pdf> --slug <slug> [--out <dir>] [--cut-level N] [--batch-size N]
 
     # default --out  = .projetos/<slug>/livro/
     # default --cut-level = 1  (uma nova fronteira a cada TITLE/SECTION_HEADER nivel <= N)
+    # default --batch-size = 15  (paginas convertidas por lote; nunca usar 1)
 
 Observacoes:
     - Roda LOCAL, nao consome tokens; a 1a execucao baixa modelos (~2GB) e demora.
@@ -24,6 +27,7 @@ Observacoes:
 """
 
 import argparse
+import gc
 import os
 import re
 import subprocess
@@ -161,12 +165,67 @@ def heading_histogram(doc) -> Counter:
     return levels
 
 
-def convert_pdf(pdf_path, cut_level: int):
-    """Converte o PDF inteiro em UM passe e retorna o DoclingDocument (D-12).
+DEFAULT_BATCH_SIZE = 15  # paginas por lote (Pitfall 1: 10-20, nunca 1)
 
-    Imports do docling sao LAZY (so aqui) para manter o modulo e os helpers
-    importaveis sem docling instalado.
+
+def _page_batches(total_pages: int, batch_size: int = DEFAULT_BATCH_SIZE) -> list:
+    """Gera lotes de paginas 1-indexados e inclusivos: [(1,15), (16,30), ...].
+
+    Pura/sem docling: usada tanto pelo caminho real (via pypdf.PdfReader para
+    contar paginas) quanto pelos testes (chamada direto com um total_pages
+    sintetico). `batch_size` NUNCA deve ser 1 (Pitfall 1: temp PDF de 1 pagina
+    e o que a referencia faz e o que queremos evitar aqui, pois converte_livro
+    depende de page_no nativo, e page_range preserva isso so quando convertemos
+    em lotes reais via docling, nao via temp-PDF de 1 pagina).
     """
+    if total_pages <= 0:
+        return []
+    if batch_size <= 0:
+        batch_size = DEFAULT_BATCH_SIZE
+    batches = []
+    start = 1
+    while start <= total_pages:
+        end = min(start + batch_size - 1, total_pages)
+        batches.append((start, end))
+        start = end + 1
+    return batches
+
+
+class _ChainedDoc:
+    """Encadeia `iterate_items()` de varios DoclingDocument (um por lote).
+
+    Os helpers (`split_into_chapters`, `heading_histogram`) so chamam
+    `doc.iterate_items()` e leem atributos do item (`.label`, `.level`,
+    `.text`, `.prov`); por isso basta encadear os iteradores dos lotes, na
+    ordem em que foram convertidos, sem mesclar objetos DoclingDocument
+    internamente (operacao fragil e nao suportada publicamente pela API).
+    """
+
+    def __init__(self, docs: list):
+        self._docs = docs
+
+    def iterate_items(self):
+        for doc in self._docs:
+            yield from doc.iterate_items()
+
+
+def convert_pdf(pdf_path, cut_level: int, batch_size: int = DEFAULT_BATCH_SIZE):
+    """Converte o PDF em LOTES de paginas e retorna um doc encadeado (D-12).
+
+    Substitui a conversao whole-document (que estourava memoria/std::bad_alloc
+    em livros grandes) por chamadas `converter.convert(pdf_path, page_range=
+    (s, e))` em lotes de `batch_size` paginas, com `gc.collect()` entre lotes -
+    mesma estrategia da referencia (converter.py), mas via `page_range` nativo
+    do docling em vez de PdfWriter/temp-PDF de 1 pagina. Isso preserva os
+    numeros de pagina NATIVOS (page_range nao reseta page_no, ao contrario de
+    um temp-PDF de 1 pagina isolado), o que e essencial para as ancoras
+    `<!-- page: N -->` e para `split_into_chapters`.
+
+    Imports do docling/pypdf sao LAZY (so aqui) para manter o modulo e os
+    helpers importaveis sem docling instalado.
+    """
+    from pypdf import PdfReader
+
     from docling.datamodel.accelerator_options import (
         AcceleratorDevice,
         AcceleratorOptions,
@@ -178,7 +237,6 @@ def convert_pdf(pdf_path, cut_level: int):
     opts = PdfPipelineOptions()
     opts.do_ocr = True  # PRESERVE (base script)
     opts.generate_picture_images = True  # PRESERVE; figuras best-effort (D-11)
-    # Controle de memoria (RESEARCH Pattern 1): substitui o chunking pypdf 1-pagina.
     opts.accelerator_options = AcceleratorOptions(
         num_threads=1, device=AcceleratorDevice.CPU
     )
@@ -187,14 +245,24 @@ def convert_pdf(pdf_path, cut_level: int):
         format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=opts)}
     )
 
+    total_pages = len(PdfReader(pdf_path).pages)
+    batches = _page_batches(total_pages, batch_size)
+
     print(
-        "[*] Convertendo o livro inteiro (pode demorar; nao consome tokens; roda local)..."
+        f"[*] Convertendo o livro em {len(batches)} lote(s) de até "
+        f"{batch_size} paginas (total {total_pages} paginas; nao consome "
+        "tokens; roda local)..."
     )
-    # Fallback de OOM (Pitfall 1): se ocorrer std::bad_alloc/OOM, use
-    # page_range=(s,e) em lotes de 10-20 paginas (NUNCA 1 pagina) e mescle os
-    # documentos resultantes. Documentado, nao implementado no caminho feliz.
-    result = converter.convert(pdf_path)
-    doc = result.document
+
+    docs = []
+    for i, (start, end) in enumerate(batches, 1):
+        print(f"    -> lote {i}/{len(batches)} (paginas {start}-{end})...", end=" ")
+        result = converter.convert(pdf_path, page_range=(start, end))
+        docs.append(result.document)
+        print("OK")
+        gc.collect()  # Fallback de OOM (Pitfall 1): libera memoria entre lotes.
+
+    doc = _ChainedDoc(docs)
 
     print("[*] Histograma de headings (use para escolher --cut-level):")
     print(f"    {dict(heading_histogram(doc))}")
@@ -235,6 +303,16 @@ def main() -> None:
         default=1,
         help="nivel de corte do split (default: 1)",
     )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=DEFAULT_BATCH_SIZE,
+        help=(
+            "paginas convertidas por lote (default: "
+            f"{DEFAULT_BATCH_SIZE}; evita std::bad_alloc em livros grandes; "
+            "nunca usar 1)"
+        ),
+    )
     args = parser.parse_args()
 
     slug = sanitize_slug(args.slug)  # path-safety ANTES de qualquer write (T-07-01)
@@ -246,7 +324,7 @@ def main() -> None:
     out_dir = Path(args.out) if args.out else Path(".projetos") / slug / "livro"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    doc = convert_pdf(pdf_path, args.cut_level)
+    doc = convert_pdf(pdf_path, args.cut_level, args.batch_size)
     chapters = split_into_chapters(doc, args.cut_level)
 
     total = len(chapters)
