@@ -24,3 +24,21 @@ Plans:
 | 5. Persona e feedback (metodo + debug)       | v1.0      | 3/3            | Complete    | 2026-06-17 |
 | 6. Auditoria de consistencia                 | v1.0      | 3/3            | Complete    | 2026-06-17 |
 | 7. Ingestao de PDF via docling               | v2.0      | 0/3            | Planned     | —          |
+### Phase 07.1: RAG de livro-base sobre dado desestruturado com alta-fidelidade de formula (INSERTED)
+
+**Goal:** O tutor consulta a teoria do livro-base (PDF escaneado, denso em formula) por busca
+semantica e recebe, com fidelidade, o trecho certo + a(s) formula(s) + a pagina exata. Ingestao
+100% local (MinerU emite LaTeX + imagem-de-pagina como rede; chunking layout-aware; indice
+sqlite-vec hibrido denso+esparso) e consulta por CLI que devolve dados, sem token pago. Gate =
+golden set ~15 conceitos de mat-financeira (hit@3 pagina >=80%, hit@1 >=60%, formula presente 100%).
+Escopo = Fatias 1-3; Fatia 4 (ColPali) e fidelidade de TABELA DEFERIDAS.
+**Requirements**: D-01..D-18 (+A5) (CONTEXT.md — sao os requisitos de-facto; nao ha REQUIREMENTS.md formal)
+**Depends on:** Phase 7
+**Plans:** 5 plans
+
+Plans:
+- [ ] 07.1-01-PLAN.md — Wave 0: recriar .venv-pdf py -3.12 (BLOQUEANTE) + deps RAG opt-in + fixtures/golden_set.json + testes RED (D-01/D-03/D-04/D-05/D-07/D-09/D-14/D-15/D-17)
+- [ ] 07.1-02-PLAN.md — Wave 1: extracao MinerU (CPU/lotes/blindagem) + render_block $$LaTeX$$ + boundary real + build_chunks provenance (D-01/D-02/D-03/D-04/D-05/D-14)
+- [ ] 07.1-03-PLAN.md — Wave 2: indexacao .index/ — bge-m3 (fp16=False) + sqlite-vec vec0 + FTS5 + corpus.jsonl (D-06/D-07/D-08/D-14/D-15)
+- [ ] 07.1-04-PLAN.md — Wave 3: scripts/consulta_livro.py — CLI hibrida vec0+FTS5 fundida por RRF + saida por dados (D-07/D-09/D-10/D-14)
+- [ ] 07.1-05-PLAN.md — Wave 4: costura no metodo (tutor/novo-projeto/reference/skill/ps1) + re-ingest mat-financeira (D-18) + golden set gate (D-11/D-12/D-13/D-15/D-16/D-17/D-18)
