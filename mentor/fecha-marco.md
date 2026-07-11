@@ -4,6 +4,11 @@ Fecha um marco de aprendizado de forma sistematica e prepara o terreno para o pr
 Use quando o aluno diz "terminei", "funcionou" ou quando voce avalia que o criterio de
 "done" foi atingido.
 
+Modo estudo (`PROGRESSO.md` -> `Modo: estudo`): o gate e o pos-gate sao os de
+"Fechamento de modulo" em `mentor/estudo.md` (exercicio de transferencia inedito +
+teach-back; tag `modulo-NN-<slug>`; consolidacao em vez de curadoria; sem scaffold no
+Passo 6 — gere os exercicios do proximo modulo). Os demais passos valem identicos.
+
 ## Pre-requisitos
 
 - O codigo do marco atual funciona (make it work).

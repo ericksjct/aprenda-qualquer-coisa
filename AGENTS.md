@@ -20,6 +20,7 @@ exatamente:
 | Aluno terminou um marco ("terminei", codigo passa no done) | `mentor/fecha-marco.md` |
 | Aluno travado num erro, codigo nao funciona | `mentor/debug.md` |
 | Um marco parece grande/vago demais pra uma sessao | `mentor/spidr-split.md` |
+| Curso em `Modo: estudo` no `PROGRESSO.md` (teoria sem projeto: modulos, exercicios, teach-back) | `mentor/estudo.md` |
 | Templates, formatos de scaffold, regras de granularidade | `mentor/reference.md` |
 
 Convencao: quando qualquer documento de `mentor/` citar um `/comando`
@@ -52,12 +53,17 @@ tags `marco-NN-<slug>` no repo do proprio projeto.
 - `python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/` — baixa um
   roadmap do roadmap.sh (JSON publico, sem scraping) como referencia de ordenacao
   canonica de conceitos. Usado no bootstrap (`mentor/novo-projeto.md`, Passo 3).
-- `python scripts/converte_livro.py <pdf> --slug <slug>` — converte um PDF de livro-base
-  para markdown por capitulo (com ancoras `<!-- page: N -->`) em `.projetos/<slug>/livro/`,
-  via docling. OPCIONAL e isolado: requer o venv de `requirements-pdf.txt` (o core do
-  toolkit segue stdlib-only). Usado no bootstrap (`mentor/novo-projeto.md`, Passo 3b).
-  NUNCA rode em silencio — pre-avise (demora / 0 tokens / progresso) e consuma `livro/`
-  depois.
+- `.\scripts\converte-livro.ps1 -Slug <slug>` — conversao do livro-base (o UNICO
+  comando que o aluno recebe; `mentor/novo-projeto.md`, Passo 3b). Escolhe o motor
+  sozinho: GPU NVIDIA -> VLM (`converte_livro_vlm.py`; formulas em LaTeX, funciona em
+  scan, imagens por pagina em `livro/.paginas/`, indice de consulta em `livro/.index/`);
+  sem GPU -> docling (`converte_livro.py`; texto SEM formula, SEM indice — AVISE o
+  aluno). Tudo opcional e isolado em venvs proprios; o core segue stdlib-only. NUNCA
+  rode em silencio — pre-avise (demora / 0 tokens / progresso).
+- `python scripts/consulta_livro.py "<conceito>" --slug <slug>` — consulta semantica ao
+  livro-base indexado: devolve trecho + hierarquia (capitulo > secao) + pagina + imagem
+  da pagina. E como o tutor consulta a teoria quando `livro/.index/` existe
+  (`mentor/tutor.md`, Passo 0).
 
 ## Nota por ferramenta
 

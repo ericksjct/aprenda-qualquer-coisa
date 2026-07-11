@@ -243,10 +243,15 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 `-- projeto/              # o ARTEFATO UNICO; cresce marco a marco (marcos = git tags)
 ```
 
+Em **modo estudo** (`mentor/estudo.md`) o layout e o mesmo SEM `projeto/`: a pratica
+mora em `exercicios/` (um por passo, em 3 niveis) e as tags sao `modulo-NN-<slug>`.
+
 ## Template -- PROGRESSO.md
 
 ```markdown
 # PROGRESSO -- <nome do projeto>
+
+Modo: projeto  <!-- ou "estudo" (regras em mentor/estudo.md) -->
 
 ## Substrato por assunto
 

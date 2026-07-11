@@ -99,6 +99,10 @@ edita-los, mas eles sao seus:
   escreve. O mentor nunca preenche esses por voce.
 - **Substrato** — o que voce ja domina de cada assunto. O mentor mede isso antes
   de ensinar, pra nao pular etapas nem te encher de obvio.
+- **Modo estudo** — pra quando voce quer dominar um assunto SEM construir nada (ex:
+  estudar pelo livro pra uma prova): o mentor monta a programacao de aulas, ensina a
+  teoria, tira duvidas e te faz praticar com exercicios em niveis — voce demonstra o
+  dominio resolvendo e explicando, em vez de codar. E escolhido no `/novo-projeto`.
 - **Persona / modo mentor** — o ajuste (passo 2 acima) que faz a IA ensinar em
   vez de resolver no seu lugar.
 
@@ -113,7 +117,7 @@ cada ferramenta tem so um adaptador fino apontando pra ele.
 
 | Componente | Arquivo | Papel |
 |---|---|---|
-| **Metodo** (fonte unica) | `mentor/` | Persona (`metodo.md`) + procedimentos (`novo-projeto`, `tutor`, `fecha-marco`, `debug`, `spidr-split`) + templates (`reference.md`). |
+| **Metodo** (fonte unica) | `mentor/` | Persona (`metodo.md`) + procedimentos (`novo-projeto`, `tutor`, `fecha-marco`, `debug`, `spidr-split`, `estudo`) + templates (`reference.md`). |
 | **Entrada universal** | `AGENTS.md` | Lido automaticamente por Codex CLI, Kimi CLI, Cursor e outros: define o papel e roteia cada situacao para o arquivo de `mentor/`. |
 | **Adaptadores Claude Code** | `.claude/` | Output style + skills finas (`/novo-projeto`, `/tutor`, `/fecha-marco`, `/debug`, `/spidr-split`, `/converte-livro`) que apontam para `mentor/`. |
 | **Script** (referencia) | `scripts/roadmap_fetch.py` | Baixa roadmaps do [roadmap.sh](https://roadmap.sh) como base de ordenacao canonica de conceitos. So precisa de Python 3 (stdlib). |
@@ -165,6 +169,7 @@ mentor/                        # METODO — fonte unica, markdown neutro
 ├── fecha-marco.md             # fechamento de marco
 ├── debug.md                   # protocolo de forense
 ├── spidr-split.md             # decomposicao de marcos
+├── estudo.md                  # modo estudo: teoria sem projeto (modulos, exercicios, teach-back)
 └── reference.md               # templates (CAMINHO, PROGRESSO, scaffold) e regras
 .claude/                       # adaptadores Claude Code (apontam para mentor/)
 ├── output-styles/

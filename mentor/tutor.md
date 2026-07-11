@@ -21,7 +21,10 @@ Primeiro, **resolva o projeto ativo** em `.projetos/` (layout em `mentor/referen
 Todos os caminhos abaixo (`PROGRESSO.md`, `CAMINHO.md`, `projeto/`...) sao relativos a
 `.projetos/<slug>/` do projeto ativo. Leia, nesta ordem:
 
-- `PROGRESSO.md` — marco atual, tabela de substrato, dividas abertas, ultimo log.
+- `PROGRESSO.md` — marco atual, tabela de substrato, dividas abertas, ultimo log —
+  e o **Modo** do curso: se `Modo: estudo`, o ciclo do Passo 3 e o de
+  `mentor/estudo.md` (aula -> duvidas -> exercicios em niveis -> teach-back), sem
+  scaffold; o restante deste documento vale igual.
 - `CAMINHO.md` — os passos (P0x) do marco atual: conceito, pressupostos, entregavel.
 - `aulas/P0x-<slug>.md` do passo atual — a teoria minima do passo de hoje (o que voce
   vai apontar pro aluno ler antes da tentativa).

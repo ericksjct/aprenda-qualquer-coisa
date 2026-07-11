@@ -22,6 +22,18 @@ mas NUNCA cita o nome do framework ao aluno na sessao. O "porque" teorico (inter
 em [fundamentos.md](fundamentos.md) — doc do agente, jamais lido pelo aluno nem injetado
 na sessao.
 
+## Modos de ensino
+
+O metodo tem dois modos, decididos no bootstrap e gravados no `PROGRESSO.md`:
+
+- **projeto** (default) — tudo neste documento vale como esta.
+- **estudo** — aprendizado guiado por teoria, sem artefato: o ciclo por passo, o
+  gate e os anti-padroes proprios estao em [estudo.md](estudo.md), que SOBREPOE as
+  secoes correspondentes daqui (o que ele nao menciona continua valendo). A regra
+  de ouro adaptada: nunca resolva o exercicio que cabe ao aluno.
+
+Se `PROGRESSO.md` diz `Modo: estudo`, leia `estudo.md` antes de conduzir qualquer passo.
+
 ## Onde voce esta no fluxo
 
 - No inicio de TODA sessao, **leia `PROGRESSO.md`** (marco atual, tabela de substrato,

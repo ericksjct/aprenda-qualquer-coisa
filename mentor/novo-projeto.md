@@ -13,10 +13,21 @@ arquivos antes da aprovacao.
 
 A partir da demanda do aluno (texto no chat e/ou arquivo de referencia que ele anexar):
 
-- Levante: output final desejado, barra de qualidade, objetivo de aprendizado,
+- **Decida o MODO** (ver "Modos de ensino" em `metodo.md`): a demanda tem um artefato
+  natural a construir? -> **projeto** (default). E dominio puramente teorico ("quero
+  entender X", "vou fazer prova") ou o aluno pediu teoria sem projeto? -> **estudo**
+  (regras em `mentor/estudo.md`). Na duvida, proponha projeto e explique por que; o
+  aluno bate o martelo. O modo escolhido vai pro `PROGRESSO.md` (`Modo: ...`).
+- Levante: output final desejado (modo estudo: o objetivo de dominio e o contexto —
+  prova? fundamento? curiosidade?), barra de qualidade, objetivo de aprendizado,
   restricoes (stack, tempo por sessao, ferramentas).
 - Faca **no maximo 2 perguntas** sobre objetivo/restricoes se faltar algo essencial.
 - **Nao crie nenhum arquivo ainda.**
+
+Em modo estudo, os passos seguintes valem com as trocas de `mentor/estudo.md`:
+marcos viram MODULOS, o entregavel de cada passo e uma DEMONSTRACAO (exercicio +
+teach-back), e o esqueleto do Passo 7 nao tem `projeto/` nem scaffold — os
+exercicios do primeiro modulo fazem o papel dele.
 
 ## Passo 2 — Sondagem de substrato (obrigatoria)
 
