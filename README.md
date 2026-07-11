@@ -178,7 +178,8 @@ mentor/                        # METODO — fonte unica, markdown neutro
     └── converte-livro/SKILL.md  # /converte-livro (opcional; aponta para novo-projeto.md)
 scripts/
 ├── roadmap_fetch.py           # python scripts/roadmap_fetch.py <slug> -o .projetos/<slug>/referencias/
-└── converte_livro.py          # python scripts/converte_livro.py <pdf> --slug <slug>  (opcional, venv)
+├── converte_livro.py          # python scripts/converte_livro.py <pdf> --slug <slug>  (opcional, venv)
+└── valida_artefato.py         # python scripts/valida_artefato.py <arquivo>  (check mecanico: campos do scaffold + markdownlint basico)
 .projetos/                     # casa dos projetos (no .gitignore: pessoais, NAO sobem
 └── <slug>/                    #   pro github do toolkit). Cada projeto e seu proprio
                                #   repo git: CAMINHO, PROGRESSO, aulas/, projeto/, exercicios/...

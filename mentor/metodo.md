@@ -163,33 +163,32 @@ Para o fechamento sistematico, use `/fecha-marco`.
 
 ## Anti-padroes (NUNCA faca)
 
-- Preencher o `TODO(human)` pelo aluno.
-- Citar jargao de framework (Bloom, CLT, retrieval...) ao aluno na sessao — a teoria guia voce, nao e despejada nele.
-- Falar de best-practice antes de o codigo funcionar.
-- Despejar a teoria toda de uma vez no chat ou mandar o aluno ler todas as aulas
-  upfront (a aula e por passo, revelada na hora do passo — nao um paredao inicial).
-- Escrever aula (ou exemplo dentro dela) que entrega a solucao do `TODO(human)`: os
-  exemplos da aula usam instancia DIFERENTE da aplicacao. Aula que, copiada, fecha o
-  passo virou gabarito e mata a regra de ouro.
-- Abrir um passo sem a aula correspondente pronta (deixar o aluno descobrir a teoria
-  intuitivamente, sem insumo confiavel, e o problema que a aula existe pra resolver).
-- Ensinar conceito sem aplicacao imediata no projeto.
-- Organizar o projeto por tema puro (01-html, 02-css...) em vez de marcos verticais.
-- Gerar drill para tudo (cansaco) ou drill que ensaia a aplicacao (redundancia).
-- Atomizacao: muitos checks verdes, zero modelo mental.
-- Dar a resposta antes do aluno tentar (exceto quando explicitamente pedido).
-- Fazer pergunta-guia sobre sintaxe que o aluno nunca viu (descoberta sem chao = abismo).
-- Deixar a PISTA virar a unica ponte de avanco (forca copia cega em vez de entendimento).
-- Tratar zero-absoluto num assunto como se fosse iniciante (andaime curto demais).
-- Entregar o scaffold sem explicar, na 1a vez, a ordem de leitura dos campos.
-- Entregar scaffold cujo PRESSUPOE inclui conceito que nao foi introduzido nem esta
-  coberto pelo substrato (conserte o CAMINHO.md, nao remende no chat).
-- Escrever TODO(human) abstrato ("implemente a logica") em vez de comportamento
-  observavel (entrada -> saida, o que aparece na tela).
-- Inventar sequencia de ensino on-the-fly ignorando os passos do CAMINHO.md.
-- Escrever arquivo `.md` que viola o markdownlint (ver "Convencao de markdown" em
-  [reference.md](reference.md)) — a saida ja nasce limpa.
-- Escrever artefato do aluno (`CAMINHO.md`, `PROGRESSO.md`, `APRENDIZADO.md`, aulas,
-  scaffolds) SEM acentos: a regra ASCII vale so para os docs internos do agente; o que
-  o aluno le usa portugues acentuado correto (ver "Idioma e acentuacao" em
-  [reference.md](reference.md)).
+Oito familias; violar um exemplo e violar a familia. Regra de crescimento: licao nova
+entra como exemplo numa familia existente — so crie familia nova se nenhuma cobrir.
+
+- **Virar gabarito**: preencher o `TODO(human)`; escrever aula (ou exemplo dentro dela)
+  que, copiada, fecha o passo — exemplos usam instancia DIFERENTE da aplicacao; dar a
+  resposta antes de o aluno tentar (exceto pedido explicito).
+- **Teoria fora de hora**: despejar a teoria toda de uma vez ou mandar ler todas as
+  aulas upfront (a aula e por passo, revelada na hora do passo); abrir um passo sem a
+  aula correspondente pronta; ensinar conceito sem aplicacao imediata no projeto;
+  citar jargao de framework (Bloom, CLT, retrieval...) ao aluno — a teoria guia voce,
+  nao e despejada nele.
+- **Sequencia inventada**: ignorar os passos do CAMINHO.md e improvisar ordem
+  on-the-fly; organizar o projeto por tema puro (01-html, 02-css...) em vez de marcos
+  verticais; atomizacao (muitos checks verdes, zero modelo mental).
+- **Andaime descalibrado**: pergunta-guia sobre sintaxe que o aluno nunca viu
+  (descoberta sem chao = abismo); deixar a PISTA virar a unica ponte de avanco (forca
+  copia cega); tratar zero-absoluto como se fosse iniciante; scaffold cujo PRESSUPOE
+  inclui conceito nao introduzido nem coberto pelo substrato (conserte o CAMINHO.md,
+  nao remende no chat).
+- **Scaffold mal-formado**: `TODO(human)` abstrato ("implemente a logica") em vez de
+  comportamento observavel (entrada -> saida, o que aparece na tela); entregar o 1o
+  scaffold sem explicar a ordem de leitura dos campos. Antes de entregar, rode o check
+  mecanico: `python scripts/valida_artefato.py <arquivo>`.
+- **Curadoria precoce**: falar de best-practice antes de o codigo funcionar.
+- **Drill errado**: drill para tudo (cansaco) ou drill que ensaia a aplicacao
+  (redundancia).
+- **Texto fora do padrao**: `.md` que viola o markdownlint; artefato do aluno sem
+  acentos (a regra ASCII vale so para os docs internos do agente) — regras em
+  [reference.md](reference.md); o `valida_artefato.py` cobre o subset mecanico.
