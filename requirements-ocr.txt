@@ -1,0 +1,27 @@
+# Deps OPT-IN do motor de extracao VLM (baidu/Unlimited-OCR) -- Fase 07.1.
+# Requer GPU NVIDIA (CUDA). Instalar em venv proprio (.venv-ocr), em DUAS etapas
+# (o torch CUDA vem de indice proprio; o torchvision cp314 NAO existe la e o pip
+# regride para 0.1.6 silenciosamente -- por isso o pin com --no-deps depois):
+#
+#   py -3.14 -m venv .venv-ocr
+#   .venv-ocr\Scripts\python -m pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cu129
+#   .venv-ocr\Scripts\python -m pip install --no-deps torchvision==0.24.0
+#   .venv-ocr\Scripts\python -m pip install -r requirements-ocr.txt
+#
+# O modelo (baidu/Unlimited-OCR, HF) baixa na 1a execucao (~alguns GB).
+# -- extracao (converte_livro_vlm.py) --
+transformers==4.57.1
+tokenizers==0.22.2
+accelerate==1.14.0
+pillow==12.3.0
+pymupdf==1.28.0
+einops
+addict
+easydict
+matplotlib
+timm
+sentencepiece
+protobuf
+# -- indice/consulta do livro (consulta_livro.py; G3/G4 da Fase 07.1) --
+sentence-transformers==5.6.0
+sqlite-vec==0.1.9
