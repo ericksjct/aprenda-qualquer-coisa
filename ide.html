@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Editor — Aprenda Qualquer Coisa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: system-ui, sans-serif; height: 100vh;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  header {
+    display: flex; align-items: center; gap: .75rem; padding: .5rem .75rem;
+    border-bottom: 1px solid light-dark(#ddd, #333);
+    background: light-dark(#f7f7f7, #1e1e1e);
+  }
+  header h1 { font-size: .95rem; font-weight: 600; }
+  header .path { font-size: .8rem; opacity: .7; flex: 1; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+  button {
+    font: inherit; font-size: .85rem; padding: .3rem .8rem; cursor: pointer;
+    border: 1px solid light-dark(#ccc, #444); border-radius: 6px;
+    background: light-dark(#fff, #2d2d2d); color: inherit;
+  }
+  button:hover { background: light-dark(#eee, #3a3a3a); }
+  button:disabled { opacity: .4; cursor: default; }
+  main { flex: 1; display: flex; min-height: 0; }
+  #tree {
+    width: 260px; overflow: auto; padding: .5rem; font-size: .85rem;
+    border-right: 1px solid light-dark(#ddd, #333);
+    background: light-dark(#fafafa, #252526);
+  }
+  #tree ul { list-style: none; padding-left: 1rem; }
+  #tree > ul { padding-left: 0; }
+  #tree li { padding: .1rem 0; }
+  #tree .dir > span { cursor: pointer; font-weight: 600; opacity: .85; }
+  #tree .dir > span::before { content: "▸ "; font-size: .7em; }
+  #tree .dir.open > span::before { content: "▾ "; }
+  #tree .dir > ul { display: none; }
+  #tree .dir.open > ul { display: block; }
+  #tree .file { cursor: pointer; border-radius: 4px; padding: .1rem .3rem; }
+  #tree .file:hover { background: light-dark(#e8e8e8, #37373d); }
+  #tree .file.active { background: light-dark(#dbe9ff, #094771); }
+  #editor { flex: 1; min-width: 0; }
+  #editor textarea {
+    width: 100%; height: 100%; border: 0; resize: none; padding: 1rem;
+    font: .9rem/1.5 ui-monospace, Consolas, monospace;
+    background: light-dark(#fff, #1e1e1e); color: inherit; outline: none;
+  }
+  #hint {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    justify-content: center; text-align: center; padding: 2rem;
+    color: light-dark(#666, #999); pointer-events: none;
+  }
+  #hint div { max-width: 34rem; line-height: 1.6; }
+  .dirty::after { content: " ●"; color: #e2b93d; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Aprenda Qualquer Coisa</h1>
+  <button id="open">Abrir pasta</button>
+  <span class="path" id="path">Nenhuma pasta aberta</span>
+  <button id="save" disabled>Salvar (Ctrl+S)</button>
+</header>
+<main>
+  <nav id="tree"></nav>
+  <section id="editor" style="position:relative">
+    <div id="hint"><div>
+      <p><strong>Clique em “Abrir pasta”</strong> e escolha a pasta do toolkit
+      (ou a do seu projeto em <code>.projetos/</code>).</p>
+      <p style="margin-top:.75rem">Edite os arquivos aqui mesmo — sem instalar nada.
+      Pra ver seu HTML funcionando, dê dois cliques nele no Explorer que o
+      navegador abre.</p>
+      <p style="margin-top:.75rem;font-size:.8rem">Funciona no Chrome e no Edge.</p>
+    </div></div>
+  </section>
+</main>
+<script>
+"use strict";
+// ponytail: editor de arquivo unico via File System Access API — sem servidor,
+// sem build. Monaco via CDN com fallback pra <textarea> se estiver offline.
+const SKIP = new Set([".git", "node_modules", "__pycache__", ".pytest_cache",
+                      ".venv-pdf", ".venv-ocr", ".index"]);
+const LANGS = { js: "javascript", ts: "typescript", py: "python", md: "markdown",
+                html: "html", htm: "html", css: "css", json: "json", ps1: "powershell",
+                yml: "yaml", yaml: "yaml", txt: "plaintext", csv: "plaintext" };
+
+let rootHandle = null, fileHandle = null, dirty = false;
+let monacoEditor = null, textarea = null;
+
+const $ = (id) => document.getElementById(id);
+
+function setDirty(v) {
+  dirty = v;
+  $("save").disabled = !v;
+  $("path").classList.toggle("dirty", v);
+}
+
+// --- editor: Monaco se a CDN responder, senao textarea ----------------------
+function initTextarea() {
+  textarea = document.createElement("textarea");
+  textarea.spellcheck = false;
+  textarea.addEventListener("input", () => setDirty(true));
+  $("editor").appendChild(textarea);
+}
+function getValue() { return monacoEditor ? monacoEditor.getValue() : textarea.value; }
+function setValue(text, ext) {
+  if (monacoEditor) {
+    monacoEditor.setValue(text);
+    monaco.editor.setModelLanguage(monacoEditor.getModel(), LANGS[ext] || "plaintext");
+  } else {
+    textarea.value = text;
+  }
+}
+
+const loader = document.createElement("script");
+loader.src = "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js";
+loader.onload = () => {
+  require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs" } });
+  require(["vs/editor/editor.main"], () => {
+    monacoEditor = monaco.editor.create($("editor"), {
+      value: "", language: "plaintext", automaticLayout: true,
+      theme: matchMedia("(prefers-color-scheme: dark)").matches ? "vs-dark" : "vs",
+      minimap: { enabled: false }, fontSize: 14, wordWrap: "on",
+    });
+    monacoEditor.onDidChangeModelContent(() => setDirty(true));
+    if (textarea) { textarea.remove(); textarea = null; }
+  });
+};
+loader.onerror = initTextarea; // offline: segue funcionando sem highlighting
+document.head.appendChild(loader);
+
+// --- arvore de arquivos ------------------------------------------------------
+async function buildTree(dirHandle, ul) {
+  const entries = [];
+  for await (const e of dirHandle.values()) entries.push(e);
+  entries.sort((a, b) => (a.kind !== b.kind) ? (a.kind === "directory" ? -1 : 1)
+                                             : a.name.localeCompare(b.name));
+  for (const entry of entries) {
+    if (SKIP.has(entry.name)) continue;
+    const li = document.createElement("li");
+    if (entry.kind === "directory") {
+      li.className = "dir";
+      const label = document.createElement("span");
+      label.textContent = entry.name;
+      const sub = document.createElement("ul");
+      let loaded = false;
+      label.addEventListener("click", async () => {
+        li.classList.toggle("open");
+        if (!loaded) { loaded = true; await buildTree(entry, sub); }
+      });
+      li.append(label, sub);
+    } else {
+      li.className = "file";
+      li.textContent = entry.name;
+      li.addEventListener("click", () => openFile(entry, li));
+    }
+    ul.appendChild(li);
+  }
+}
+
+async function openFile(handle, li) {
+  if (dirty && !confirm("Ha alteracoes nao salvas. Descarta-las?")) return;
+  const file = await handle.getFile();
+  if (/\.(png|jpe?g|gif|pdf|xlsx?|db|ico)$/i.test(handle.name)) {
+    alert("Esse tipo de arquivo nao abre aqui — de dois cliques nele no Explorer.");
+    return;
+  }
+  const hint = $("hint");
+  if (hint) hint.remove();
+  fileHandle = handle;
+  setValue(await file.text(), handle.name.split(".").pop().toLowerCase());
+  setDirty(false);
+  $("path").textContent = handle.name;
+  document.querySelectorAll("#tree .file.active").forEach(e => e.classList.remove("active"));
+  li.classList.add("active");
+}
+
+async function save() {
+  if (!fileHandle || !dirty) return;
+  const w = await fileHandle.createWritable();
+  await w.write(getValue());
+  await w.close();
+  setDirty(false);
+}
+
+$("open").addEventListener("click", async () => {
+  if (!window.showDirectoryPicker) {
+    alert("Seu navegador nao suporta abrir pastas. Use o Chrome ou o Edge.");
+    return;
+  }
+  rootHandle = await showDirectoryPicker({ mode: "readwrite" }).catch(() => null);
+  if (!rootHandle) return;
+  $("tree").innerHTML = "";
+  const ul = document.createElement("ul");
+  $("tree").appendChild(ul);
+  await buildTree(rootHandle, ul);
+  $("path").textContent = rootHandle.name + "/";
+});
+
+$("save").addEventListener("click", save);
+addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "s") { e.preventDefault(); save(); }
+});
+addEventListener("beforeunload", (e) => { if (dirty) e.preventDefault(); });
+</script>
+</body>
+</html>
