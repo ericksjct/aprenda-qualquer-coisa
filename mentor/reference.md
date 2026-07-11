@@ -231,8 +231,11 @@ pro github do toolkit. Cada projeto e seu PROPRIO repo git (`git init` no bootst
 |-- PROGRESSO.md          # acompanhamento: substrato, DoD, marcos, dividas, log
 |-- APRENDIZADO.md        # diario de bordo: licoes, padroes de erro, decisoes
 |-- referencias/          # roadmaps de referencia (scripts/roadmap_fetch.py)
-|-- livro/                # livro-base do aluno em markdown (docling OU colado): baseline teorica
-|   `-- 0x-<capitulo>.md   #   um arquivo por capitulo, com ancoras <!-- page: N -->
+|-- livro-fonte/          # PDF cru do livro-base (criado pelo tutor; entrada do converte-livro.ps1)
+|-- livro/                # livro-base do aluno em markdown (convertido OU colado): baseline teorica
+|   |-- 0x-<capitulo>.md   #   um arquivo por capitulo, com ancoras <!-- page: N -->
+|   |-- .paginas/          #   (motor VLM) PNG de cada pagina: verdade de fidelidade das formulas
+|   `-- .index/            #   (motor VLM) indice de consulta semantica (consulta_livro.py)
 |-- aulas/                # teoria minima POR PASSO (P0x), lida ANTES do scaffold
 |   `-- P0x-<slug>.md      #   uma aula por passo do CAMINHO.md
 |-- exercicios/           # drills ISOLADOS, gerados just-in-time
@@ -439,6 +442,9 @@ Validacao obrigatoria antes de entregar qualquer scaffold:
   nunca um conceito abstrato.
 - O `TODO(human)` descreve comportamento (entrada -> saida / o que aparece), nunca
   "implemente X" seco.
+- Check mecanico: `python scripts/valida_artefato.py <arquivo>` confirma os campos
+  obrigatorios do scaffold (e, em `.md`, o subset markdownlint). Os checks semanticos
+  acima continuam seus; o script pega o esquecimento mecanico.
 
 ### Como o aluno le o scaffold (explique na 1a entrega)
 

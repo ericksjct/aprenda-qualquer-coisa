@@ -54,27 +54,42 @@ aluno (`.projetos/<slug>/referencias/`, que o Passo 7 lista no esqueleto).
 Se o aluno tem um livro-base que quer usar como literatura de apoio, o mentor
 PERGUNTA: "tem livro-base? (PDF ou `.md`)". Entao ramifique:
 
-- Se `.md`: instrua o aluno a COLAR o arquivo (ou os capitulos) em
-  `.projetos/<slug>/livro/`. Caminho sem nenhuma dependencia nova — nada de docling,
-  nada de venv.
-- Se PDF: o mentor mostra a linha de comando EXATA abaixo (ou dispara
-  `/converte-livro`), sempre com o PRE-AVISO obrigatorio:
-  "vai demorar, nao consome tokens (roda local), e mostra o progresso (pagina N de M)".
-  A 1a execucao tambem baixa modelos (~2GB).
+Em AMBOS os ramos, o mentor CRIA os diretorios primeiro (nunca deixa o aluno
+adivinhar o caminho): o tutor roda `New-Item -ItemType Directory -Force` para
+`.projetos/<slug>/livro-fonte/` (onde entra o PDF/`.md` cru) e
+`.projetos/<slug>/livro/` (saida convertida) ANTES de pedir qualquer arquivo.
 
-```text
-python -m venv .venv-pdf
-.\.venv-pdf\Scripts\activate
-pip install -r requirements-pdf.txt
-python scripts/converte_livro.py <pdf> --slug <slug>
+- Se `.md`: depois de criar as pastas, instrua o aluno a COLAR o arquivo (ou os
+  capitulos) em `.projetos/<slug>/livro/`. Caminho sem nenhuma dependencia nova —
+  nada de docling, nada de venv.
+- Se PDF: o mentor NUNCA cola o passo-a-passo de venv+comando no chat (o aluno nao
+  consegue copiar varias linhas pro terminal). Em vez disso ENTREGA um script
+  pronto: `scripts/converte-livro.ps1` (ja versionado no repo). O fluxo, com o
+  PRE-AVISO obrigatorio ("vai demorar, nao consome tokens — roda local — e mostra o
+  progresso por lote; a 1a execucao baixa modelos ~2GB"):
+
+  1. O tutor cria `.projetos/<slug>/livro-fonte/` (o `.ps1` tambem cria, mas crie
+     antes para o aluno ter onde por o PDF).
+  2. Peca ao aluno para colocar o PDF dentro de `.projetos/<slug>/livro-fonte/`.
+  3. Entregue UMA linha pra rodar no terminal:
+
+```powershell
+.\scripts\converte-livro.ps1 -Slug <slug>
 ```
 
-Use o venv explicito (Python 3.10+) ativado acima — nunca o `python` global ambiguo.
+O `.ps1` e idempotente e auto-suficiente: cria `livro-fonte/` + `livro/`, ESCOLHE o
+motor sozinho (GPU NVIDIA presente -> motor VLM `converte_livro_vlm.py`, que extrai
+FORMULAS em LaTeX, funciona em scan, salva a imagem de cada pagina em
+`livro/.paginas/` e constroi o indice de consulta `livro/.index/`; sem GPU ->
+docling `converte_livro.py`, texto sem formula), provisiona o venv do motor
+(`.venv-ocr` ou `.venv-pdf`) e instala as deps na 1a vez, descobre o PDF em
+`livro-fonte/` (ou aceita `-Pdf <caminho>`) e converte. Nunca peca pro aluno colar
+`python -m venv ...` linha a linha no chat.
 
 - A saida (markdown do livro, **um arquivo por capitulo** com ancoras
   `<!-- page: N -->`) fica em `.projetos/<slug>/livro/`. E a literatura-base que o tutor
   consulta depois (detalhado em `mentor/tutor.md`).
-- O mentor NUNCA roda docling silenciosamente: ele mostra o comando ou dispara a skill
+- O mentor NUNCA roda a conversao silenciosamente: ele entrega o `.ps1`/dispara a skill
   com o pre-aviso, e so segue quando `livro/` estiver populado.
 - Se o aluno nao tem livro-base, ou o venv nao esta acessivel, siga sem ele — o livro e
   opcional; o contrato e apenas markdown em `livro/` quando existir.

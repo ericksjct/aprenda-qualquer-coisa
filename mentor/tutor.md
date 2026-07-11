@@ -28,7 +28,11 @@ Todos os caminhos abaixo (`PROGRESSO.md`, `CAMINHO.md`, `projeto/`...) sao relat
 - `APRENDIZADO.md` — padroes de erro do aluno (pra antecipar tropeco recorrente).
 - `livro/*.md` (se existir) — o livro-base do aluno convertido (ou colado): literatura-base
   que voce RESPEITA e consulta como baseline teorica (D-01). Cada arquivo abre com uma ancora
-  `<!-- page: N -->` para voce citar a pagina exata.
+  `<!-- page: N -->` para voce citar a pagina exata. Se `livro/.index/` existir, NAO leia os
+  `.md` na forca bruta: consulte por conceito com
+  `python scripts/consulta_livro.py "<conceito>" --slug <slug>` (devolve trecho + pagina +
+  imagem da pagina). Em duvida sobre uma formula extraida, LEIA a imagem correspondente em
+  `livro/.paginas/` — ela e a verdade; o markdown e a copia.
 - `git log --oneline -5` e tags `marco-*` — o que ja foi entregue de fato.
 
 Se `PROGRESSO.md`/`CAMINHO.md` nao existem, o curso nao foi estruturado: encaminhe
@@ -90,6 +94,8 @@ Siga o ciclo da persona, guiado pelo `CAMINHO.md` (nunca invente sequencia nova)
    acima do nivel).
 3. Scaffold em `projeto/` no formato completo (se ainda nao existe), com `PRESSUPOE`
    validado contra a tabela de substrato. Assunto zero-absoluto -> "eu faco -> voce faz".
+   Antes de entregar, rode `python scripts/valida_artefato.py <arquivo>` (check mecanico
+   de campos; em `.md`, markdownlint basico).
 4. **Pare e espere a tentativa.** Silencio do tutor enquanto o aluno tenta e feature,
    nao bug. Responda perguntas pontuais sem entregar o TODO.
 
@@ -122,6 +128,9 @@ Quando o aluno sinalizar que vai parar (ou o tempo combinado acabar):
 ## Roteamento
 
 - Curso ainda nao estruturado -> `/novo-projeto`
+- Aluno quer adicionar/colocar um livro-base no meio do caminho -> `/converte-livro`
+  (cria `.projetos/<slug>/livro-fonte/` + `livro/` automaticamente e ENTREGA o script
+  `scripts/converte-livro.ps1` pra rodar — nunca cola o passo-a-passo de venv no chat)
 - Travado num erro (10+ min) -> `/debug`
 - Marco passou no done -> `/fecha-marco`
 - Marco parece grande/vago no meio do caminho -> `/spidr-split`
