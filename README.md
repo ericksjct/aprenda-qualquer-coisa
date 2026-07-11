@@ -50,11 +50,12 @@ E so isso pra usar no dia a dia. As secoes seguintes ajudam, mas nao sao
 obrigatorias.
 
 > **Nao precisa instalar editor de codigo.** Quando o mentor te pedir pra editar um
-> arquivo, de dois cliques em **`ide.html`** (nesta pasta): ele abre no navegador
-> (Chrome ou Edge), voce clica "Abrir pasta", escolhe esta pasta e edita ali mesmo,
-> com cores e Ctrl+S. Pra ver uma pagina HTML sua funcionando, de dois cliques nela
-> no Explorer. (Se voce ja usa VS Code ou outro editor, siga com ele — o `ide.html`
-> e so pra ninguem ficar travado por falta de ferramenta.)
+> arquivo, de dois cliques em **`abrir-editor.cmd`** (nesta pasta): ele abre o editor
+> no navegador, voce clica "Abrir pasta", escolhe esta pasta e edita ali mesmo, com
+> cores e Ctrl+S — deixe a janelinha preta aberta enquanto edita. Pra ver uma pagina
+> HTML sua funcionando, de dois cliques nela no Explorer. (Se voce ja usa VS Code ou
+> outro editor, siga com ele — isso existe so pra ninguem travar por falta de
+> ferramenta.)
 
 ## O dia a dia
 
@@ -169,7 +170,8 @@ layout), mantendo cada arquivo enxuto.
 
 ```text
 AGENTS.md                      # entrada universal (Codex, Kimi, Cursor, ...)
-ide.html                       # editor no navegador (Chrome/Edge): abrir pasta -> editar -> Ctrl+S
+abrir-editor.cmd               # DOIS CLIQUES: abre o editor no navegador (serve o ide.html em localhost)
+ide.html                       # o editor em si (Monaco + File System Access API; exige localhost)
 mentor/                        # METODO — fonte unica, markdown neutro
 ├── metodo.md                  # persona/conduta permanente
 ├── novo-projeto.md            # bootstrap (2 passes: caminho -> marcos)

@@ -76,6 +76,18 @@
       navegador abre.</p>
       <p style="margin-top:.75rem;font-size:.8rem">Funciona no Chrome e no Edge.</p>
     </div></div>
+    <script>
+      // file:// nao tem a API de abrir pasta em navegador NENHUM -- a entrada
+      // certa e o abrir-editor.cmd (localhost). Troca o hint pra nao frustrar.
+      if (location.protocol === "file:") {
+        document.querySelector("#hint div").innerHTML =
+          "<p><strong>Quase lá!</strong> Este editor não funciona aberto direto " +
+          "do arquivo (limitação do navegador).</p>" +
+          "<p style='margin-top:.75rem'>Feche esta aba e dê dois cliques em " +
+          "<strong><code>abrir-editor.cmd</code></strong> (na mesma pasta): ele " +
+          "abre o editor do jeito certo.</p>";
+      }
+    </script>
   </section>
 </main>
 <script>
@@ -189,7 +201,10 @@ async function save() {
 
 $("open").addEventListener("click", async () => {
   if (!window.showDirectoryPicker) {
-    alert("Seu navegador nao suporta abrir pastas. Use o Chrome ou o Edge.");
+    alert(location.protocol === "file:"
+      ? "Aberto direto do arquivo o navegador bloqueia esta funcao.\n\n" +
+        "Feche esta aba e de dois cliques em abrir-editor.cmd (na mesma pasta)."
+      : "Seu navegador nao suporta abrir pastas. Use o Chrome ou o Edge.");
     return;
   }
   rootHandle = await showDirectoryPicker({ mode: "readwrite" }).catch(() => null);
