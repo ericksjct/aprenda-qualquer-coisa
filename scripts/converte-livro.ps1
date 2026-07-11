@@ -68,15 +68,46 @@ $OutDir  = Join-Path $ProjDir  "livro"
 New-Item -ItemType Directory -Force -Path $SrcDir | Out-Null
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 
+function Initialize-VenvOcr {
+    $VenvDir = Join-Path $RepoRoot ".venv-ocr"
+    $VenvPy  = Join-Path $VenvDir  "Scripts\python.exe"
+    if (-not (Test-Path -LiteralPath $VenvPy)) {
+        Write-Host "[*] Criando venv .venv-ocr (GPU) e instalando dependencias..." -ForegroundColor Cyan
+        python -m venv $VenvDir
+        & $VenvPy -m pip install --upgrade pip
+        # duas etapas: torch CUDA de indice proprio; torchvision pinada com
+        # --no-deps (o indice cu129 nao tem cp314 e o pip regride pra 0.1.6)
+        & $VenvPy -m pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cu129
+        & $VenvPy -m pip install --no-deps torchvision==0.24.0
+        & $VenvPy -m pip install -r (Join-Path $RepoRoot "requirements-ocr.txt")
+    }
+    return $VenvPy
+}
+
 # --- 2. Descobre o PDF -----------------------------------------------------
 if (-not $Pdf) {
     $found = Get-ChildItem -Path $SrcDir -Filter *.pdf -File -ErrorAction SilentlyContinue |
         Select-Object -First 1
     if (-not $found) {
+        # Sem PDF: se o aluno COLOU markdown em livro/, so constroi o indice.
+        $mds = Get-ChildItem -Path $OutDir -Filter *.md -File -ErrorAction SilentlyContinue
+        $hasGpu = [bool](Get-Command nvidia-smi -ErrorAction SilentlyContinue)
+        if ($mds -and ($Engine -eq 'vlm' -or ($Engine -eq 'auto' -and $hasGpu))) {
+            Write-Host "[*] livro/*.md ja presente; construindo apenas o indice de consulta..." -ForegroundColor Cyan
+            $VenvPy = Initialize-VenvOcr
+            & $VenvPy (Join-Path $RepoRoot "scripts\consulta_livro.py") --slug $Slug --build
+            exit $LASTEXITCODE
+        }
+        if ($mds) {
+            Write-Host "[i] livro/*.md presente, mas sem GPU NVIDIA nao ha indice de consulta:" -ForegroundColor Yellow
+            Write-Host "    o tutor le os .md diretamente (sem busca semantica)." -ForegroundColor Yellow
+            exit 0
+        }
         Write-Host ""
         Write-Host "[i] Pastas prontas. Agora coloque o PDF do livro em:" -ForegroundColor Cyan
         Write-Host "      $SrcDir" -ForegroundColor Yellow
         Write-Host "    e rode este script de novo (ou passe -Pdf <caminho>)." -ForegroundColor Cyan
+        Write-Host "    (Livro em .md? Cole os arquivos em $OutDir e rode de novo.)" -ForegroundColor Cyan
         Write-Host ""
         exit 0
     }
@@ -94,18 +125,7 @@ if ($Engine -eq 'auto') {
 
 # --- 4. Provisiona o venv do motor (idempotente) ----------------------------
 if ($Engine -eq 'vlm') {
-    $VenvDir = Join-Path $RepoRoot ".venv-ocr"
-    $VenvPy  = Join-Path $VenvDir  "Scripts\python.exe"
-    if (-not (Test-Path -LiteralPath $VenvPy)) {
-        Write-Host "[*] Criando venv .venv-ocr (GPU) e instalando dependencias..." -ForegroundColor Cyan
-        python -m venv $VenvDir
-        & $VenvPy -m pip install --upgrade pip
-        # duas etapas: torch CUDA de indice proprio; torchvision pinada com
-        # --no-deps (o indice cu129 nao tem cp314 e o pip regride pra 0.1.6)
-        & $VenvPy -m pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cu129
-        & $VenvPy -m pip install --no-deps torchvision==0.24.0
-        & $VenvPy -m pip install -r (Join-Path $RepoRoot "requirements-ocr.txt")
-    }
+    $VenvPy = Initialize-VenvOcr
 } else {
     $VenvDir = Join-Path $RepoRoot ".venv-pdf"
     $VenvPy  = Join-Path $VenvDir  "Scripts\python.exe"

@@ -60,8 +60,9 @@ adivinhar o caminho): o tutor roda `New-Item -ItemType Directory -Force` para
 `.projetos/<slug>/livro/` (saida convertida) ANTES de pedir qualquer arquivo.
 
 - Se `.md`: depois de criar as pastas, instrua o aluno a COLAR o arquivo (ou os
-  capitulos) em `.projetos/<slug>/livro/`. Caminho sem nenhuma dependencia nova —
-  nada de docling, nada de venv.
+  capitulos) em `.projetos/<slug>/livro/` e, em seguida, rode o MESMO
+  `.\scripts\converte-livro.ps1 -Slug <slug>`: ele detecta que ja ha markdown e
+  (havendo GPU) constroi so o indice de consulta, sem conversao nenhuma.
 - Se PDF: o mentor NUNCA cola o passo-a-passo de venv+comando no chat (o aluno nao
   consegue copiar varias linhas pro terminal). Em vez disso ENTREGA um script
   pronto: `scripts/converte-livro.ps1` (ja versionado no repo). O fluxo, com o
@@ -91,6 +92,12 @@ docling `converte_livro.py`, texto sem formula), provisiona o venv do motor
   consulta depois (detalhado em `mentor/tutor.md`).
 - O mentor NUNCA roda a conversao silenciosamente: ele entrega o `.ps1`/dispara a skill
   com o pre-aviso, e so segue quando `livro/` estiver populado.
+- **Sem GPU NVIDIA a experiencia DEGRADA — avise o aluno explicitamente.** O `.ps1`
+  cai no motor docling: o livro sai legivel mas SEM as formulas (elas nao sao
+  extraidas, nao e que estejam erradas) e SEM o indice de consulta. Diga isso na
+  entrega, com todas as letras: "nesta maquina, sem placa NVIDIA, o livro convertido
+  nao tem as formulas — pra formula, consulte o PDF original em `livro-fonte/`".
+  Nunca deixe o aluno descobrir sozinho que a equacao sumiu.
 - Se o aluno nao tem livro-base, ou o venv nao esta acessivel, siga sem ele — o livro e
   opcional; o contrato e apenas markdown em `livro/` quando existir.
 

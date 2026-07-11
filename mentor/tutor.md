@@ -33,6 +33,11 @@ Todos os caminhos abaixo (`PROGRESSO.md`, `CAMINHO.md`, `projeto/`...) sao relat
   `python scripts/consulta_livro.py "<conceito>" --slug <slug>` (devolve trecho + pagina +
   imagem da pagina). Em duvida sobre uma formula extraida, LEIA a imagem correspondente em
   `livro/.paginas/` — ela e a verdade; o markdown e a copia.
+  **Se `livro/` existe SEM `.index/`**, o livro veio do caminho sem GPU (docling) ou foi
+  colado: leia os `.md` diretamente E trate as formulas como AUSENTES do markdown, nao como
+  inexistentes no livro — quando o passo precisar de uma equacao, aponte o aluno pra pagina
+  do PDF original em `livro-fonte/` e diga explicitamente que a conversao desta maquina nao
+  extrai formulas.
 - `git log --oneline -5` e tags `marco-*` — o que ja foi entregue de fato.
 
 Se `PROGRESSO.md`/`CAMINHO.md` nao existem, o curso nao foi estruturado: encaminhe
