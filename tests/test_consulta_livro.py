@@ -40,3 +40,33 @@ def test_chunk_overlap_and_parent():
 
 def test_fts_query_sanitized():
     assert _fts_query('taxa "over" (efetiva)') == '"taxa" OR "over" OR "efetiva"'
+
+
+def test_breadcrumbs_hierarchy():
+    from consulta_livro import add_breadcrumbs
+
+    def sec(title):
+        return {"file": "f.md", "section": title, "page": 1, "text": "t"}
+
+    sections = add_breadcrumbs([
+        sec("3 Descontos, 53"),          # linha de sumario semeia o capitulo
+        sec("3.5 Desconto composto"),
+        sec("3.5.2 Desconto composto por dentro"),
+        sec("Solução"),                   # sem numero: herda o pai numerado
+        sec("Apresentação"),              # sem numero e sem pai... herda tb
+    ])
+    crumbs = [s["crumb"] for s in sections]
+    assert crumbs[0] == "3 Descontos"     # ", 53" descartado
+    assert crumbs[2] == ("3 Descontos > 3.5 Desconto composto > "
+                         "3.5.2 Desconto composto por dentro")
+    assert crumbs[3] == ("3 Descontos > 3.5 Desconto composto > "
+                         "3.5.2 Desconto composto por dentro > Solução")
+
+
+def test_breadcrumb_without_any_number():
+    from consulta_livro import add_breadcrumbs
+
+    sections = add_breadcrumbs(
+        [{"file": "f.md", "section": "Apresentação", "page": 1, "text": "t"}]
+    )
+    assert sections[0]["crumb"] == "Apresentação"

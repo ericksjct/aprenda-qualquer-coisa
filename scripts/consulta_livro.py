@@ -67,6 +67,46 @@ def parse_livro_md(text: str, fname: str) -> list:
     return sections
 
 
+_NUM_TITLE_RE = re.compile(r"^(\d+(?:\.\d+)*)[\s.:—-]+(.+)$")
+_TOC_PAGE_RE = re.compile(r",\s*\d+\s*$")
+
+
+def add_breadcrumbs(sections: list) -> list:
+    """Anota cada secao com `crumb`: o caminho hierarquico do sumario do livro.
+
+    A hierarquia vem da numeracao dos titulos ("3.5.2" pertence a "3.5" que
+    pertence ao cap. 3). Titulos sem numero ("Solucao", "Exemplos") herdam o
+    caminho da ultima secao numerada — e a resposta pra "Solucao de que?".
+    Linhas de sumario ("3 Descontos, 53") semeiam os titulos de capitulo de
+    graca (o sufixo ", pagina" e descartado).
+    """
+    titles: dict = {}  # "3.5" -> "Desconto composto"
+
+    def chain(num: str) -> list:
+        parts = num.split(".")
+        out = []
+        for i in range(1, len(parts) + 1):
+            prefix = ".".join(parts[:i])
+            if prefix in titles:
+                out.append(f"{prefix} {titles[prefix]}")
+        return out
+
+    last_num = None
+    for s in sections:
+        m = _NUM_TITLE_RE.match(s["section"])
+        if m:
+            num, title = m.group(1), _TOC_PAGE_RE.sub("", m.group(2)).strip()
+            titles[num] = title
+            last_num = num
+            crumb = chain(num)
+        elif last_num:
+            crumb = chain(last_num) + [s["section"]]
+        else:
+            crumb = [s["section"]]
+        s["crumb"] = " > ".join(crumb)
+    return sections
+
+
 def chunk_sections(sections: list, size: int = CHUNK_SIZE,
                    overlap: int = CHUNK_OVERLAP) -> list:
     """Secao -> chunks de ~size chars com overlap; parent = secao inteira (G6)."""
@@ -78,6 +118,7 @@ def chunk_sections(sections: list, size: int = CHUNK_SIZE,
             piece = text[start:start + size]
             chunks.append({
                 "file": s["file"], "section": s["section"],
+                "crumb": s.get("crumb", s["section"]),
                 "page": s["page"], "text": piece, "parent": text,
             })
             if start + size >= len(text):
@@ -119,7 +160,7 @@ def build(livro_dir: Path) -> None:
     chunks = []
     for f in files:
         sections = parse_livro_md(f.read_text(encoding="utf-8"), f.name)
-        chunks.extend(chunk_sections(sections))
+        chunks.extend(chunk_sections(add_breadcrumbs(sections)))
     print(f"[*] {len(files)} arquivos -> {len(chunks)} chunks")
 
     index_dir = livro_dir / ".index"
@@ -127,18 +168,23 @@ def build(livro_dir: Path) -> None:
     (index_dir / "livro.db").unlink(missing_ok=True)
     db = _open_db(index_dir)
     db.execute("CREATE TABLE chunk(id INTEGER PRIMARY KEY, file TEXT, "
-               "section TEXT, page INTEGER, text TEXT, parent TEXT)")
-    db.execute("CREATE VIRTUAL TABLE chunk_fts USING fts5(text)")
+               "crumb TEXT, section TEXT, page INTEGER, text TEXT, parent TEXT)")
+    db.execute("CREATE VIRTUAL TABLE chunk_fts USING fts5(crumb, text)")
     db.execute(f"CREATE VIRTUAL TABLE chunk_vec USING vec0(embedding float[{EMB_DIM}])")
 
     print(f"[*] carregando {EMB_MODEL} (1a vez baixa ~2GB)...")
     model = _embedder()
-    embs = model.encode([c["text"] for c in chunks], normalize_embeddings=True,
+    # embedding contextualizado: o caminho hierarquico entra no texto embedado
+    # ("Solucao" sozinha nao acha nada; "3.5.2 Desconto por dentro > Solucao" acha)
+    embs = model.encode([f"{c['crumb']}\n{c['text']}" for c in chunks],
+                        normalize_embeddings=True,
                         show_progress_bar=True, batch_size=32)
     for i, (c, e) in enumerate(zip(chunks, embs), 1):
-        db.execute("INSERT INTO chunk VALUES (?, ?, ?, ?, ?, ?)",
-                   (i, c["file"], c["section"], c["page"], c["text"], c["parent"]))
-        db.execute("INSERT INTO chunk_fts(rowid, text) VALUES (?, ?)", (i, c["text"]))
+        db.execute("INSERT INTO chunk VALUES (?, ?, ?, ?, ?, ?, ?)",
+                   (i, c["file"], c["crumb"], c["section"], c["page"],
+                    c["text"], c["parent"]))
+        db.execute("INSERT INTO chunk_fts(rowid, crumb, text) VALUES (?, ?, ?)",
+                   (i, c["crumb"], c["text"]))
         db.execute("INSERT INTO chunk_vec(rowid, embedding) VALUES (?, ?)",
                    (i, _serialize(e.tolist())))
     db.commit()
@@ -172,7 +218,7 @@ def query(livro_dir: Path, q: str, k: int) -> list:
 
     results = []
     for rid in top:
-        row = db.execute("SELECT file, section, page, text FROM chunk "
+        row = db.execute("SELECT file, crumb, page, text FROM chunk "
                          "WHERE id = ?", (rid,)).fetchone()
         results.append(row)
     db.close()
@@ -198,9 +244,9 @@ def main() -> None:
     if not args.consulta:
         sys.exit("informe uma consulta ou --build")
 
-    for file, section, page, text in query(livro_dir, args.consulta, args.k):
+    for file, crumb, page, text in query(livro_dir, args.consulta, args.k):
         img = livro_dir / ".paginas" / f"page-{page:04d}.png" if page else None
-        print(f"--- pagina {page} | {section} | {file}")
+        print(f"--- pagina {page} | {crumb} | {file}")
         if img and img.is_file():
             print(f"    imagem: {img}")
         print("    " + " ".join(text.split())[:400])
