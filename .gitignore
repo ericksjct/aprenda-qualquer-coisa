@@ -11,3 +11,9 @@ __pycache__/
 
 # Venv opt-in das deps de PDF (docling + pypdf).
 .venv-pdf/
+
+# Venv opt-in do motor VLM + indice do livro (GPU; requirements-ocr.txt).
+.venv-ocr/
+
+# Rascunhos locais (amostras de teste etc.).
+.temp/
