@@ -145,15 +145,24 @@ def convert(pdf_path: Path, out_dir: Path, pages_spec: str, dpi: int,
                     base_size=1024,
                     image_size=640 if crop else 1024,
                     crop_mode=crop,
+                    # pagina normal gera 1-2k tokens; o teto curto faz pagina
+                    # degenerada falhar em minutos, nao em dezenas de minutos
+                    max_length=8192,
                     **extra,
                 )
             return res if isinstance(res, str) else buf.getvalue()
 
-        raw = _infer()
-        if _looks_degenerate(raw):
-            # loop de repeticao do VLM: re-tenta com anti-repeticao de n-grams
-            print(f"    [!] pagina {n} degenerou; re-tentando com anti-repeticao...")
-            raw = _infer(no_repeat_ngram_size=30, ngram_window=120)
+        # cache incremental: corrida longa e resumivel (re-rodar pula o ja feito)
+        cache = pages_dir / f"page-{n:04d}.md"
+        if cache.is_file():
+            raw = cache.read_text(encoding="utf-8")
+        else:
+            raw = _infer()
+            if _looks_degenerate(raw):
+                # loop de repeticao do VLM: re-tenta com anti-repeticao de n-grams
+                print(f"    [!] pagina {n} degenerou; re-tentando com anti-repeticao...")
+                raw = _infer(no_repeat_ngram_size=30, ngram_window=120)
+            cache.write_text(raw, encoding="utf-8")
         if _looks_degenerate(raw):
             # desiste da pagina: registra e aponta a imagem (rede de seguranca G2)
             md = (f"> **[extração degenerou nesta página; consulte a imagem "
