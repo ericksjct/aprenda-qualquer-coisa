@@ -38,7 +38,7 @@ def test_lint_called(synthetic_doc, tmp_path, monkeypatch):
     monkeypatch.setattr(cl.subprocess, "run", fake_run)
     # Evita rodar docling: convert_pdf retorna o doc sintetico.
     monkeypatch.setattr(
-        cl, "convert_pdf", lambda pdf_path, cut_level, batch_size=15: synthetic_doc
+        cl, "convert_pdf", lambda *args, **kwargs: synthetic_doc
     )
 
     fake_pdf = tmp_path / "livro.pdf"
@@ -103,6 +103,27 @@ def test_accents_preserved(synthetic_doc):
     chapters = cl.split_into_chapters(synthetic_doc, cut_level=1)
     rendered = cl.render_chapter(chapters[1])
     assert "função código" in rendered
+
+
+# --- Fase 07.1 Fatia 1: item FORMULA vira bloco de display math -------------
+
+def test_formula_rendered_as_math_block():
+    from tests.conftest import make_item
+
+    chapter = {
+        "title": "Juros",
+        "start_page": 47,
+        "items": [
+            make_item("SECTION_HEADER", level=1, text="Juros", page_no=47),
+            make_item("TEXT", text="A taxa continua e dada por:", page_no=47),
+            make_item("FORMULA", text=r"I = \ln(1+i)", page_no=47),
+        ],
+    }
+    rendered = cl.render_chapter(chapter)
+    assert "$$\nI = \\ln(1+i)\n$$" in rendered
+    # Formula sem texto (enriquecimento desligado) segue descartada, sem lixo.
+    chapter["items"][2] = make_item("FORMULA", text="", page_no=47)
+    assert "$$" not in cl.render_chapter(chapter)
 
 
 # --- D-08 / ASVS V5: slug path-safety -------------------------------------

@@ -14,7 +14,7 @@ Uso:
     # Ative o venv opt-in primeiro (Windows PowerShell):
     #   python -m venv .venv-pdf; .\\.venv-pdf\\Scripts\\activate
     #   pip install -r requirements-pdf.txt
-    python scripts/converte_livro.py <pdf> --slug <slug> [--out <dir>] [--cut-level N] [--batch-size N]
+    python scripts/converte_livro.py <pdf> --slug <slug> [--out <dir>] [--cut-level N] [--batch-size N] [--formulas] [--threads N] [--no-ocr]
 
     # default --out  = .projetos/<slug>/livro/
     # default --cut-level = 1  (uma nova fronteira a cada TITLE/SECTION_HEADER nivel <= N)
@@ -134,7 +134,13 @@ def render_chapter(chapter: dict) -> str:
     body = []
     for item in chapter.get("items", []):
         text = getattr(item, "text", "")
-        if text:
+        if not text:
+            continue
+        if _label_name(item) == "FORMULA":
+            # Equacao enriquecida (LaTeX) vira bloco de display math; antes
+            # era descartada (item sem .text) ou colada como prosa.
+            body.append(f"$$\n{text}\n$$")
+        else:
             body.append(text)
     parts.append("\n\n".join(body))
     return "\n".join(parts).rstrip() + "\n"
@@ -209,7 +215,14 @@ class _ChainedDoc:
             yield from doc.iterate_items()
 
 
-def convert_pdf(pdf_path, cut_level: int, batch_size: int = DEFAULT_BATCH_SIZE):
+def convert_pdf(
+    pdf_path,
+    cut_level: int,
+    batch_size: int = DEFAULT_BATCH_SIZE,
+    formulas: bool = False,
+    threads: int = 1,
+    ocr: bool = True,
+):
     """Converte o PDF em LOTES de paginas e retorna um doc encadeado (D-12).
 
     Substitui a conversao whole-document (que estourava memoria/std::bad_alloc
@@ -224,6 +237,19 @@ def convert_pdf(pdf_path, cut_level: int, batch_size: int = DEFAULT_BATCH_SIZE):
     Imports do docling/pypdf sao LAZY (so aqui) para manter o modulo e os
     helpers importaveis sem docling instalado.
     """
+    if threads > 1:
+        # Solta a blindagem do topo do modulo ANTES dos imports lazy do
+        # docling/torch (que leem estas vars no proprio import). A blindagem
+        # threads=1 protege o OCR em scan; com --no-ocr ela so custa tempo.
+        for var in (
+            "OMP_NUM_THREADS",
+            "OPENBLAS_NUM_THREADS",
+            "MKL_NUM_THREADS",
+            "VECLIB_MAXIMUM_THREADS",
+            "NUMEXPR_NUM_THREADS",
+        ):
+            os.environ[var] = str(threads)
+
     from pypdf import PdfReader
 
     from docling.datamodel.accelerator_options import (
@@ -235,10 +261,15 @@ def convert_pdf(pdf_path, cut_level: int, batch_size: int = DEFAULT_BATCH_SIZE):
     from docling.document_converter import DocumentConverter, PdfFormatOption
 
     opts = PdfPipelineOptions()
-    opts.do_ocr = True  # PRESERVE (base script)
+    opts.do_ocr = ocr  # default True (scan); --no-ocr para PDF nativo
     opts.generate_picture_images = True  # PRESERVE; figuras best-effort (D-11)
+    if formulas:
+        # Equacao -> LaTeX no .text do item FORMULA (senao o renderer nao tem
+        # o que emitir). 1a execucao baixa o modelo CodeFormula (~GB); avisar.
+        opts.do_formula_enrichment = True
+        print("[*] Enriquecimento de formula LIGADO (1a execucao baixa modelo extra).")
     opts.accelerator_options = AcceleratorOptions(
-        num_threads=1, device=AcceleratorDevice.CPU
+        num_threads=threads, device=AcceleratorDevice.CPU
     )
 
     converter = DocumentConverter(
@@ -304,6 +335,28 @@ def main() -> None:
         help="nivel de corte do split (default: 1)",
     )
     parser.add_argument(
+        "--formulas",
+        action="store_true",
+        help=(
+            "liga o enriquecimento de formula do docling (equacao -> LaTeX no "
+            "markdown); mais lento, 1a execucao baixa modelo extra"
+        ),
+    )
+    parser.add_argument(
+        "--threads",
+        type=int,
+        default=1,
+        help=(
+            "threads dos modelos (default: 1, blindagem anti-bad_alloc para "
+            "scan+OCR; em PDF nativo com --no-ocr pode subir para acelerar)"
+        ),
+    )
+    parser.add_argument(
+        "--no-ocr",
+        action="store_true",
+        help="desliga o OCR (use em PDF nativo com camada de texto; mais rapido)",
+    )
+    parser.add_argument(
         "--batch-size",
         type=int,
         default=DEFAULT_BATCH_SIZE,
@@ -324,7 +377,14 @@ def main() -> None:
     out_dir = Path(args.out) if args.out else Path(".projetos") / slug / "livro"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    doc = convert_pdf(pdf_path, args.cut_level, args.batch_size)
+    doc = convert_pdf(
+        pdf_path,
+        args.cut_level,
+        args.batch_size,
+        formulas=args.formulas,
+        threads=args.threads,
+        ocr=not args.no_ocr,
+    )
     chapters = split_into_chapters(doc, args.cut_level)
 
     total = len(chapters)
